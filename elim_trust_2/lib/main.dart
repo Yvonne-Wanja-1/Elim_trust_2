@@ -1,3 +1,4 @@
+import 'package:elim_trust_2/pages/joincomm.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -10,6 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      title: 'Elim Trust Org',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyWidget(),
+    );
   }
 }
