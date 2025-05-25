@@ -21,7 +21,7 @@ class MyWidget extends StatelessWidget {
           
             fit: BoxFit.cover,
             width: double.infinity,
-            height: 70,
+           // height: 70,
           ),
          
         ),
