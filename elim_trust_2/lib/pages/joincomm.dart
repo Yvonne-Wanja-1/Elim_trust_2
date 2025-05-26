@@ -66,7 +66,7 @@ class _ImpactCardWidget extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 fontFamily: 'Arial',
                 fontStyle: FontStyle.italic,
-                color: Colors.blue,
+                color: Colors.black,
               ),
               textAlign: TextAlign.start,
               maxLines: 5, // Limit description lines for better UI
@@ -173,18 +173,36 @@ class JoinCommunity extends StatelessWidget {
                     }).toList(),
                   ),
                 ),
-                // You can add more content below, like "latest news text"
-                const SizedBox(height: 24), // Space before next section
-                // Example: Placeholder for "Latest News"
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                //   child: Text(
-                //     'Latest News:',
-                //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blue),
-                //   ),
-                // ),
-                // SizedBox(height: 8),
-                // ... more widgets for news items ...
+                // Placeholder for "Latest News"
+                const SizedBox(height: 8), 
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Latest News',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Arial',
+                          fontStyle: FontStyle.italic,      
+                          color: Colors.blue,
+                        ),
+                      
+                      ),
+                      Text('😊',
+                     
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold),
+                      ),
+                      
+                    ],
+                  ),
+                ),
+               SizedBox(height: 3,),
+                
               ],
             ),
         ),
