@@ -10,8 +10,9 @@ class JoinCommunity extends StatelessWidget {
         body: SingleChildScrollView( // This will make the content inside the body scrollable vertically
           physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: const EdgeInsets.all(16.0), // Add some padding around the content
+            padding: const EdgeInsets.all(0), // Add some padding around the content
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch, // Make children take full width
               children: [
                 Container(
@@ -31,23 +32,51 @@ class JoinCommunity extends StatelessWidget {
                     // height: 70, // Height is controlled by the Container
                   ),
                 ),
-                const SizedBox(height: 8), // Add some space between the image and text
-                const Text(
-                  'Our Impact:',
-                  textAlign: TextAlign.left, // Center the text
-                  style: TextStyle(
-                    fontSize: 24, // Slightly larger font for better visibility
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Arial', 
-                    fontStyle: FontStyle.italic,
-                    color: Colors.blue, // Ensure this contrasts with Scaffold background
+                
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0,top: 0),
+                  child: const Text(
+                    'Our Impact:',
+                    textAlign: TextAlign.left, // Center the text
+                    style: TextStyle(
+                      fontSize: 24, // Slightly larger font for better visibility
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Arial', 
+                      fontStyle: FontStyle.italic,
+                      color: Colors.blue, // Ensure this contrasts with Scaffold background
+                    ),
                   ),
                 ),
-                // Your comment: "images scrollable horizontally and texts below the images"
-                // This suggests a future feature. If you want a horizontal list here,
-                // you would typically use a ListView.builder with scrollDirection: Axis.horizontal
-                // or a Row inside another SingleChildScrollView.
-                // For now, this structure fixes the black screen.
+                SizedBox(height: 5),
+              //scrollable images and their descriptions
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal, // Horizontal scrolling for images
+                child: Container(//the bigger container for the images
+                  height: 200,
+                  child: Row(children: [
+Padding(
+  padding: const EdgeInsets.all(8),
+  child: Container(
+    height: 200,
+    width: 200,
+    decoration: const BoxDecoration(
+      borderRadius: BorderRadius.all(
+        Radius.circular(30.0),
+      ),
+    ),
+    clipBehavior: Clip.antiAlias, // This is crucial for rounding the image corners
+    child: Image.asset(
+      'images/trauma.jpg',
+      fit: BoxFit.cover,
+      
+    ),
+  ),
+)
+                  ],),
+                
+                ),
+              )
+              //latest news text
               ],
             ),
           ),
