@@ -51,7 +51,7 @@ class _ImpactCardWidget extends StatelessWidget {
                 decorationColor: Colors.blue, // Color of the underline
               ),
               textAlign: TextAlign.center,
-              maxLines: 1,
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
           ),
