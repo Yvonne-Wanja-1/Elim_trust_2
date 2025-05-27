@@ -79,8 +79,8 @@ class _ImpactCardWidget extends StatelessWidget {
   }
 }
 
-class JoinCommunity extends StatelessWidget {
-  const JoinCommunity({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   static final List<_ImpactCardData> _impactCardItems = [
     const _ImpactCardData(
