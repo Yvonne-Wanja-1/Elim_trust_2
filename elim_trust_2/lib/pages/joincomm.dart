@@ -387,39 +387,39 @@ class JoinCommunity extends StatelessWidget {
               color: const Color.fromARGB(255, 4, 135, 242),
               height: 60,
               items: <Widget>[
-              Column(
+              Column( 
                 mainAxisSize: MainAxisSize.min,
                 children: [
                 Icon(Icons.folder_open, size: 30, color: Colors.white),
-                Text('Projects', style: TextStyle(color: Colors.white, fontSize: 10)),
+                Text('Projects', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
                 ],
               ),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                 Icon(Icons.attach_money_rounded, size: 30, color: Colors.white),
-                Text('Donations', style: TextStyle(color: Colors.white, fontSize: 10)),
+                Text('Donations', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
                 ],
               ),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                 Icon(Icons.home, size: 30, color: Colors.white),
-                Text('Home', style: TextStyle(color: Colors.white, fontSize: 10)),
+                Text('Home', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
                 ],
               ),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                 Icon(FontAwesomeIcons.peopleGroup, size: 30, color: Colors.white),
-                Text('Community', style: TextStyle(color: Colors.white, fontSize: 10)),
+                Text('Community', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
                 ],
               ),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                 Icon(Icons.person, size: 30, color: Colors.white),
-                Text('Profile', style: TextStyle(color: Colors.white, fontSize: 10)),
+                Text('Profile', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
                 ],
               ),
               ],
