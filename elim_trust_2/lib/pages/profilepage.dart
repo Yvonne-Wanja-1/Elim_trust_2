@@ -21,10 +21,15 @@ class ProfilePage extends StatelessWidget {
             title: ShaderMask(
               shaderCallback: (bounds) => const LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 11, 110, 192),
+                
                   Colors.purple,
                   Colors.orange,
+                    Color.fromARGB(255, 11, 110, 192),
                   Colors.red,
+                  Colors.yellow,
+                  //Colors.black,
+                 // Colors.pink,
+
                 ],
               ).createShader(bounds),
               child: AnimatedTextKit(
@@ -82,16 +87,31 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
-      body: const Center(
-        child: SingleChildScrollView(
+      body: 
+         SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              Text('This is the Profile Page'),
+              SizedBox(height: 10), // Add some space at the top
+           //profile pic
+           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+             children: [
+          Center(
+            child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('images/profile.png'), // Replace with your image
+                ),
+          ),
+             ]
+           ),
+           //name
+           //description
             ],
           ),
         ),
-      ),
+      
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
         color: const Color.fromARGB(255, 4, 135, 242),
