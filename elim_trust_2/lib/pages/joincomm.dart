@@ -237,7 +237,95 @@ In Mandera, we worked with adolescents and young mothers to advance reproductive
                   ),
                 ],
               ),
+              const SizedBox(height: 5),
+ Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Row(
+                  children: [
+                    Text(
+                      'Our Blogs',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Arial',
+                        fontStyle: FontStyle.italic,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    const Text(
+                      '😊',
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 2), // Adjusted spacing before news content
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text(
+                             '''👤By: Elim Insights
+Harmful Traditional Practices (HTPs)''',
+                            textAlign: TextAlign.left,
+                          
+                            
+                            style: TextStyle(
+                                //underline:
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.blue,
+                                decorationThickness: 2,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 25, left : 25, top: 5),
+                          child: Text(
+                           // maxLines: 4,
+                            '''
+Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices (HTP). Harmful traditional practices like Female Genital Mutilation (FGM) , early and forced marriage are still being practiced by several communities in Africa and across the world. These backward and barbaric...''',
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Arial',
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 250,
+                    width: 250,
+                    decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(125), 
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 5),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.asset('images/blogs.jpg')),
+                    ),
+                  ),
+                ],
+              ),
             ],
+            
             
           ),
         ),
