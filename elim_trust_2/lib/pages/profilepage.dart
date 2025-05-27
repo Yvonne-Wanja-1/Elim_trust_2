@@ -143,7 +143,7 @@ class ProfilePage extends StatelessWidget {
               // Already on profile, do nothing
               break;
           }
-        },
+        }, 
       ),
     );
   }
