@@ -1,4 +1,8 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+
 
 // Data model for our impact cards
 class _ImpactCardData {
@@ -373,8 +377,63 @@ class JoinCommunity extends StatelessWidget {
             
             
           ),
+
         ),
-      ),
-    );
+        bottomNavigationBar: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CurvedNavigationBar(
+              backgroundColor: Colors.transparent,
+              color: const Color.fromARGB(255, 4, 135, 242),
+              height: 60,
+              items: <Widget>[
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                Icon(Icons.folder_open, size: 30, color: Colors.white),
+                Text('Projects', style: TextStyle(color: Colors.white, fontSize: 10)),
+                ],
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                Icon(Icons.attach_money_rounded, size: 30, color: Colors.white),
+                Text('Donations', style: TextStyle(color: Colors.white, fontSize: 10)),
+                ],
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                Icon(Icons.home, size: 30, color: Colors.white),
+                Text('Home', style: TextStyle(color: Colors.white, fontSize: 10)),
+                ],
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                Icon(FontAwesomeIcons.peopleGroup, size: 30, color: Colors.white),
+                Text('Community', style: TextStyle(color: Colors.white, fontSize: 10)),
+                ],
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                Icon(Icons.person, size: 30, color: Colors.white),
+                Text('Profile', style: TextStyle(color: Colors.white, fontSize: 10)),
+                ],
+              ),
+              ],
+              onTap: (index) {
+              // Handle navigation item tap
+              },
+            ),
+            ],
+          ),
+        ),
+      );
   }
 }
+ 
+
+
+      
