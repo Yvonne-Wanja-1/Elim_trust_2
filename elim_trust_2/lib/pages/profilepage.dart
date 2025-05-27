@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,65 +9,114 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Profile',
-          style: TextStyle(
-            color: Colors.blue,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
           ),
-          textAlign: TextAlign.center,
-        ),
-        backgroundColor: const Color.fromARGB(255, 143, 190, 229),
-        actions: [
-          Container(
-            height: 50,
-            width: 50,
-            decoration: const BoxDecoration(
-              color: Colors.blue,
-              shape: BoxShape.circle,
+          child: AppBar(
+            centerTitle: true,
+            title: ShaderMask(
+              shaderCallback: (bounds) => const LinearGradient(
+                colors: [
+                
+                  Colors.purple,
+                  Colors.orange,
+                    Color.fromARGB(255, 11, 110, 192),
+                  Colors.red,
+                  Colors.yellow,
+                  //Colors.black,
+                 // Colors.pink,
+
+                ],
+              ).createShader(bounds),
+              child: AnimatedTextKit(
+                animatedTexts: [
+                  TyperAnimatedText(
+                    'Profile',
+                    textStyle: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white, // Needed for ShaderMask
+                    ),
+                    speed: Duration(milliseconds: 150),
+                  ),
+                ],
+                isRepeatingAnimation: true,
+                repeatForever: true,
+              ),
             ),
-            child: IconButton(
-              icon: const Icon(Icons.settings),
-              color: Colors.white,
-              onPressed: () {
-                // Action for settings button
-              },
+            backgroundColor: Colors.blue,
+            actions: [
+              Container(
+                margin: const EdgeInsets.only(right: 5),
+                height: 40,
+                width: 40,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.settings),
+                  color: Colors.blue,
+                  onPressed: () {
+                    // Action for settings button
+                  },
+                ),
+              ),
+            ],
+            leading: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.blue),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
             ),
-          ),
-        ],
-        leading: Container(
-          height: 50,
-          width: 50,
-          decoration: const BoxDecoration(
-            color: Colors.blue,
-            shape: BoxShape.circle,
-          ),
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () {
-              Navigator.pop(context); // Go back
-            },
           ),
         ),
       ),
-      body: const Center(
-        child: SingleChildScrollView(
+      body: 
+         SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              // Your profile content here
-              Text('This is the Profile Page'),
+              SizedBox(height: 10), // Add some space at the top
+           //profile pic
+           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+             children: [
+          Center(
+            child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('images/profile.png'), // Replace with your image
+                ),
+          ),
+             ]
+           ),
+           //name
+           //description
             ],
           ),
         ),
-      ),
+      
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
         color: const Color.fromARGB(255, 4, 135, 242),
         height: 60,
-        index: 4, // this ensures the correct tab is selected
+        index: 4,
         items: <Widget>[
           Column(
             mainAxisSize: MainAxisSize.min,
@@ -140,11 +190,11 @@ class ProfilePage extends StatelessWidget {
               Navigator.pushReplacementNamed(context, '/community');
               break;
             case 4:
-              // Already on profile, do nothing
               break;
           }
-        }, 
+        },
       ),
     );
   }
 }
+ 
