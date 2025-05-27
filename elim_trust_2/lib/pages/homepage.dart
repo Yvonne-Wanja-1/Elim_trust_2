@@ -2,8 +2,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
-
 // Data model for our impact cards
 class _ImpactCardData {
   final String imagePath;
@@ -26,9 +24,8 @@ class _ImpactCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300, // Defines the width of the card
+      width: 300,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
@@ -79,8 +76,8 @@ class _ImpactCardWidget extends StatelessWidget {
   }
 }
 
-class JoinCommunity extends StatelessWidget {
-  const JoinCommunity({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   static final List<_ImpactCardData> _impactCardItems = [
     const _ImpactCardData(
@@ -110,28 +107,33 @@ class JoinCommunity extends StatelessWidget {
   ];
 
   @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 2;
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                height: 250, // Reduced height of the image container
+                height: 250,
                 child: Image.asset(
                   'images/join comm.png',
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16.0, top: 8.0), // Reduced top padding
-                child: const Text(
+              const Padding(
+                padding: EdgeInsets.only(left: 16.0, top: 8.0),
+                child: Text(
                   'Our Impact:',
-                  textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -141,39 +143,36 @@ class JoinCommunity extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 4), // Reduced spacing between "Our Impact:" and cards
+              const SizedBox(height: 4),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Row(
-                  children: _impactCardItems.asMap().entries.map((entry) {
+                  children: HomePage._impactCardItems.asMap().entries.map((entry) {
                     int idx = entry.key;
                     _ImpactCardData data = entry.value;
                     return Padding(
-                      padding: EdgeInsets.only(right: idx == _impactCardItems.length - 1 ? 0 : 16.0),
+                      padding: EdgeInsets.only(right: idx == HomePage._impactCardItems.length - 1 ? 0 : 16.0),
                       child: _ImpactCardWidget(data: data),
                     );
                   }).toList(),
                 ),
               ),
-              const SizedBox(height: 8), // Adjusted spacing before "Latest News"
+              const SizedBox(height: 8),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3.0),
                 child: Row(
                   children: [
                     ElevatedButton(
-                      onPressed: () {
-                        // Handle button press
-                      },
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 4, 135, 242), // Button color
+                        backgroundColor: const Color.fromARGB(255, 4, 135, 242),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20), // Rounded corners
+                          borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Latest News',
-                        textAlign: TextAlign.left,
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -184,55 +183,44 @@ class JoinCommunity extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      '😊',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    const Text('😊', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
-              const SizedBox(height: 0), // Adjusted spacing before news content
+              const SizedBox(height: 0),
               Container(
-                margin: const EdgeInsets.only(left: 5, right: 5),
-                padding: const EdgeInsets.only(top: 8, bottom: 2), // Padding around the container
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                padding: const EdgeInsets.only(top: 8, bottom: 2),
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 175, 211, 240),
-                  borderRadius: BorderRadius.circular(30), // Rounded corners
+                  borderRadius: BorderRadius.circular(30),
                 ),
                 child: Row(
                   children: [
                     Expanded(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10),
                             child: Text(
                               "🌍 UN H6 Joint Programme on RMNCAH (2015–2020):",
-                              textAlign: TextAlign.left,
-                            
-                              
                               style: TextStyle(
-                                  //underline:
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: Colors.blue,
-                                  decorationThickness: 2,
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.blue,
+                                decorationThickness: 2,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.blue,
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 25, left : 25, top: 5),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 25, right: 25, top: 5),
                             child: Text(
                               '''
                 In Mandera, we worked with adolescents and young mothers to advance reproductive and maternal health under this multi-agency initiative.''',
-                              textAlign: TextAlign.left,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'Arial',
@@ -247,41 +235,33 @@ class JoinCommunity extends StatelessWidget {
                     Container(
                       height: 250,
                       width: 250,
-                      decoration: BoxDecoration(
-
-                            borderRadius: BorderRadius.circular(50), 
-                      ),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 16, right: 5),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(50),
-                          child: Image.asset('images/UN.jpg',
-                          
-                            fit: BoxFit.cover,
-                          )),
+                          child: Image.asset('images/UN.jpg', fit: BoxFit.cover),
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 21),
- Padding(
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Row(
                   children: [
                     ElevatedButton(
-                      onPressed: () {
-                        // Handle button press
-                      },
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 4, 135, 242), // Button color
+                        backgroundColor: const Color.fromARGB(255, 4, 135, 242),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20), // Rounded corners
+                          borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Our Blogs',
-                        textAlign: TextAlign.left,
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -292,43 +272,32 @@ class JoinCommunity extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      '😊',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    const Text('😊', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
-              const SizedBox(height: 3), // Adjusted spacing before news content
-              Container(padding: const EdgeInsets.only(top: 8, bottom: 2), // Padding around the container
-                
-              margin: const EdgeInsets.only(left: 5, right: 5,), // Margin around the container
+              const SizedBox(height: 3),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                padding: const EdgeInsets.only(top: 8, bottom: 2),
                 decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 175, 211, 240),
-                  borderRadius: BorderRadius.circular(30), // Rounded corners
+                  color: const Color.fromARGB(255, 175, 211, 240),
+                  borderRadius: BorderRadius.circular(30),
                 ),
                 child: Row(
                   children: [
                     Expanded(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start
-                        children: [
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
                           Padding(
-                            padding: const EdgeInsets.only(left: 10),
+                            padding: EdgeInsets.only(left: 10),
                             child: Text(
-                               '''👤By: Elim Insights
-              Harmful Traditional Practices (HTPs)''',
-                              textAlign: TextAlign.left,
-                            
-                              
+                              '''👤By: Elim Insights\n              Harmful Traditional Practices (HTPs)''',
                               style: TextStyle(
-                                  //underline:
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: Colors.blue,
-                                  decorationThickness: 2,
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.blue,
+                                decorationThickness: 2,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.blue,
@@ -336,13 +305,11 @@ class JoinCommunity extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 25, left : 25,),
+                            padding: EdgeInsets.symmetric(horizontal: 25),
                             child: Text(
-                             // maxLines: 4,
                               '''
                 Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices (HTP). Harmful traditional practices like Female Genital Mutilation (FGM) , early and forced marriage are still being practiced by several communities in Africa and across the world. These backward and barbaric...''',
-                              textAlign: TextAlign.left,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'Arial',
@@ -357,83 +324,88 @@ class JoinCommunity extends StatelessWidget {
                     Container(
                       height: 250,
                       width: 250,
-                      decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50), 
-                      ),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 16, right: 8),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(50),
-                          child: Image.asset('images/blogs.jpg',
-                            fit: BoxFit.cover,
-                          )),
-                
+                          child: Image.asset('images/blogs.jpg', fit: BoxFit.cover),
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
             ],
-            
-            
           ),
-
         ),
-        bottomNavigationBar: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CurvedNavigationBar(
-              backgroundColor: Colors.transparent,
-              color: const Color.fromARGB(255, 4, 135, 242),
-              height: 60,
-              items: <Widget>[
-              Column( 
-                mainAxisSize: MainAxisSize.min,
-                children: [
+        bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: Colors.transparent,
+          color: const Color.fromARGB(255, 4, 135, 242),
+          height: 60,
+          index: _selectedIndex,
+          items: <Widget>[
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
                 Icon(Icons.folder_open, size: 30, color: Colors.white),
                 Text('Projects', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
-                ],
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
                 Icon(Icons.attach_money_rounded, size: 30, color: Colors.white),
                 Text('Donations', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
-                ],
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
                 Icon(Icons.home, size: 30, color: Colors.white),
                 Text('Home', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
-                ],
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
                 Icon(FontAwesomeIcons.peopleGroup, size: 30, color: Colors.white),
                 Text('Community', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
-                ],
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
                 Icon(Icons.person, size: 30, color: Colors.white),
                 Text('Profile', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
-                ],
-              ),
               ],
-              onTap: (index) {
-              // Handle navigation item tap
-              },
             ),
-            ],
-          ),
+          ],
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+
+            switch (index) {
+              case 0:
+                Navigator.pushNamed(context, '/projects');
+                break;
+              case 1:
+                Navigator.pushNamed(context, '/donations');
+                break;
+              case 2:
+                Navigator.pushNamed(context, '/home');
+                break;
+              case 3:
+                Navigator.pushNamed(context, '/community');
+                break;
+              case 4:
+                Navigator.pushNamed(context, '/profile');
+                break;
+            }
+          },
         ),
-      );
+      ),
+    );
   }
 }
- 
-
-
-      
