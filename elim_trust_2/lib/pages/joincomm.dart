@@ -226,13 +226,16 @@ In Mandera, we worked with adolescents and young mothers to advance reproductive
                     height: 250,
                     width: 250,
                     decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(125), 
+                          borderRadius: BorderRadius.circular(50), 
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 16, right: 5),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30),
-                        child: Image.asset('images/UN.jpg')),
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.asset('images/UN.jpg',
+                        
+                          fit: BoxFit.cover,
+                        )),
                     ),
                   ),
                 ],
@@ -291,7 +294,7 @@ Harmful Traditional Practices (HTPs)''',
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 25, left : 25, top: 5),
+                          padding: const EdgeInsets.only(right: 25, left : 25,),
                           child: Text(
                            // maxLines: 4,
                             '''
@@ -313,13 +316,16 @@ Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices
                     height: 250,
                     width: 250,
                     decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(125), 
+                          borderRadius: BorderRadius.circular(50), 
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 5),
+                      padding: const EdgeInsets.only(left: 16, right: 8),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30),
-                        child: Image.asset('images/blogs.jpg')),
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.asset('images/blogs.jpg',
+                          fit: BoxFit.cover,
+                        )),
+
                     ),
                   ),
                 ],
