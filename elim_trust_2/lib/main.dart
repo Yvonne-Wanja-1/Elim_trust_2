@@ -20,10 +20,16 @@ theme: ThemeData( // It's good practice to enable Material 3
   useMaterial3: true, // meaning it will use the latest Material Design 3 features
 ),
 initialRoute: '/home', // The initial route of the app
+
 routes: {
-  '/home': (context) => const HomePage(), // The initial route of the app
-  '/profile': (context) => const ProfilePage(), // The home page route
+  '/home': (context) => const HomePage(),
+  // '/projects': (context) => const ProjectsPage(),
+  // '/donations': (context) => const DonationsPage(),
+  // '/community': (context) => const CommunityPage(),
+  '/profile': (context) => const ProfilePage(),
 },
+
+
      
     );
   }
