@@ -124,9 +124,41 @@ class _ProfilePageState extends State<ProfilePage> {
                 const SizedBox(height: 10), // Add some space at the top
                 // Profile Picture
                 Center(
-                  child: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: const AssetImage('images/profile.png'), // Replace with your image
+                  child: Stack(
+                    children: [
+                      CircleAvatar(
+                      radius: 50,
+                      backgroundImage: const AssetImage('images/profile.png'), // Replace with your image
+                    ),
+                     Positioned(
+        bottom: -1 , // Position at the bottom of the CircleAvatar
+        right: 1, // Position at the right of the CircleAvatar
+        child: Container(
+          height: 30,
+          width: 30,
+          decoration: BoxDecoration(
+            color: Colors.blue, // Badge color
+            shape: BoxShape.circle, // Circular badge
+            border: Border.all(color: Colors.white, width: 2), 
+            boxShadow: [ BoxShadow(
+              color: const Color.fromARGB(66, 227, 8, 8),
+              blurRadius: 2.0,
+              offset: Offset(0, 2), // Shadow position
+            ),
+            ],
+          ),
+          
+          child: IconButton(
+            icon: const Icon(Icons.edit, size: 16, color: Colors.white), // Edit icon
+            padding: EdgeInsets.zero, // Remove default padding
+            constraints: const BoxConstraints(), // Allow button to shrink to icon size
+            onPressed: () {
+              // Action for editing profile picture
+            },
+          ),
+        ),
+      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 3),
