@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:elim_trust_2/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -18,7 +17,6 @@ class _ProfilePageState extends State<ProfilePage> {
   late final TextEditingController _phoneController;
   late final TextEditingController _addressController;
 
-
   @override
   void initState() {
     super.initState();
@@ -27,10 +25,8 @@ class _ProfilePageState extends State<ProfilePage> {
     _nameController = TextEditingController();
     _phoneController = TextEditingController();
     _addressController = TextEditingController();
-
-    // TODO: Initialize with actual user email if available
-    // _emailController.text = "user@example.com"; 
   }
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -56,15 +52,11 @@ class _ProfilePageState extends State<ProfilePage> {
             title: ShaderMask(
               shaderCallback: (bounds) => const LinearGradient(
                 colors: [
-                
                   Colors.purple,
                   Colors.orange,
-                    Color.fromARGB(255, 11, 110, 192),
+                  Color.fromARGB(255, 11, 110, 192),
                   Colors.red,
                   Colors.yellow,
-                  //Colors.black,
-                 // Colors.pink,
-
                 ],
               ).createShader(bounds),
               child: AnimatedTextKit(
@@ -76,7 +68,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       fontWeight: FontWeight.bold,
                       color: Colors.white, // Needed for ShaderMask
                     ),
-                    speed: Duration(milliseconds: 150),
+                    speed: const Duration(milliseconds: 150),
                   ),
                 ],
                 isRepeatingAnimation: true,
@@ -122,107 +114,131 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       ),
-      body: 
-         SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              SizedBox(height: 10), // Add some space at the top
-              //profile pic
-              Center(
-                child: CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('images/profile.png'), // Replace with your image
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            const SizedBox(height: 10), // Add some space at the top
+            // Profile Picture
+            Center(
+              child: CircleAvatar(
+                radius: 50,
+                backgroundImage: const AssetImage('images/profile.png'), // Replace with your image
+              ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    const Text(
+                      
+                      'Personal Information',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                    Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: const BoxDecoration(
+                          color: Colors.blue,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: IconButton(
+                            icon: const Icon(Icons.edit, color: Colors.white),
+                            onPressed: () {
+                              // Action for edit button
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              //name
-              Text(
-            'John Doe',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-             // fontFamily: 'Arial',
-              //fontStyle: FontStyle.italic,
-              color: Colors.blue,
             ),
-              ),
-              SizedBox(height: 0.2), // Add some space between name and description
-              //description
-              Padding(
-                padding: const EdgeInsets.only(top: 0.5),
-                child: Text(
-                  'Member since January 2023',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: const Color.fromARGB(255, 116, 175, 226),
-                    fontFamily: 'Arial',
-                    fontStyle: FontStyle.italic,
-                  ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 20), // Align content far to the left
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Email',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      'john@gmail.com',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Arial',
+                        fontStyle: FontStyle.italic,
+                        color: Colors.grey[700], // Lighter color for email
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      'Phone Number',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      '+1 234 567 890',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Arial',
+                        fontStyle: FontStyle.italic,
+                        color: Colors.grey[700], // Lighter color for phone number
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      'Address',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      '123 Main Street, City, Country',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Arial',
+                        fontStyle: FontStyle.italic,
+                        color: Colors.grey[700], // Lighter color for address
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              //personal information
-              SizedBox(height: 10),
-              Text(
-                'Personal Information',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-            SizedBox(height: 10),
-            //email
-            Mytextfield(
-              controller: _emailController,
-              labelText: 'Email',
-              hintText: 'john@example.com',
-              obscureText: false,
-              keyboardType: TextInputType.emailAddress,
-              
-
-              
             ),
-            SizedBox(height: 10),
-            //password
-            Mytextfield(
-              controller: _passwordController,
-              labelText: 'Password',
-              hintText: '********',
-              obscureText: true,
-              keyboardType: TextInputType.visiblePassword,
-            ),
-            SizedBox(height: 10),
-            //name
-            Mytextfield(
-              controller: _nameController,
-              labelText: 'Username',
-              hintText: 'John Doe',
-              obscureText: false,
-              keyboardType: TextInputType.name,
-            ),
-            SizedBox(height: 10),
-            //phone
-            Mytextfield(
-              controller: _phoneController,
-              labelText: 'Phone',
-              hintText: '+1234567890',
-              obscureText: false,
-              keyboardType: TextInputType.phone,
-            ),
-            SizedBox(height: 10),
-            //address
-            Mytextfield(
-              controller: _addressController,
-              labelText: 'Address',
-              hintText: '123 Main St, City, Country',
-              obscureText: false,
-              keyboardType: TextInputType.streetAddress,
-            ),
-           // SizedBox(height: 10),
-            ],
-          ),
+          ],
         ),
-      
+      ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
         color: const Color.fromARGB(255, 4, 135, 242),
@@ -233,56 +249,70 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisSize: MainAxisSize.min,
             children: const [
               Icon(Icons.folder_open, size: 30, color: Colors.white),
-              Text('Projects',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontStyle: FontStyle.italic)),
+              Text(
+                'Projects',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
             ],
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: const [
               Icon(Icons.attach_money_rounded, size: 30, color: Colors.white),
-              Text('Donations',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontStyle: FontStyle.italic)),
+              Text(
+                'Donations',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
             ],
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: const [
               Icon(Icons.home, size: 30, color: Colors.white),
-              Text('Home',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontStyle: FontStyle.italic)),
+              Text(
+                'Home',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
             ],
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: const [
-              Icon(FontAwesomeIcons.peopleGroup,
-                  size: 30, color: Colors.white),
-              Text('Community',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontStyle: FontStyle.italic)),
+              Icon(FontAwesomeIcons.peopleGroup, size: 30, color: Colors.white),
+              Text(
+                'Community',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
             ],
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: const [
               Icon(Icons.person, size: 30, color: Colors.white),
-              Text('Profile',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontStyle: FontStyle.italic)),
+              Text(
+                'Profile',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
             ],
           ),
         ],
@@ -307,7 +337,4 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
-
-
 }
- 

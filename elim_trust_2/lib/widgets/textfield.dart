@@ -53,25 +53,8 @@ class _MytextfieldState extends State<Mytextfield> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30.0), // Match TextField's border radius
-        boxShadow: _isFocused
-            ? [
-
-                // BoxShadow(
-                //   color: Colors.blue.withOpacity(0.5), // Shadow color when focused
-                //   spreadRadius: 2,
-                //   blurRadius: 5,
-                //   offset: Offset(0, 3), // Changes position of shadow
-                // ),
-                // BoxShadow(
-                //   color: Colors.blue.withOpacity(0.3), // Lighter shadow for depth
-                //   spreadRadius: 1,
-                //   blurRadius: 3,
-                //   offset: Offset(0, 1), // Changes position of shadow
-                // ),
-                
-              ]
-            : [],
-      ),
+     
+  ),
       child: Padding(
         padding: const EdgeInsets.all(16.0), // Keep padding for inner TextField
         child: TextField(
