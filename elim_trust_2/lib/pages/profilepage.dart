@@ -1,10 +1,45 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:elim_trust_2/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+  late final TextEditingController _nameController;
+  late final TextEditingController _phoneController;
+  late final TextEditingController _addressController;
+
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    _nameController = TextEditingController();
+    _phoneController = TextEditingController();
+    _addressController = TextEditingController();
+
+    // TODO: Initialize with actual user email if available
+    // _emailController.text = "user@example.com"; 
+  }
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _nameController.dispose();
+    _phoneController.dispose();
+    _addressController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,21 +128,15 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 10), // Add some space at the top
-           //profile pic
-           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-             children: [ 
-          Center(
-            child: CircleAvatar(
+              //profile pic
+              Center(
+                child: CircleAvatar(
                   radius: 50,
                   backgroundImage: AssetImage('images/profile.png'), // Replace with your image
                 ),
-          ),
-             ]
-           ),
-           //name
-           Text(
+              ),
+              //name
+              Text(
             'John Doe',
             style: TextStyle(
               fontSize: 24,
@@ -116,21 +145,80 @@ class ProfilePage extends StatelessWidget {
               //fontStyle: FontStyle.italic,
               color: Colors.blue,
             ),
-           ),
-           SizedBox(height: 0.2), // Add some space between name and description
-           //description
-           Padding(
-             padding: const EdgeInsets.only(top:0.5),
-             child: Text('Member since January 2023',
-              style: TextStyle(
-                fontSize: 16,
-                color: const Color.fromARGB(255, 116, 175, 226),
-                fontFamily: 'Arial',
-                fontStyle: FontStyle.italic,
               ),
+              SizedBox(height: 0.2), // Add some space between name and description
+              //description
+              Padding(
+                padding: const EdgeInsets.only(top: 0.5),
+                child: Text(
+                  'Member since January 2023',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: const Color.fromARGB(255, 116, 175, 226),
+                    fontFamily: 'Arial',
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ),
+              //personal information
+              SizedBox(height: 10),
+              Text(
+                'Personal Information',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+            SizedBox(height: 10),
+            //email
+            Mytextfield(
+              controller: _emailController,
+              labelText: 'Email',
+              hintText: 'john@example.com',
+              obscureText: false,
+              keyboardType: TextInputType.emailAddress,
               
-             ),
-           ),
+
+              
+            ),
+            SizedBox(height: 10),
+            //password
+            Mytextfield(
+              controller: _passwordController,
+              labelText: 'Password',
+              hintText: '********',
+              obscureText: true,
+              keyboardType: TextInputType.visiblePassword,
+            ),
+            SizedBox(height: 10),
+            //name
+            Mytextfield(
+              controller: _nameController,
+              labelText: 'Username',
+              hintText: 'John Doe',
+              obscureText: false,
+              keyboardType: TextInputType.name,
+            ),
+            SizedBox(height: 10),
+            //phone
+            Mytextfield(
+              controller: _phoneController,
+              labelText: 'Phone',
+              hintText: '+1234567890',
+              obscureText: false,
+              keyboardType: TextInputType.phone,
+            ),
+            SizedBox(height: 10),
+            //address
+            Mytextfield(
+              controller: _addressController,
+              labelText: 'Address',
+              hintText: '123 Main St, City, Country',
+              obscureText: false,
+              keyboardType: TextInputType.streetAddress,
+            ),
+           // SizedBox(height: 10),
             ],
           ),
         ),
@@ -219,5 +307,7 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+
+
 }
  
