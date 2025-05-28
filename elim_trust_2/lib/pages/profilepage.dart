@@ -97,7 +97,7 @@ class ProfilePage extends StatelessWidget {
            Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-             children: [
+             children: [ 
           Center(
             child: CircleAvatar(
                   radius: 50,
@@ -107,7 +107,30 @@ class ProfilePage extends StatelessWidget {
              ]
            ),
            //name
+           Text(
+            'John Doe',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+             // fontFamily: 'Arial',
+              //fontStyle: FontStyle.italic,
+              color: Colors.blue,
+            ),
+           ),
+           SizedBox(height: 0.2), // Add some space between name and description
            //description
+           Padding(
+             padding: const EdgeInsets.only(top:0.5),
+             child: Text('Member since January 2023',
+              style: TextStyle(
+                fontSize: 16,
+                color: const Color.fromARGB(255, 116, 175, 226),
+                fontFamily: 'Arial',
+                fontStyle: FontStyle.italic,
+              ),
+              
+             ),
+           ),
             ],
           ),
         ),
