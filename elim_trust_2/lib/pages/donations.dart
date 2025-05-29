@@ -1,3 +1,4 @@
+import 'package:elim_trust_2/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 
 class DonationsPage extends StatefulWidget {
@@ -11,6 +12,9 @@ class _DonationsPageState extends State<DonationsPage> with SingleTickerProvider
   late AnimationController _controller;
   late Animation<double> _animation;
   String? _selectedPaymentMethod; // To keep track of the selected radio button
+  final TextEditingController _emailController = TextEditingController(); // Controller for email input
+  final TextEditingController _namecontroller = TextEditingController(); // Controller for name input
+  final TextEditingController _confirmemailController = TextEditingController(); // Controller for confirm email input
 
   @override
   void initState() {
@@ -435,8 +439,177 @@ class _DonationsPageState extends State<DonationsPage> with SingleTickerProvider
                   ),
                 ),
               ),
+
+
+
+
+
+
+               const SizedBox(height: 20),
+              const Text(
+                'Donate Goods:',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.blue,
+                  decorationThickness: 2.0,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+              const SizedBox(height: 3),
+              Padding(
+                padding: const EdgeInsets.all(11.0),
+                child: const Text(
+                  'Elim Trust accepts donations of goods such as clothing, food, and other essentials. Your contributions can make a significant difference in the lives of those we serve.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Arial',
+                    fontStyle: FontStyle.italic,
+                    fontSize: 16,
+                    color: Color.fromARGB(255, 120, 165, 201),
+                  ),
+                ),
+              ),
+
+
+               Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: const Text(
+                    'Your Donations:',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+             // const SizedBox(height: 10),
+//dropdownbuttontextfield with dropdown menu:
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.list, color: Colors.blue),
+                    filled: true,
+                    fillColor: Colors.white,
+                    labelText: 'Select Donation Type',
+                    labelStyle: const TextStyle(color: Colors.black),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  items: const [
+                    DropdownMenuItem(value: 'clothing', child: Text('Clothing', style: TextStyle(color: Colors.blue))),
+                    DropdownMenuItem(value: 'food', child: Text('Food', style: TextStyle(color: Colors.blue))),
+                    DropdownMenuItem(value: 'utilities', child: Text('Utilities', style: TextStyle(color: Colors.blue))),
+                    DropdownMenuItem(value: 'sponsor trainings', child: Text('Sponsor Trainings', style: TextStyle(color: Colors.blue))),
+                    DropdownMenuItem(value: 'support initiatives', child: Text('Support Other Initiatives', style: TextStyle(color: Colors.blue))),
+                    DropdownMenuItem(value: 'other', child: Text('Other', style: TextStyle(color: Colors.blue))),
+                  ],
+                  onChanged: (String? value) {
+                    // Handle selection
+                  },
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              Text('Your details:',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 16,
+                 //
+                 // fontStyle: FontStyle.italic,
+                  color: Colors.black,
+                ),
+              ),
+Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Text('Please share your details so we can reach out',
+    style: TextStyle(
+      fontFamily: 'Arial',
+      fontStyle: FontStyle.italic,
+      fontSize: 16,
+      color: Colors.grey,
+    ),
+    ),
+    Text(
+      '😊'
+    ),
+  ],
+),
+
+SizedBox(
+  height: 20,
+),
+ //name
+            Mytextfield(
+              labelText: 'Name',
+              hintText: 'John Doe',
+              obscureText: false,
+              keyboardType: TextInputType.name,
+              controller: _namecontroller,  
+            ),
+            const SizedBox(height: 10),
+            //email
+            Mytextfield(
+              controller: _emailController,
+              labelText: 'Email',
+              hintText: 'john@example.com',
+              obscureText: false,
+              keyboardType: TextInputType.emailAddress,
+              
+
+              
+            ),
+            const SizedBox(height: 10),
+//confirm email
+            Mytextfield(
+              labelText: 'Confirm Email',
+              hintText: 'john@example.com',
+              obscureText: true,
+              keyboardType: TextInputType.emailAddress,
+              controller: _confirmemailController
+              
+            ),
+            const SizedBox(height: 10),
+//phone number
+            Mytextfield(
+              labelText: 'Phone Number',
+              hintText: '+254 700 000 000',
+              obscureText: false,
+              keyboardType: TextInputType.phone,
+              
+            ),
+            const SizedBox(height: 10),
+Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Text(
+      'Thank you for your generosity! Your support makes a difference.',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 16,
+        fontStyle: FontStyle.italic,
+        color: Colors.grey,
+      ),
+    ),
+
+    Text('🤩✨')
+  ],
+)
+
+
+
+
             ],
-          ),
+          ),// End of Column
         ),
       ),
     );
@@ -444,7 +617,9 @@ class _DonationsPageState extends State<DonationsPage> with SingleTickerProvider
 
   @override
   void dispose() {
-    _controller.dispose(); // Dispose the controller when the widget is removed
+    _namecontroller.dispose(); // Dispose the name controller
+    super.dispose();
+    super.dispose();
     super.dispose();
   }
 }
