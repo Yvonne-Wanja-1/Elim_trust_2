@@ -435,8 +435,121 @@ class _DonationsPageState extends State<DonationsPage> with SingleTickerProvider
                   ),
                 ),
               ),
+
+
+
+
+
+
+               const SizedBox(height: 20),
+              const Text(
+                'Donate Goods:',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.blue,
+                  decorationThickness: 2.0,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+              const SizedBox(height: 3),
+              Padding(
+                padding: const EdgeInsets.all(11.0),
+                child: const Text(
+                  'Elim Trust accepts donations of goods such as clothing, food, and other essentials. Your contributions can make a significant difference in the lives of those we serve.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Arial',
+                    fontStyle: FontStyle.italic,
+                    fontSize: 16,
+                    color: Color.fromARGB(255, 120, 165, 201),
+                  ),
+                ),
+              ),
+
+
+               Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: const Text(
+                    'Your Donations:',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+             // const SizedBox(height: 10),
+//dropdownbuttontextfield with dropdown menu:
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.list, color: Colors.blue),
+                    filled: true,
+                    fillColor: Colors.white,
+                    labelText: 'Select Donation Type',
+                    labelStyle: const TextStyle(color: Colors.black),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  items: const [
+                    DropdownMenuItem(value: 'clothing', child: Text('Clothing', style: TextStyle(color: Colors.blue))),
+                    DropdownMenuItem(value: 'food', child: Text('Food', style: TextStyle(color: Colors.blue))),
+                    DropdownMenuItem(value: 'utilities', child: Text('Utilities', style: TextStyle(color: Colors.blue))),
+                    DropdownMenuItem(value: 'sponsor trainings', child: Text('Sponsor Trainings', style: TextStyle(color: Colors.blue))),
+                    DropdownMenuItem(value: 'support initiatives', child: Text('Support Other Initiatives', style: TextStyle(color: Colors.blue))),
+                    DropdownMenuItem(value: 'other', child: Text('Other', style: TextStyle(color: Colors.blue))),
+                  ],
+                  onChanged: (String? value) {
+                    // Handle selection
+                  },
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              Text('Your details:',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 16,
+                 //
+                 // fontStyle: FontStyle.italic,
+                  color: Colors.black,
+                ),
+              ),
+Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Text('Please share your details so we can reach out',
+    style: TextStyle(
+      fontFamily: 'Arial',
+      fontStyle: FontStyle.italic,
+      fontSize: 16,
+      color: Colors.grey,
+    ),
+    ),
+    Text(
+      '😊'
+    )
+  ],
+),
+
+SizedBox(
+  height: 20,
+)
+
+
+
+
             ],
-          ),
+          ),// End of Column
         ),
       ),
     );
