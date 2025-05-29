@@ -1,3 +1,4 @@
+import 'package:elim_trust_2/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 
 class DonationsPage extends StatefulWidget {
@@ -11,6 +12,9 @@ class _DonationsPageState extends State<DonationsPage> with SingleTickerProvider
   late AnimationController _controller;
   late Animation<double> _animation;
   String? _selectedPaymentMethod; // To keep track of the selected radio button
+  final TextEditingController _emailController = TextEditingController(); // Controller for email input
+  final TextEditingController _namecontroller = TextEditingController(); // Controller for name input
+  final TextEditingController _confirmemailController = TextEditingController(); // Controller for confirm email input
 
   @override
   void initState() {
@@ -537,12 +541,68 @@ Row(
     ),
     Text(
       '😊'
-    )
+    ),
   ],
 ),
 
 SizedBox(
   height: 20,
+),
+ //name
+            Mytextfield(
+              labelText: 'Name',
+              hintText: 'John Doe',
+              obscureText: false,
+              keyboardType: TextInputType.name,
+              controller: _namecontroller,  
+            ),
+            const SizedBox(height: 10),
+            //email
+            Mytextfield(
+              controller: _emailController,
+              labelText: 'Email',
+              hintText: 'john@example.com',
+              obscureText: false,
+              keyboardType: TextInputType.emailAddress,
+              
+
+              
+            ),
+            const SizedBox(height: 10),
+//confirm email
+            Mytextfield(
+              labelText: 'Confirm Email',
+              hintText: 'john@example.com',
+              obscureText: true,
+              keyboardType: TextInputType.emailAddress,
+              controller: _confirmemailController
+              
+            ),
+            const SizedBox(height: 10),
+//phone number
+            Mytextfield(
+              labelText: 'Phone Number',
+              hintText: '+254 700 000 000',
+              obscureText: false,
+              keyboardType: TextInputType.phone,
+              
+            ),
+            const SizedBox(height: 10),
+Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Text(
+      'Thank you for your generosity! Your support makes a difference.',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 16,
+        fontStyle: FontStyle.italic,
+        color: Colors.grey,
+      ),
+    ),
+
+    Text('🤩✨')
+  ],
 )
 
 
@@ -557,7 +617,9 @@ SizedBox(
 
   @override
   void dispose() {
-    _controller.dispose(); // Dispose the controller when the widget is removed
+    _namecontroller.dispose(); // Dispose the name controller
+    super.dispose();
+    super.dispose();
     super.dispose();
   }
 }
