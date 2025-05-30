@@ -289,6 +289,9 @@ actions: [
                       ),
                     ),
                   ),
+
+
+
                   const SizedBox(width: 16), // Added space between cards
                    GestureDetector(
                     onDoubleTap: (){},
@@ -328,24 +331,224 @@ actions: [
                    ],
               ),
             ),
+
+
+
+
+          const SizedBox(height: 20), // Add some padding at the bottom
+          Center(
+            child: Text('Impact Stories ❤️' ,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+          ),
+
+
+
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8.0), // Added padding
+            physics: const BouncingScrollPhysics(), // Optional
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Removed this
+              children: [
+                GestureDetector(
+                  onDoubleTap: (){},
+                  child: Card(
+                   // color: Colors.grey,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 8, // Slightly increased elevation for better pop
+                    shadowColor: Colors.blueGrey.withOpacity(0.4), 
+                    child: Container( // Added a Container for consistent padding and width
+                      width: 280, // Define a width for the card
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                           CircleAvatar(
+                            radius: 30,
+                            backgroundImage: AssetImage('images/persona.png'),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Jane Achieng', 
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue, // Changed to white for better contrast on blue
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Mats Dialogue Participant',
+                              style: TextStyle(
+                                fontFamily: 'Arial',
+                                fontStyle: FontStyle.italic,
+                              //  textAlign: TextAlign.center,
+                                fontSize: 13, // Slightly smaller for role
+                                color:Color.fromARGB(255, 146, 196, 237),
+                              ),
+                            ),
+                          ),
+
+                          Text(
+                            'Through Y-PREP, I have grown in self-awareness and resilience.I\'ve learned to solve problems; not just for myself, but for my younger siblings and friends too. Despite ...',
+                            textAlign: TextAlign.center,
+                            maxLines: 4, // Limit lines to prevent overflow
+                            overflow: TextOverflow.ellipsis, // Add ellipsis if text is too long
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Arial',
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black,
+                            ),
+                          ),
+                         // SizedBox(height: 3),
+                         
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16), // Added space between cards
+                GestureDetector( // Second Impact Story Card
+                  onDoubleTap: (){},
+                  child: Card(
+                    // color: Colors.blue, // Removed color to match the first card (default white)
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 5,
+                    shadowColor: Colors.blueGrey.withOpacity(0.4),
+                    child: Container(
+                      width: 280,
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [ // Changed to non-const to allow for variable image
+                          CircleAvatar(
+                            radius: 30,
+                            backgroundImage: AssetImage('images/persona2.png'), // Placeholder for different image
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Pastor Peter Kamau', 
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue, // Match first card
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Center(
+                              child: Text(
+                                'Spiritual Leadership Trainee', // Example role
+                                style: const TextStyle(
+                                  fontFamily: 'Arial',
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 13,
+                                  color: Color.fromARGB(255, 146, 196, 237), // Match first card
+                                ),
+                              ),
+                            ),
+                          ),
+                          const Text( // Example story text
+                            'Seeing trauma in his congregation, Pastor Kamau joined Elim Trust\'s Leadership training. With new tools, he now fosters healing and resilience within his community, creating a supportive environment for all.',
+                            textAlign: TextAlign.center,
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Arial',
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black, // Match first card
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16), // Added space between cards
+                GestureDetector( // Third Impact Story Card
+                  onDoubleTap: (){},
+                  child: Card(
+                    // color: Colors.blue, // Removed color to match the first card (default white)
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 5,
+                    shadowColor: Colors.blueGrey.withOpacity(0.4),
+                    child: Container(
+                      width: 280,
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [ // Changed to non-const to allow for variable image
+                          CircleAvatar(
+                            radius: 30,
+                            backgroundImage: AssetImage('images/persona3.png'), // Placeholder for different image
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Jane Achieng', 
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue, // Match first card
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Mats Dialogue Participant',
+                              style: const TextStyle(
+                                fontFamily: 'Arial',
+                                fontStyle: FontStyle.italic,
+                                fontSize: 13,
+                                color: Color.fromARGB(255, 146, 196, 237), // Match first card
+                              ),
+                            ),
+                          ),
+                          const Text( // Example story text
+                            'At 17, Achieng faced trauma and isolation as a teen mother. Through Elim Trust\'s MATS Dialogue program, she found a supportive community, regained her confidence, and is now pursuing her education.',
+                            textAlign: TextAlign.center,
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Arial',
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black, // Match first card
+                              ),
+                            ),
+                          
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                
+               
+              ], // Closes children of "Our Partners" Row
+            ), // Closes "Our Partners" Row
+      ),
           ],
         ),
       ),
     );
-  }
-
-
-
-
-
-       
-        
-         
-
-          
-           
+              
             
-  @override
+      
+  } // build method
+
   void dispose() {
     _animationController.dispose();
     super.dispose();
