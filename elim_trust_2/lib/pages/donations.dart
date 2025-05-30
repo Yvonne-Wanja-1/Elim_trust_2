@@ -1,5 +1,7 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:elim_trust_2/widgets/textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DonationsPage extends StatefulWidget {
   const DonationsPage({super.key});
@@ -15,6 +17,7 @@ class _DonationsPageState extends State<DonationsPage> with SingleTickerProvider
   final TextEditingController _emailController = TextEditingController(); // Controller for email input
   final TextEditingController _namecontroller = TextEditingController(); // Controller for name input
   final TextEditingController _confirmemailController = TextEditingController(); // Controller for confirm email input
+  int _selectedIndex = 1; // Variable to track the selected index for navigation
 
   @override
   void initState() {
@@ -119,7 +122,7 @@ class _DonationsPageState extends State<DonationsPage> with SingleTickerProvider
         ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: const BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(), // This enables the bouncing effect
           child: Column(
             children: [
               const SizedBox(height: 10),
@@ -529,6 +532,7 @@ class _DonationsPageState extends State<DonationsPage> with SingleTickerProvider
                 ),
               ),
 Row(
+  
   mainAxisAlignment: MainAxisAlignment.center,
   children: [
     Text('Please share your details so we can reach out',
@@ -546,7 +550,7 @@ Row(
 ),
 
 SizedBox(
-  height: 20,
+  height: 35,
 ),
  //name
             Mytextfield(
@@ -592,7 +596,7 @@ Row(
   mainAxisAlignment: MainAxisAlignment.center,
   children: [
     Text(
-      'Thank you for your generosity! Your support makes a difference.',
+      'Thank you for your generosity! Your support makes a difference!',
       textAlign: TextAlign.center,
       style: TextStyle(
         fontSize: 16,
@@ -601,15 +605,79 @@ Row(
       ),
     ),
 
-    Text('🤩✨')
-  ],
-)
-
-
-
+    Text('🤩✨'),
+    ],
+),
+            const SizedBox(height: 70), // Added space for bottom navigation bar
 
             ],
           ),// End of Column
+        ),
+ bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: Colors.transparent,
+          color: const Color.fromARGB(255, 4, 135, 242),
+          height: 60,
+          index: _selectedIndex,
+          items: <Widget>[
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.folder_open, size: 30, color: Colors.white),
+                Text('Projects', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.attach_money_rounded, size: 30, color: Colors.white),
+                Text('Donations', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.home, size: 30, color: Colors.white),
+                Text('Home', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(FontAwesomeIcons.peopleGroup, size: 30, color: Colors.white),
+                Text('Community', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.person, size: 30, color: Colors.white),
+                Text('Profile', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+              ],
+            ),
+          ],
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+
+            switch (index) {
+              case 0:
+                Navigator.pushNamed(context, '/projects');
+                break;
+              case 1:
+                Navigator.pushNamed(context, '/donations');
+                break;
+              case 2:
+                Navigator.pushNamed(context, '/home');
+                break;
+              case 3:
+                Navigator.pushNamed(context, '/community');
+                break;
+              case 4:
+                Navigator.pushNamed(context, '/profile');
+                break;
+            }
+          },
         ),
       ),
     );
@@ -617,9 +685,10 @@ Row(
 
   @override
   void dispose() {
+    _controller.dispose(); // Dispose the AnimationController
     _namecontroller.dispose(); // Dispose the name controller
-    super.dispose();
-    super.dispose();
-    super.dispose();
+    _emailController.dispose(); // Dispose the email controller
+    _confirmemailController.dispose(); // Dispose the confirm email controller
+    super.dispose(); // Must be the last call
   }
 }

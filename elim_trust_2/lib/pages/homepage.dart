@@ -122,12 +122,27 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                height: 250,
-                child: Image.asset(
-                  'images/join comm.png',
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF7F7F7), // Moved color here
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.blue,
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  height: 250,
+                  child: Image.asset(
+                    'images/elimtrust.png',  
+                    fit: BoxFit.contain,
+                    alignment: Alignment.topCenter,
+                  ),
                 ),
               ),
               const Padding(
