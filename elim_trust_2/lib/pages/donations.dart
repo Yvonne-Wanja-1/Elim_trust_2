@@ -122,7 +122,7 @@ class _DonationsPageState extends State<DonationsPage> with SingleTickerProvider
         ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: const BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(), // This enables the bouncing effect
           child: Column(
             children: [
               const SizedBox(height: 10),
@@ -596,7 +596,7 @@ Row(
   mainAxisAlignment: MainAxisAlignment.center,
   children: [
     Text(
-      'Thank you for your generosity! Your support makes a difference.',
+      'Thank you for your generosity! Your support makes a difference!',
       textAlign: TextAlign.center,
       style: TextStyle(
         fontSize: 16,
@@ -608,13 +608,7 @@ Row(
     Text('🤩✨'),
     ],
 ),
-           // const SizedBox(height: 10),
-            
-  
-          
-            
-
-   
+            const SizedBox(height: 70), // Added space for bottom navigation bar
 
             ],
           ),// End of Column
