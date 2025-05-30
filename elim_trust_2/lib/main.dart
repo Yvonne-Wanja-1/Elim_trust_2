@@ -1,3 +1,4 @@
+import 'package:elim_trust_2/pages/communitypage.dart';
 import 'package:elim_trust_2/pages/donations.dart';
 import 'package:elim_trust_2/pages/homepage.dart';
 import 'package:elim_trust_2/pages/profilepage.dart';
@@ -26,7 +27,7 @@ routes: {
   '/home': (context) => const HomePage(),
   // '/projects': (context) => const ProjectsPage(),
    '/donations': (context) => const DonationsPage(),
-  // '/community': (context) => const CommunityPage(),
+   '/community': (context) => const CommunityPage(),
   '/profile': (context) => const ProfilePage(),
 },
 
