@@ -569,10 +569,52 @@ actions: [
                 ), // Closes third GestureDetector
               ],
             ), // Closes Row for Impact Stories
-          ), // Closes SingleChildScrollView for Impact Stories
+          ), 
+          
+          
+          
+          // Closes SingleChildScrollView for Impact Stories
+
+    const SizedBox(height: 20), // Add some padding at the bottom
+          Center(
+            child: Text('Our Patners 🤝',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+          ),
+
+
+          Center(
+            child: Container(
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Color(0xFFF6F6F6),
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2), // Shadow color
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Image.asset(
+                  'images/toronto.png', fit: BoxFit.contain, // Changed fit to contain
+                  height: 150, // Adjusted height
+                  width: 150, // Adjusted width
+                ),
+              ), // Example image for a partner
+            ),
+          ),
         ], // Closes children of the main Column
-      ),
-       ), // Closes the main Column
+      ), ), // Closes the main Column
     ); // Closes the body's SingleChildScrollView
   }
 
