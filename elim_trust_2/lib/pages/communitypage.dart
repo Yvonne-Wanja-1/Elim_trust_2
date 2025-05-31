@@ -11,7 +11,8 @@ class CommunityPage extends StatefulWidget {
 
 class _CommunityPageState extends State<CommunityPage>
     with SingleTickerProviderStateMixin {
-  int _selectedIndex = 0; // Define _selectedIndex with an initial value
+//  int _selectedIndex = 0; // Define _selectedIndex with an initial value
+  int _selectedIndex = 3; // Define _selectedIndex2 with an initial value
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
 
