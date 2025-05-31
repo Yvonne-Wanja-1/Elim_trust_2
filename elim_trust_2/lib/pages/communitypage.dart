@@ -369,8 +369,8 @@ actions: [
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                           CircleAvatar(
+                        children: [ // Removed const
+                           const CircleAvatar(
                             radius: 30,
                             backgroundImage: AssetImage('images/persona.png'),
                           ),
@@ -396,8 +396,18 @@ actions: [
                               ),
                             ),
                           ),
-
-                          Text(
+                          Center( // Wrap the Row with a Center widget
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min, // To make the Row only as wide as its children
+                              children: List.generate(5, (index) => const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                                size: 24.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const Text(
                             'Through Y-PREP, I have grown in self-awareness and resilience.I\'ve learned to solve problems; not just for myself, but for my younger siblings and friends too. Despite ...',
                             textAlign: TextAlign.center,
                             maxLines: 4, // Limit lines to prevent overflow
@@ -409,9 +419,7 @@ actions: [
                               color: Colors.black,
                             ),
                           ),
-                         // SizedBox(height: 3),
-                         
-                        ],
+                          ],
                       ),
                     ),
                   ),
@@ -432,7 +440,7 @@ actions: [
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [ // Changed to non-const to allow for variable image
-                          CircleAvatar(
+                          const CircleAvatar(
                             radius: 30,
                             backgroundImage: AssetImage('images/persona2.png'), // Placeholder for different image
                           ),
@@ -447,14 +455,23 @@ actions: [
                           ),
                           Align(
                             alignment: Alignment.center,
-                            child: Center(
-                              child: Text(
-                                'Spiritual Leadership Trainee', // Example role
-                                style: const TextStyle(
-                                  fontFamily: 'Arial',
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 13,
-                                  color: Color.fromARGB(255, 146, 196, 237), // Match first card
+                            child: const Text( // Removed redundant Center
+                              'Spiritual Leadership Trainee', // Example role
+                              style: TextStyle(
+                                fontFamily: 'Arial',
+                                fontStyle: FontStyle.italic,
+                                fontSize: 13,
+                                color: Color.fromARGB(255, 146, 196, 237), // Match first card
+                              ),
+                            ),
+                          ),
+                          Center( // Wrap the Row with a Center widget
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min, // To make the Row only as wide as its children
+                              children: List.generate(5, (index) => const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                                size: 24.0,
                                 ),
                               ),
                             ),
@@ -492,13 +509,13 @@ actions: [
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [ // Changed to non-const to allow for variable image
-                          CircleAvatar(
+                          const CircleAvatar(
                             radius: 30,
                             backgroundImage: AssetImage('images/persona3.png'), // Placeholder for different image
                           ),
                           SizedBox(height: 8),
                           Text(
-                            'Jane Achieng', 
+                            'Jane Achieng ', 
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -507,7 +524,7 @@ actions: [
                           ),
                           Align(
                             alignment: Alignment.center,
-                            child: Text(
+                            child: const Text( // Removed redundant Center
                               'Mats Dialogue Participant',
                               style: const TextStyle(
                                 fontFamily: 'Arial',
@@ -517,7 +534,22 @@ actions: [
                               ),
                             ),
                           ),
-                          const Text( // Example story text
+
+                          Center( // Wrap the Row with a Center widget
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min, // To make the Row only as wide as its children
+                              children: List.generate(5, (index) => const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                                size: 24.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 8), // Added some space between stars and text
+
+
+                           const Text( // Example story text
                             'At 17, Achieng faced trauma and isolation as a teen mother. Through Elim Trust\'s MATS Dialogue program, she found a supportive community, regained her confidence, and is now pursuing her education.',
                             textAlign: TextAlign.center,
                             maxLines: 4,
@@ -534,20 +566,59 @@ actions: [
                       ),
                     ),
                   ),
+                ), // Closes third GestureDetector
+              ],
+            ), // Closes Row for Impact Stories
+          ), 
+          
+          
+          
+          // Closes SingleChildScrollView for Impact Stories
+
+    const SizedBox(height: 20), // Add some padding at the bottom
+          Center(
+            child: Text('Our Patners 🤝',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+          ),
+
+
+          Center(
+            child: Container(
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Color(0xFFF6F6F6),
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2), // Shadow color
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Image.asset(
+                  'images/toronto.png', fit: BoxFit.contain, // Changed fit to contain
+                  height: 150, // Adjusted height
+                  width: 150, // Adjusted width
                 ),
-                
-               
-              ], // Closes children of "Our Partners" Row
-            ), // Closes "Our Partners" Row
-      ),
-          ],
-        ),
-      ),
-    );
-              
-            
-      
-  } // build method
+              ), // Example image for a partner
+            ),
+          ),
+        ], // Closes children of the main Column
+      ), ), // Closes the main Column
+    ); // Closes the body's SingleChildScrollView
+  }
+
+  @override
 
   void dispose() {
     _animationController.dispose();
