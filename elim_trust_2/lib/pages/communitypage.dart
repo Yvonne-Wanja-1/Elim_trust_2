@@ -1,4 +1,6 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CommunityPage extends StatefulWidget {
   const CommunityPage({super.key});
@@ -9,6 +11,8 @@ class CommunityPage extends StatefulWidget {
 
 class _CommunityPageState extends State<CommunityPage>
     with SingleTickerProviderStateMixin {
+//  int _selectedIndex = 0; // Define _selectedIndex with an initial value
+  int _selectedIndex = 3; // Define _selectedIndex2 with an initial value
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
 
@@ -141,11 +145,13 @@ actions: [
               child: Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Removed this
                 children: [
-                  _buildTeamMember('images/persona.png', 'John Doe'),
+                  _buildTeamMember('images/julia.png', 'Dr. Julia Kagunda'),
                   const SizedBox(width: 24), // Added explicit spacing
-                  _buildTeamMember('images/persona.png', 'Yvonne Wanja'),
+                  _buildTeamMember('images/stella.png', 'Ms. Stella Kihara'),
                   const SizedBox(width: 24), // Added explicit spacing
-                  _buildTeamMember('images/persona.png', 'Ann Wangui'),
+                  _buildTeamMember('images/prof.png', 'Prof. Kennedy Kaduki'),
+                  const SizedBox(width: 24), // Added explicit spacing
+                  _buildTeamMember('images/clara.png', 'Clara Gachoki'),
                 ],
               ),
             ),
@@ -586,35 +592,278 @@ actions: [
             ),
           ),
 
-
-          Center(
-            child: Container(
-              height: 200,
-              width: 200,
-              decoration: BoxDecoration(
-                color: Color(0xFFF6F6F6),
-                borderRadius: BorderRadius.circular(50),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2), // Shadow color
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: const Offset(0, 3), // changes position of shadow
+SizedBox(height: 20), // Added space between title and partners section
+          
+             SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+               child: Row(
+               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(right: 25, left: 10),
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF6F6F6),
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.blue, // Shadow color
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Image.asset(
+                        'images/toronto.png', fit: BoxFit.contain, // Changed fit to contain
+                        height: 150, // Adjusted height
+                        width: 150, // Adjusted width
+                      ),
+                    ), // Example image for a partner
                   ),
+               
+               
+               
+               
+                 Container(
+                    margin: EdgeInsets.only(right: 25),
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF6F6F6),
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.blue, // Shadow color
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.asset(
+                          'images/uon.png', fit: BoxFit.contain, // Changed fit to contain
+                          filterQuality: FilterQuality.high,
+                          height: 130, // Adjusted height
+                          width: 120, // Adjusted width
+                        ),
+                      ),
+                    ), // Example image for a partner
+                  ),
+               
+               
+               
+               
+               
+               
+               
+               
+                  Container(
+                    margin: EdgeInsets.only(right: 25),
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF6F6F6),
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.blue, // Shadow color
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Image.asset(
+                        'images/african women.png', fit: BoxFit.contain, // Changed fit to contain
+                        height: 150, // Adjusted height
+                        width: 150, // Adjusted width
+                      ),
+                    ), // Example image for a partner
+                  ),
+               
+               
+               
+               
+               
+               
+               
+               
+               
+                  Container(
+                    margin: EdgeInsets.only(right: 25),
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF6F6F6),
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.blue, // Shadow color
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Image.asset(
+                        'images/un women.png', fit: BoxFit.contain, // Changed fit to contain
+                        height: 150, // Adjusted height
+                        width: 150, // Adjusted width
+                      ),
+                    ), // Example image for a partner
+                  ),
+
+
+
+
+
+                   Container(
+                    margin: EdgeInsets.only(right: 25),
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF6F6F6),
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.blue, // Shadow color
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Image.asset(
+                        'images/action aid.png', fit: BoxFit.contain, // Changed fit to contain
+                        height: 150, // Adjusted height
+                        width: 150, // Adjusted width
+                      ),
+                    ), // Example image for a partner
+                  ),
+
+
+
+
+
+                   Container(
+                    margin: EdgeInsets.only(right: 25),
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF6F6F6),
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.blue, // Shadow color
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Image.asset(
+                        'images/center.png', fit: BoxFit.contain, // Changed fit to contain
+                        height: 150, // Adjusted height
+                        width: 150, // Adjusted width
+                      ),
+                    ), // Example image for a partner
+                  ),
+
+
+
                 ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Image.asset(
-                  'images/toronto.png', fit: BoxFit.contain, // Changed fit to contain
-                  height: 150, // Adjusted height
-                  width: 150, // Adjusted width
-                ),
-              ), // Example image for a partner
-            ),
-          ),
+                           ),
+             ),
+          
         ], // Closes children of the main Column
-      ), ), // Closes the main Column
+      ), 
+      
+      ), // Closes the main Column
+    
+    bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: Colors.transparent,
+          color: const Color.fromARGB(255, 4, 135, 242),
+          height: 60,
+          index: _selectedIndex,
+          items: <Widget>[
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.folder_open, size: 30, color: Colors.white),
+                Text('Projects', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.attach_money_rounded, size: 30, color: Colors.white),
+                Text('Donations', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.home, size: 30, color: Colors.white),
+                Text('Home', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(FontAwesomeIcons.peopleGroup, size: 30, color: Colors.white),
+                Text('Community', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.person, size: 30, color: Colors.white),
+                Text('Profile', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+              ],
+            ),
+          ],
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+
+            switch (index) {
+              case 0:
+                Navigator.pushNamed(context, '/projects');
+                break;
+              case 1:
+                Navigator.pushNamed(context, '/donations');
+                break;
+              case 2:
+                Navigator.pushNamed(context, '/home');
+                break;
+              case 3:
+                Navigator.pushNamed(context, '/community');
+                break;
+              case 4:
+                Navigator.pushNamed(context, '/profile');
+                break;
+            }
+          },
+        ),
+    
+    
     ); // Closes the body's SingleChildScrollView
   }
 

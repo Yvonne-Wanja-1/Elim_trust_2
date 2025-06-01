@@ -2,6 +2,7 @@ import 'package:elim_trust_2/pages/communitypage.dart';
 import 'package:elim_trust_2/pages/donations.dart';
 import 'package:elim_trust_2/pages/homepage.dart';
 import 'package:elim_trust_2/pages/profilepage.dart';
+import 'package:elim_trust_2/pages/projects.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -25,7 +26,7 @@ initialRoute: '/home', // The initial route of the app
 
 routes: {
   '/home': (context) => const HomePage(),
-  // '/projects': (context) => const ProjectsPage(),
+  '/projects': (context) => const ProjectPage(),
    '/donations': (context) => const DonationsPage(),
    '/community': (context) => const CommunityPage(),
   '/profile': (context) => const ProfilePage(),
