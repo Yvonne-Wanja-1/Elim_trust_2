@@ -26,7 +26,7 @@ initialRoute: '/home', // The initial route of the app
 
 routes: {
   '/home': (context) => const HomePage(),
-  '/projects': (context) => const ProjectPage(),
+  '/projects': (context) => const ProjectsPage(),
    '/donations': (context) => const DonationsPage(),
    '/community': (context) => const CommunityPage(),
   '/profile': (context) => const ProfilePage(),
