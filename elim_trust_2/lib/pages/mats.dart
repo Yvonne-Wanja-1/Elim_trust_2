@@ -60,7 +60,7 @@ class _YprepPageState extends State<MatsDialoguePage>
             child: SlideTransition(
               position: _slideAnimation,
               child: const Text(
-                "Y-PREP PROGRAM",
+                "MATS DIALOGUE PROGRAM",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -133,7 +133,7 @@ class _YprepPageState extends State<MatsDialoguePage>
       
            Center( // This will center the Text widget block
              child: Text (
-               'Y-PREP (Youth Psychosocial Resilience & Empowerment Program)',
+               'MATS Dialogue “Circles Of Support”',
                textAlign: TextAlign.center, // Ensures text lines are centered within the Text widget
                style: TextStyle(
                  fontSize: 24,
@@ -152,11 +152,7 @@ class _YprepPageState extends State<MatsDialoguePage>
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: const Text(
-                      '''Y-PREP is an initiative that bridges trauma healing with entrepreneurship and climate action to empower youth in vulnerable communities. Designed for young people living in informal settlements, conflict-affected regions, and climate-stressed areas, Y-PREP equips them with the tools to heal, grow and lead.  
-                      
-                      At its core, Y-PREP nurtures resilient youth who can turn adversity into opportunity—building micro-enterprises, challenging harmful social norms, and becoming catalysts for healing and economic transformation.
-                      
-                      Rooted in the belief that trauma does not have to define the future! Y-PREP blends psychological support, creative expression, trauma-sensitive entrepreneurship training and climate awareness to help youth:''',
+                      '''Women across Africa face trauma mainly driven by gender-based violence, conflict, and limited resources. Unfortunately, access to mental health services remain scarce leading to long term mental health struggles such as PSTD, anxiety and depression.''',
                       style: TextStyle(
                         fontSize: 16,
                         fontStyle: FontStyle.italic, // Changed to normal for better readability
@@ -199,13 +195,13 @@ class _YprepPageState extends State<MatsDialoguePage>
                   crossAxisAlignment: CrossAxisAlignment.start, // Align points to the start
                   children: [
                     _buildOfferPoint(
-                        'Heal from psychological wounds through culturally sensitive drama therapy, storytelling, and group dialogue.'),
+                        'MATS Dialogue sees women’s circle of support  created in safe, familiar spaces where teen mums and women first reclaim their voices and then engage in guided conversations, expressive arts, and shared storytelling. These sessions are about being heard, seen, and supported within a community that understands.'),
                     const SizedBox(height: 8), // Space between points
                     _buildOfferPoint(
-                        'Gain life and business skills to build sustainable livelihoods.'),
+                        'Circle Keepers: Circle Keepers are local women trained to facilitate the MATS Dialogue. They hold space for young mothers and women to process trauma, share their stories, and reconnect with their inner strength . As guides, listeners, and nurturers, Circle Keepers are at the heart of every healing circle.'),
                     const SizedBox(height: 8), // Space between points
                     _buildOfferPoint(
-                        'Reclaim power over their future by becoming innovators, leaders, and advocates in their communities.'),
+                        'Mats dialogue is more than a method—it’s a movement grounded in culture and compassion.'),
                   ],
                 ),
               ),
