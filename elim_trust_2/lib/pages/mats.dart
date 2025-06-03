@@ -5,10 +5,10 @@ class MatsDialoguePage extends StatefulWidget {
   const MatsDialoguePage({super.key});
 
   @override
-  State<MatsDialoguePage> createState() => _YprepPageState();
+  State<MatsDialoguePage> createState() => _MatsDialoguePageState();
 }
 
-class _YprepPageState extends State<MatsDialoguePage>
+class _MatsDialoguePageState extends State<MatsDialoguePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Offset> _slideAnimation;
@@ -19,19 +19,17 @@ class _YprepPageState extends State<MatsDialoguePage>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 800), // Adjust duration as you like
+      duration: const Duration(milliseconds: 800),
     );
 
-    // Slide animation: from slightly above (e.g., -0.3 of its height) to its final position (Offset.zero)
     _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, -0.3), // Start 30% of its height above
+      begin: const Offset(0, -0.3),
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _animationController,
-      curve: Curves.easeOutCubic, // A nice smooth curve
+      curve: Curves.easeOutCubic,
     ));
 
-    // Fade animation: from transparent (0.0) to fully opaque (1.0)
     _fadeAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
@@ -40,13 +38,12 @@ class _YprepPageState extends State<MatsDialoguePage>
       curve: Curves.easeIn,
     ));
 
-    // Start the animation when the page is initialized
     _animationController.forward();
   }
 
   @override
   void dispose() {
-    _animationController.dispose(); // Important to dispose the controller
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -92,7 +89,7 @@ class _YprepPageState extends State<MatsDialoguePage>
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
                 onPressed: () {
-                Navigator.pushNamed(context, '/donations'); // Navigate to donations page
+                  Navigator.pushNamed(context, '/donations');
                 },
               ),
             ),
@@ -104,147 +101,165 @@ class _YprepPageState extends State<MatsDialoguePage>
           ),
           child: Column(
             children: [
-              // Removed Expanded widget
-              Container( 
-                height: 250, // Now this height will be respected
-                margin: const EdgeInsets.all(8.0), // Added some margin for better spacing
+              Container(
+                height: 250,
+                margin: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: const Color(0xFFF7F7F7), // Kept for background if image doesn't fill
+                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.blue.withOpacity(0.5),
                       spreadRadius: 1,
                       blurRadius: 5,
-                      offset: const Offset(0, 3), // changes position of shadow
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),
-                child: ClipRRect( // Ensures the image respects the container's border radius
-                 // borderRadius: BorderRadius.circular(20),
-                  child: Image.asset('images/t.png',
-                    fit: BoxFit.contain, // Changed from BoxFit.cover to prevent stretching and show the whole image
-                    width: double.infinity, // The image will be contained within this width
-                    height: 250, // The image will be contained within this height
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    'images/dialog.png',
+                    fit: BoxFit.contain,
+                    width: double.infinity,
+                    height: 250,
                   ),
                 ),
               ),
-              // You can add more widgets here if needed
-      
-           Center( // This will center the Text widget block
-             child: Text (
-               'MATS Dialogue “Circles Of Support”',
-               textAlign: TextAlign.center, // Ensures text lines are centered within the Text widget
-               style: TextStyle(
-                 fontSize: 24,
-                 fontWeight: FontWeight.bold,
-                 color: Colors.blue, // Changed to blue for better visibility
-                 decoration: TextDecoration.underline, // Added underline for emphasis
-                 decorationColor: Colors.blue, // Underline color
-                 decorationThickness: 2, // Thickness of the underline
-               ),
-             ),
-           ),
-        
-              const SizedBox(height: 20), // Added space between the image and text
-              
-                 Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: const Text(
-                      '''Women across Africa face trauma mainly driven by gender-based violence, conflict, and limited resources. Unfortunately, access to mental health services remain scarce leading to long term mental health struggles such as PSTD, anxiety and depression.''',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontStyle: FontStyle.italic, // Changed to normal for better readability
-                        color: Colors.black87,
-                        fontFamily: 'Arial', // Changed to Arial for better readability
-                        height: 1.5, // Adjust line height for better readability
-                      ),
-                      textAlign: TextAlign.center, // Center align the text
-                    ),
+              const SizedBox(height: 20),
+              const Center(
+                child: Text(
+                  'MATS Dialogue “Circles Of Support”',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors.blue,
+                    decorationThickness: 2,
                   ),
                 ),
-              
-
-
-
-
-
-
-
-              Center( // This will center the Text widget block
-             child: Text (
-               'What it Offers:',
-               textAlign: TextAlign.center, // Ensures text lines are centered within the Text widget
-               style: TextStyle(
-                 fontSize: 24,
-                 fontWeight: FontWeight.bold,
-                 color: Colors.blue, // Changed to blue for better visibility
-                 decoration: TextDecoration.underline, // Added underline for emphasis
-                 decorationColor: Colors.blue, // Underline color
-                 decorationThickness: 2, // Thickness of the underline
-               ),
-             ),
-           ),
-        
-              const SizedBox(height: 20), // Added space between the image and text
-              
+              ),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  '''Women across Africa face trauma mainly driven by gender-based violence, conflict, and limited resources. Unfortunately, access to mental health services remain scarce leading to long term mental health struggles such as PTSD, anxiety, and depression.''',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.black87,
+                    fontFamily: 'Arial',
+                    height: 1.5,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Center(
+                child: Text(
+                  'What it Offers:',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors.blue,
+                    decorationThickness: 2,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0), // Added padding for the list
+                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start, // Align points to the start
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildOfferPoint(
-                        'MATS Dialogue sees women’s circle of support  created in safe, familiar spaces where teen mums and women first reclaim their voices and then engage in guided conversations, expressive arts, and shared storytelling. These sessions are about being heard, seen, and supported within a community that understands.'),
-                    const SizedBox(height: 8), // Space between points
+                        'MATS Dialogue sees women’s circle of support created in safe, familiar spaces where teen mums and women first reclaim their voices and then engage in guided conversations, expressive arts, and shared storytelling. These sessions are about being heard, seen, and supported within a community that understands.'),
+                    const SizedBox(height: 8),
                     _buildOfferPoint(
-                        'Circle Keepers: Circle Keepers are local women trained to facilitate the MATS Dialogue. They hold space for young mothers and women to process trauma, share their stories, and reconnect with their inner strength . As guides, listeners, and nurturers, Circle Keepers are at the heart of every healing circle.'),
-                    const SizedBox(height: 8), // Space between points
+                        'Circle Keepers: Circle Keepers are local women trained to facilitate the MATS Dialogue. They hold space for young mothers and women to process trauma, share their stories, and reconnect with their inner strength. As guides, listeners, and nurturers, Circle Keepers are at the heart of every healing circle.'),
+                    const SizedBox(height: 8),
                     _buildOfferPoint(
                         'Mats dialogue is more than a method—it’s a movement grounded in culture and compassion.'),
                   ],
                 ),
               ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/donations');
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 22, 119, 198),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  minimumSize: const Size(200, 60),
+                ),
+                child: const Text(
+                  '❤️ Donate to MATS Dialogue❤️',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [ // Removed const because children are no longer all const
+                    Text(
+                      '''MATS helps restore emotional balance, rebuild trust, and empowers women to reclaim their voice.''',
+                      style: const TextStyle( // Added const
+                        fontStyle: FontStyle.italic,
+                        //fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                   // const SizedBox(height: 16), // Added some space between the texts
+                    Text(
+                      '''Join us in supporting women’s Mats Dialogue to mitigate trauma recovery for more women across Africa 😊''',
+                      style: const TextStyle( // Added const
+                        //fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                        fontFamily: 'Arial',
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
 
 
 
-            ElevatedButton(
+
+
               
-              onPressed: () {
-                Navigator.pushNamed(context, '/donations'); // Navigate to donations page
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 22, 119, 198),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  
-                ),
-                minimumSize: const Size(200, 60), // Set a minimum size for the button
-              ),
-              child: Text(
-                '❤️ Donate to Y-PREP ❤️',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white, // Changed to white for better contrast
-                ),
-              ),
-            ),
             ],
-            ),
-           
+          ),
         ),
       ),
     );
   }
 
-  // Helper widget to build each point in the "What it Offers" section
   Widget _buildOfferPoint(String text) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("• ", style: TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold)), // Bullet point
+        const Text(
+          "• ",
+          style: TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold),
+        ),
         Expanded(
           child: Text(
             text,
@@ -255,10 +270,9 @@ class _YprepPageState extends State<MatsDialoguePage>
               fontFamily: 'Arial',
               height: 1.5,
             ),
-                  ),
+          ),
         ),
       ],
     );
   }
 }
-              
