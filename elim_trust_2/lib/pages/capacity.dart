@@ -57,7 +57,7 @@ class _MatsDialoguePageState extends State<CapacityPage>
             child: SlideTransition(
               position: _slideAnimation,
               child: const Text(
-                "Capacity Building of Spiritual & Community Leaders Program",
+                "Capacity Building ",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -120,7 +120,7 @@ class _MatsDialoguePageState extends State<CapacityPage>
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
                     'images/capacity.jpg',
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                     width: double.infinity,
                     height: 250,
                   ),
@@ -129,7 +129,7 @@ class _MatsDialoguePageState extends State<CapacityPage>
               const SizedBox(height: 20),
               const Center(
                 child: Text(
-                  'MATS Dialogue “Circles Of Support”',
+                  'Healing at the Grassroots”',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,
@@ -145,7 +145,11 @@ class _MatsDialoguePageState extends State<CapacityPage>
               const Padding(
                 padding: EdgeInsets.all(12.0),
                 child: Text(
-                  '''Women across Africa face trauma mainly driven by gender-based violence, conflict, and limited resources. Unfortunately, access to mental health services remain scarce leading to long term mental health struggles such as PTSD, anxiety, and depression.''',
+                  '''Equipping Spiritual and Community Leaders for Better Health
+
+Elim Trust empowers Spiritual  leaders, and community champions to address the deep challenges of sexual abuse, mental health, and trauma—particularly among children and families. Through a powerful blend of education, advocacy, and psychosocial support, we champion holistic well-being in Kenya’s most underserved communities.
+
+Having worked extensively in the Rift Valley— communities continue to grapple with generational land conflict trauma— in Northern Kenya among pastoralist populations affected by displacement, violence, and climate-induced stress. Elim Trust equips Spiritual leaders, community elders, and grassroots champions with tools for psychosocial support, advocacy, and trauma-informed care.''',
                   style: TextStyle(
                     fontSize: 16,
                     fontStyle: FontStyle.italic,
@@ -159,7 +163,7 @@ class _MatsDialoguePageState extends State<CapacityPage>
               const SizedBox(height: 20),
               const Center(
                 child: Text(
-                  'What it Offers:',
+                  'Focus Areas:',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,
@@ -178,13 +182,14 @@ class _MatsDialoguePageState extends State<CapacityPage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildOfferPoint(
-                        'MATS Dialogue sees women’s circle of support created in safe, familiar spaces where teen mums and women first reclaim their voices and then engage in guided conversations, expressive arts, and shared storytelling. These sessions are about being heard, seen, and supported within a community that understands.'),
+                        'Child protection and mental health in faith spaces'),
                     const SizedBox(height: 8),
                     _buildOfferPoint(
-                        'Circle Keepers: Circle Keepers are local women trained to facilitate the MATS Dialogue. They hold space for young mothers and women to process trauma, share their stories, and reconnect with their inner strength. As guides, listeners, and nurturers, Circle Keepers are at the heart of every healing circle.'),
+                        'SGBV awareness and trauma-informed response'),
+
                     const SizedBox(height: 8),
                     _buildOfferPoint(
-                        'Mats dialogue is more than a method—it’s a movement grounded in culture and compassion.'),
+                        'Interventions in communities affected by land conflict, displacement, and climate crises'),
                   ],
                 ),
               ),
@@ -217,7 +222,7 @@ class _MatsDialoguePageState extends State<CapacityPage>
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [ // Removed const because children are no longer all const
                     Text(
-                      '''MATS helps restore emotional balance, rebuild trust, and empowers women to reclaim their voice.''',
+                      '''When trauma is left unspoken, it grows. ''',
                       style: const TextStyle( // Added const
                         fontStyle: FontStyle.italic,
                         //fontWeight: FontWeight.bold,
@@ -227,7 +232,7 @@ class _MatsDialoguePageState extends State<CapacityPage>
                     ),
                    // const SizedBox(height: 16), // Added some space between the texts
                     Text(
-                      '''Join us in supporting women’s Mats Dialogue to mitigate trauma recovery for more women across Africa 😊''',
+                      '''When trauma is left unspoken, it grows. 😊''',
                       style: const TextStyle( // Added const
                         //fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,

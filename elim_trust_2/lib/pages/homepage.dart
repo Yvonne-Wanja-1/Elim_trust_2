@@ -255,7 +255,7 @@ class _HomePageState extends State<HomePage> {
                     } else if (data.title == 'Capacity Building of Spiritual & Community Leaders') {
                       imageSpecificOnTap = () {
                         // Navigate to the Capacity Building page
-                        Navigator.pushNamed(context, '/capacityBuilding');
+                        Navigator.pushNamed(context, '/capacity');
                       };
                     } 
                     
