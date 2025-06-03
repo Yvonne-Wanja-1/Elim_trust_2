@@ -213,6 +213,11 @@ class _HomePageState extends State<HomePage> {
                       };
                     }
                     // You can add more `else if` blocks here for other cards
+                    else if (data.title == 'Mats Dialogue') {
+                      imageSpecificOnTap = () {
+                        Navigator.pushNamed(context, '/matsdialogue');
+                      };
+                    }
                     // if their images should also be tappable with different actions.
 
                     return Padding(

@@ -1,6 +1,7 @@
 import 'package:elim_trust_2/pages/communitypage.dart';
 import 'package:elim_trust_2/pages/donations.dart';
 import 'package:elim_trust_2/pages/homepage.dart';
+import 'package:elim_trust_2/pages/mats.dart';
 import 'package:elim_trust_2/pages/profilepage.dart';
 import 'package:elim_trust_2/pages/projects.dart';
 
@@ -34,6 +35,8 @@ routes: {
   '/profile': (context) => const ProfilePage(),
 
   '/yprep': (context) => const YprepPage(),
+    '/matsdialogue': (context) => const MatsDialoguePage(),
+
 },
 
 
