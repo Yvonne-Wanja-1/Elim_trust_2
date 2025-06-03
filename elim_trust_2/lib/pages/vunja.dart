@@ -119,8 +119,8 @@ class _MatsDialoguePageState extends State<VunjaPage>
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
-                    'images/equity hands.png',
-                    fit: BoxFit.contain,
+                    'images/equity.jpg',
+                    fit: BoxFit.cover,
                     width: double.infinity,
                     height: 250,
                   ),
@@ -145,11 +145,9 @@ class _MatsDialoguePageState extends State<VunjaPage>
               const Padding(
                 padding: EdgeInsets.all(12.0),
                 child: Text(
-                  '''Y-PREP is an initiative that bridges trauma healing with entrepreneurship and climate action to empower youth in vulnerable communities. Designed for young people living in informal settlements, conflict-affected regions, and climate-stressed areas, Y-PREP equips them with the tools to heal, grow and lead.  
+                  '''Breaking the Cycle of SGBV, Substance Abuse & Mental Health Stigma in Learning Institutions and Communities
 
-At its core, Y-PREP nurtures resilient youth who can turn adversity into opportunity—building micro-enterprises, challenging harmful social norms, and becoming catalysts for healing and economic transformation.
-
-Rooted in the belief that trauma does not have to define the future! Y-PREP blends psychological support, creative expression, trauma-sensitive entrepreneurship training and climate awareness to help youth.''',
+A flagship initiative by Elim Trust, Vunja Kalabash tackles interconnected challenges of Sexual and Gender-Based Violence (SGBV), substance abuse, and mental health stigma among youth in higher learning institutions and grassroots communities.''',
                   style: TextStyle(
                     fontSize: 16,
                     fontStyle: FontStyle.italic,
@@ -182,13 +180,16 @@ Rooted in the belief that trauma does not have to define the future! Y-PREP blen
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildOfferPoint(
-                        'Heal from psychological wounds through culturally sensitive drama therapy, storytelling, and group dialogue.'),
+                        'Breaking silence and stigma through open dialogue'),
                     const SizedBox(height: 8),
                     _buildOfferPoint(
-                        'Gain life and business skills to build sustainable livelihoods.'),
+                        'Training students, peer leaders, and faculty in trauma-informed care'),
                     const SizedBox(height: 8),
                     _buildOfferPoint(
-                        'Reclaim power over their future by becoming innovators, leaders, and advocates in their communities.'),
+                        'Promoting healing, accountability, and positive masculinity'),
+                    const SizedBox(height: 8),
+                    _buildOfferPoint(
+                        'Fostering inclusive, safe educational environments'),
                   ],
                 ),
               ),
@@ -215,7 +216,34 @@ Rooted in the belief that trauma does not have to define the future! Y-PREP blen
                 ),
               ),
               const SizedBox(height: 20),
-              
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [ // Removed const because children are no longer all const
+                    Text(
+                      '''Change begins when conversations start!''',
+                      style: const TextStyle( // Added const
+                        fontStyle: FontStyle.italic,
+                        //fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                   // const SizedBox(height: 16), // Added some space between the texts
+                    Text(
+                      '''Vunja Kalabash is not just about awareness—it’s about action. 😊''',
+                      style: const TextStyle( // Added const
+                        //fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                        fontFamily: 'Arial',
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
 
 
 
