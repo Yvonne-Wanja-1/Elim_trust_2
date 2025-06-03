@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Appbar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final Widget title; // Changed from String to Widget
   final IconData? leadingIcon;
   final List<Widget>? actions;
 
   const Appbar({
     super.key,
-    required this.title,
+    required this.title, // Now expects a Widget
     this.leadingIcon,
     this.actions,
   });
@@ -23,14 +23,7 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
         bottomRight: Radius.circular(20),
       ),
       child: AppBar(
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
+        title: title, // Use the provided title widget directly
         centerTitle: true,
         backgroundColor: Colors.blue,
         elevation: 2,

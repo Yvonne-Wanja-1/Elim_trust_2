@@ -46,8 +46,17 @@ class _ImpactCardWidget extends StatelessWidget {
               onTap: onImageTap, // Use the onImageTap callback passed to the widget
               child: Container(
                 height: 300,
+                // width: cardWidth ?? 300.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.blue.withOpacity(0.5), // Adjust the color and opacity as needed
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3), // changes position of shadow
+                      ),
+                  ],
                 ),
                 clipBehavior: Clip.antiAlias,
                 child: Image.asset(data.imagePath, fit: BoxFit.cover),
