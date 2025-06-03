@@ -8,7 +8,15 @@ class YprepPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Appbar(
-        title: 'Y-PREP Program',
+        title: const Text( // Corrected the Text widget styling
+          "Y-PREP PROGRAM",
+          textAlign: TextAlign.center, // textAlign is a property of Text, not TextStyle
+          style: TextStyle(
+            color: Colors.white,      // Merged style properties
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        
         leadingIcon: Icons.arrow_back,
         actions: [
           Container(
@@ -32,7 +40,7 @@ class YprepPage extends StatelessWidget {
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
               onPressed: () {
-                Navigator.pushNamed(context, '/donations');
+                Navigator.pushNamed(context, '/settings');
               },
             ),
           ),
