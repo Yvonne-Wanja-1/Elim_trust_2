@@ -62,42 +62,50 @@ class _ImpactCardWidget extends StatelessWidget {
                 child: Image.asset(data.imagePath, fit: BoxFit.cover),
               ),
             ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: Text(
-                data.title,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.blue,
-                  decoration: TextDecoration.underline,
-                  decorationColor: Colors.blue,
-                ),
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
+            // Wrap the text Column with a GestureDetector
+            GestureDetector(
+              onTap: onImageTap, // Reuse the onImageTap for the text section as well
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Text(
+                      data.title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.blue,
+                      ),
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Text(
+                      data.description,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Arial',
+                        fontStyle: FontStyle.italic,
+                        color: Colors.black,
+                      ),
+                      textAlign: TextAlign.start,
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                ],
               ),
             ),
-            const SizedBox(height: 4),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: Text(
-                data.description,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Arial',
-                  fontStyle: FontStyle.italic,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.start,
-                maxLines: 5,
-                overflow: TextOverflow.ellipsis,
-                ),
-              ),
-        
-            
+                
           ],
         ),
       ),
@@ -206,18 +214,51 @@ class _HomePageState extends State<HomePage> {
                       customWidth = 360.0; 
                     }
 
+
                     // Define the action for when the Y-PREP image is tapped
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
                     if (data.title == 'Y-PREP') {
                       imageSpecificOnTap = () {
                         Navigator.pushNamed(context, '/yprep');
+
+                        // This will navigate to the Y-PREP page when the image is tapped
+
+
+                        
                       };
                     }
                     // You can add more `else if` blocks here for other cards
+                    // For example, if you want to add a specific action for the 'Mats Dialogue' image tap:
                     else if (data.title == 'Mats Dialogue') {
                       imageSpecificOnTap = () {
-                        Navigator.pushNamed(context, '/matsdialogue');
+                        Navigator.pushNamed(context, '/matsdialogue');// this paragraph means  that 
                       };
                     }
+
+
+
+                    else if (data.title == 'Vunja Kalabash') {
+                      imageSpecificOnTap = () {
+                        // Navigate to the Vunja Kalabash page
+                        Navigator.pushNamed(context, '/vunja');
+                      };
+                    } else if (data.title == 'Capacity Building of Spiritual & Community Leaders') {
+                      imageSpecificOnTap = () {
+                        // Navigate to the Capacity Building page
+                        Navigator.pushNamed(context, '/capacityBuilding');
+                      };
+                    } 
+                    
                     // if their images should also be tappable with different actions.
 
                     return Padding(

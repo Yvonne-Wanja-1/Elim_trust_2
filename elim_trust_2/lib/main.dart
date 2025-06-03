@@ -4,6 +4,7 @@ import 'package:elim_trust_2/pages/homepage.dart';
 import 'package:elim_trust_2/pages/mats.dart';
 import 'package:elim_trust_2/pages/profilepage.dart';
 import 'package:elim_trust_2/pages/projects.dart';
+import 'package:elim_trust_2/pages/vunja.dart';
 
 import 'package:elim_trust_2/pages/yprep.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,8 @@ routes: {
 
   '/yprep': (context) => const YprepPage(),
     '/matsdialogue': (context) => const MatsDialoguePage(),
+    '/vunja': (context) => const VunjaPage(),
+
 
 },
 
