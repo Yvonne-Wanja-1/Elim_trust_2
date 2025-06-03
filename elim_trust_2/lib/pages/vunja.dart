@@ -119,7 +119,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
-                    'images/equity.jpg',
+                    'images/equity hands.png',
                     fit: BoxFit.contain,
                     width: double.infinity,
                     height: 250,
@@ -182,7 +182,7 @@ Rooted in the belief that trauma does not have to define the future! Y-PREP blen
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildOfferPoint(
-                        'Heal from psychological wounds through culturally sensitive drama therapy, storytelling, and group dialogue.MATS Dialogue sees women’s circle of support created in safe, familiar spaces where teen mums and women first reclaim their voices and then engage in guided conversations, expressive arts, and shared storytelling. These sessions are about being heard, seen, and supported within a community that understands.'),
+                        'Heal from psychological wounds through culturally sensitive drama therapy, storytelling, and group dialogue.'),
                     const SizedBox(height: 8),
                     _buildOfferPoint(
                         'Gain life and business skills to build sustainable livelihoods.'),
@@ -215,34 +215,7 @@ Rooted in the belief that trauma does not have to define the future! Y-PREP blen
                 ),
               ),
               const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [ // Removed const because children are no longer all const
-                    Text(
-                      '''MATS helps restore emotional balance, rebuild trust, and empowers women to reclaim their voice.''',
-                      style: const TextStyle( // Added const
-                        fontStyle: FontStyle.italic,
-                        //fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                   // const SizedBox(height: 16), // Added some space between the texts
-                    Text(
-                      '''Join us in supporting women’s Mats Dialogue to mitigate trauma recovery for more women across Africa 😊''',
-                      style: const TextStyle( // Added const
-                        //fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                        fontFamily: 'Arial',
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ),
+              
 
 
 
