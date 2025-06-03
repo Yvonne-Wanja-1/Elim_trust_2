@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:elim_trust_2/widgets/appbar.dart'; // Make sure this file defines 'CustomAppBar'
 
-class VunjaPage extends StatefulWidget {
-  const VunjaPage({super.key});
+class CapacityPage extends StatefulWidget {
+  const CapacityPage({super.key});
 
   @override
-  State<VunjaPage> createState() => _MatsDialoguePageState();
+  State<CapacityPage> createState() => _MatsDialoguePageState();
 }
 
-class _MatsDialoguePageState extends State<VunjaPage>
+class _MatsDialoguePageState extends State<CapacityPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Offset> _slideAnimation;
@@ -57,7 +57,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
             child: SlideTransition(
               position: _slideAnimation,
               child: const Text(
-                "VUNJA KALABASH PROGRAM",
+                "Capacity Building of Spiritual & Community Leaders Program",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -89,7 +89,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/donations');
+                  Navigator.pushNamed(context, '/capacity');
                 },
               ),
             ),
@@ -106,7 +106,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
                 margin: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: const Color(0xFFA19694),
+                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.blue.withOpacity(0.5),
@@ -119,7 +119,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
-                    'images/equity.jpg',
+                    'images/capacity.jpg',
                     fit: BoxFit.contain,
                     width: double.infinity,
                     height: 250,
@@ -129,7 +129,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
               const SizedBox(height: 20),
               const Center(
                 child: Text(
-                  'Vunja Kalabash”',
+                  'MATS Dialogue “Circles Of Support”',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,
@@ -145,11 +145,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
               const Padding(
                 padding: EdgeInsets.all(12.0),
                 child: Text(
-                  '''Y-PREP is an initiative that bridges trauma healing with entrepreneurship and climate action to empower youth in vulnerable communities. Designed for young people living in informal settlements, conflict-affected regions, and climate-stressed areas, Y-PREP equips them with the tools to heal, grow and lead.  
-
-At its core, Y-PREP nurtures resilient youth who can turn adversity into opportunity—building micro-enterprises, challenging harmful social norms, and becoming catalysts for healing and economic transformation.
-
-Rooted in the belief that trauma does not have to define the future! Y-PREP blends psychological support, creative expression, trauma-sensitive entrepreneurship training and climate awareness to help youth.''',
+                  '''Women across Africa face trauma mainly driven by gender-based violence, conflict, and limited resources. Unfortunately, access to mental health services remain scarce leading to long term mental health struggles such as PTSD, anxiety, and depression.''',
                   style: TextStyle(
                     fontSize: 16,
                     fontStyle: FontStyle.italic,
@@ -182,13 +178,13 @@ Rooted in the belief that trauma does not have to define the future! Y-PREP blen
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildOfferPoint(
-                        'Heal from psychological wounds through culturally sensitive drama therapy, storytelling, and group dialogue.MATS Dialogue sees women’s circle of support created in safe, familiar spaces where teen mums and women first reclaim their voices and then engage in guided conversations, expressive arts, and shared storytelling. These sessions are about being heard, seen, and supported within a community that understands.'),
+                        'MATS Dialogue sees women’s circle of support created in safe, familiar spaces where teen mums and women first reclaim their voices and then engage in guided conversations, expressive arts, and shared storytelling. These sessions are about being heard, seen, and supported within a community that understands.'),
                     const SizedBox(height: 8),
                     _buildOfferPoint(
-                        'Gain life and business skills to build sustainable livelihoods.'),
+                        'Circle Keepers: Circle Keepers are local women trained to facilitate the MATS Dialogue. They hold space for young mothers and women to process trauma, share their stories, and reconnect with their inner strength. As guides, listeners, and nurturers, Circle Keepers are at the heart of every healing circle.'),
                     const SizedBox(height: 8),
                     _buildOfferPoint(
-                        'Reclaim power over their future by becoming innovators, leaders, and advocates in their communities.'),
+                        'Mats dialogue is more than a method—it’s a movement grounded in culture and compassion.'),
                   ],
                 ),
               ),
