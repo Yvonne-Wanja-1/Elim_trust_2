@@ -98,9 +98,36 @@ class _YprepPageState extends State<YprepPage>
           ),
         ],
       ),
-      body: const Center(
-        child: Text("Y-PREP Page Content"),
-      ),
+      body: Column(
+        children: [
+          // Removed Expanded widget
+          Container( 
+            height: 250, // Now this height will be respected
+            margin: const EdgeInsets.all(8.0), // Added some margin for better spacing
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white, // Kept for background if image doesn't fill
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.blue.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: ClipRRect( // Ensures the image respects the container's border radius
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset('images/t.png',
+                fit: BoxFit.contain, // Changed from BoxFit.cover to prevent stretching and show the whole image
+                width: double.infinity, // The image will be contained within this width
+                height: 250, // The image will be contained within this height
+              ),
+            ),
+          ),
+          // You can add more widgets here if needed
+        ]
+      )
     );
   }
 }
