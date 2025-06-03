@@ -105,8 +105,8 @@ class _YprepPageState extends State<YprepPage>
             height: 250, // Now this height will be respected
             margin: const EdgeInsets.all(8.0), // Added some margin for better spacing
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white, // Kept for background if image doesn't fill
+              borderRadius: BorderRadius.circular(30),
+              color: const Color(0xFFF7F7F7), // Kept for background if image doesn't fill
               boxShadow: [
                 BoxShadow(
                   color: Colors.blue.withOpacity(0.5),
@@ -117,7 +117,7 @@ class _YprepPageState extends State<YprepPage>
               ],
             ),
             child: ClipRRect( // Ensures the image respects the container's border radius
-              borderRadius: BorderRadius.circular(20),
+             // borderRadius: BorderRadius.circular(20),
               child: Image.asset('images/t.png',
                 fit: BoxFit.contain, // Changed from BoxFit.cover to prevent stretching and show the whole image
                 width: double.infinity, // The image will be contained within this width
@@ -126,6 +126,8 @@ class _YprepPageState extends State<YprepPage>
             ),
           ),
           // You can add more widgets here if needed
+
+          
         ]
       )
     );
