@@ -68,7 +68,7 @@ class _ImpactCardWidget extends StatelessWidget {
               textAlign: TextAlign.start,
               maxLines: 5,
               overflow: TextOverflow.ellipsis,
-            ),
+              ),
           ),
         ],
       ),
@@ -87,8 +87,7 @@ class HomePage extends StatefulWidget {
           'Bridging trauma healing with entrepreneurship and climate action for youth in informal settlements',
     ),
     const _ImpactCardData(
-      
-      imagePath: 'images/dialogue.jpg',
+      imagePath: 'images/dialog.png',
       title: 'Mats Dialogue',
       description:
           'Trauma healing-centred circles for teen mothers and women, rooted in African tradition and storytelling.',
