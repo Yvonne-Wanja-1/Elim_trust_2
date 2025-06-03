@@ -209,9 +209,32 @@ class _YprepPageState extends State<YprepPage>
                   ],
                 ),
               ),
-              
+
+
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/donations'); // Navigate to donations page
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 9, 105, 184),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: Text(
+                'Donate to Y-PREP',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white, // Changed to white for better contrast
+                ),
+              ),
+            ),
             ],
-          ),
+            ),
+           
         ),
       ),
     );
