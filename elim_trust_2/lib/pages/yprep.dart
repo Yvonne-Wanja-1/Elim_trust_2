@@ -218,14 +218,15 @@ class _YprepPageState extends State<YprepPage>
                 Navigator.pushNamed(context, '/donations'); // Navigate to donations page
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 2, 43, 77),
+                backgroundColor: const Color.fromARGB(255, 22, 119, 198),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                   
                 ),
+                minimumSize: const Size(200, 60), // Set a minimum size for the button
               ),
               child: Text(
-                '❤️Donate to Y-PREP❤️',
+                '❤️ Donate to Y-PREP ❤️',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 20,
