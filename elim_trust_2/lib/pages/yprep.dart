@@ -52,84 +52,191 @@ class _YprepPageState extends State<YprepPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: Appbar(
-        title: FadeTransition(
-          opacity: _fadeAnimation,
-          child: SlideTransition(
-            position: _slideAnimation,
-            child: const Text(
-              "Y-PREP PROGRAM",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+    return SafeArea(
+      child: Scaffold(
+        appBar: Appbar(
+          title: FadeTransition(
+            opacity: _fadeAnimation,
+            child: SlideTransition(
+              position: _slideAnimation,
+              child: const Text(
+                "Y-PREP PROGRAM",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
+          ),
+          leadingIcon: Icons.arrow_back,
+          actions: [
+            Container(
+              margin: const EdgeInsets.all(10),
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.red,
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.volunteer_activism, color: Colors.blue),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+                onPressed: () {
+                Navigator.pushNamed(context, '/donations'); // Navigate to donations page
+                },
+              ),
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics(),
+          ),
+          child: Column(
+            children: [
+              // Removed Expanded widget
+              Container( 
+                height: 250, // Now this height will be respected
+                margin: const EdgeInsets.all(8.0), // Added some margin for better spacing
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: const Color(0xFFF7F7F7), // Kept for background if image doesn't fill
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.blue.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: ClipRRect( // Ensures the image respects the container's border radius
+                 // borderRadius: BorderRadius.circular(20),
+                  child: Image.asset('images/t.png',
+                    fit: BoxFit.contain, // Changed from BoxFit.cover to prevent stretching and show the whole image
+                    width: double.infinity, // The image will be contained within this width
+                    height: 250, // The image will be contained within this height
+                  ),
+                ),
+              ),
+              // You can add more widgets here if needed
+      
+           Center( // This will center the Text widget block
+             child: Text (
+               'Y-PREP (Youth Psychosocial Resilience & Empowerment Program)',
+               textAlign: TextAlign.center, // Ensures text lines are centered within the Text widget
+               style: TextStyle(
+                 fontSize: 24,
+                 fontWeight: FontWeight.bold,
+                 color: Colors.blue, // Changed to blue for better visibility
+                 decoration: TextDecoration.underline, // Added underline for emphasis
+                 decorationColor: Colors.blue, // Underline color
+                 decorationThickness: 2, // Thickness of the underline
+               ),
+             ),
+           ),
+        
+              const SizedBox(height: 20), // Added space between the image and text
+              
+                 Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: const Text(
+                      '''Y-PREP is an initiative that bridges trauma healing with entrepreneurship and climate action to empower youth in vulnerable communities. Designed for young people living in informal settlements, conflict-affected regions, and climate-stressed areas, Y-PREP equips them with the tools to heal, grow and lead.  
+                      
+                      At its core, Y-PREP nurtures resilient youth who can turn adversity into opportunity—building micro-enterprises, challenging harmful social norms, and becoming catalysts for healing and economic transformation.
+                      
+                      Rooted in the belief that trauma does not have to define the future! Y-PREP blends psychological support, creative expression, trauma-sensitive entrepreneurship training and climate awareness to help youth:''',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontStyle: FontStyle.italic, // Changed to normal for better readability
+                        color: Colors.black87,
+                        fontFamily: 'Arial', // Changed to Arial for better readability
+                        height: 1.5, // Adjust line height for better readability
+                      ),
+                      textAlign: TextAlign.center, // Center align the text
+                    ),
+                  ),
+                ),
+              
+
+
+
+
+
+
+
+              Center( // This will center the Text widget block
+             child: Text (
+               'What it Offers:',
+               textAlign: TextAlign.center, // Ensures text lines are centered within the Text widget
+               style: TextStyle(
+                 fontSize: 24,
+                 fontWeight: FontWeight.bold,
+                 color: Colors.blue, // Changed to blue for better visibility
+                 decoration: TextDecoration.underline, // Added underline for emphasis
+                 decorationColor: Colors.blue, // Underline color
+                 decorationThickness: 2, // Thickness of the underline
+               ),
+             ),
+           ),
+        
+              const SizedBox(height: 20), // Added space between the image and text
+              
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0), // Added padding for the list
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start, // Align points to the start
+                  children: [
+                    _buildOfferPoint(
+                        'Heal from psychological wounds through culturally sensitive drama therapy, storytelling, and group dialogue.'),
+                    const SizedBox(height: 8), // Space between points
+                    _buildOfferPoint(
+                        'Gain life and business skills to build sustainable livelihoods.'),
+                    const SizedBox(height: 8), // Space between points
+                    _buildOfferPoint(
+                        'Reclaim power over their future by becoming innovators, leaders, and advocates in their communities.'),
+                  ],
+                ),
+              ),
+              
+            ],
           ),
         ),
-        
-        leadingIcon: Icons.arrow_back,
-        actions: [
-          Container(
-            margin: const EdgeInsets.all(10),
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(50),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.red,
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: const Offset(0, 3),
-                ),
-              ],
-            ),
-            child: IconButton(
-              icon: const Icon(Icons.volunteer_activism, color: Colors.blue),
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
-              onPressed: () {
-                Navigator.pushNamed(context, '/settings');
-              },
-            ),
-          ),
-        ],
       ),
-      body: Column(
-        children: [
-          // Removed Expanded widget
-          Container( 
-            height: 250, // Now this height will be respected
-            margin: const EdgeInsets.all(8.0), // Added some margin for better spacing
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: const Color(0xFFF7F7F7), // Kept for background if image doesn't fill
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.blue.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: const Offset(0, 3), // changes position of shadow
-                ),
-              ],
-            ),
-            child: ClipRRect( // Ensures the image respects the container's border radius
-             // borderRadius: BorderRadius.circular(20),
-              child: Image.asset('images/t.png',
-                fit: BoxFit.contain, // Changed from BoxFit.cover to prevent stretching and show the whole image
-                width: double.infinity, // The image will be contained within this width
-                height: 250, // The image will be contained within this height
-              ),
-            ),
-          ),
-          // You can add more widgets here if needed
+    );
+  }
 
-          
-        ]
-      )
+  // Helper widget to build each point in the "What it Offers" section
+  Widget _buildOfferPoint(String text) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text("• ", style: TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold)), // Bullet point
+        Expanded(
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontSize: 16,
+              fontStyle: FontStyle.italic,
+              color: Colors.black87,
+              fontFamily: 'Arial',
+              height: 1.5,
+            ),
+                  ),
+        ),
+      ],
     );
   }
 }
+              
