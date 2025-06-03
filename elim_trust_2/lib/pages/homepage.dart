@@ -1,4 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
+import 'package:elim_trust_2/pages/yprep.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -18,60 +20,79 @@ class _ImpactCardData {
 // Reusable widget for displaying an impact card
 class _ImpactCardWidget extends StatelessWidget {
   final _ImpactCardData data;
+  final double? cardWidth;
+  final VoidCallback? onCardTap; // Renamed for clarity if you want to keep whole card tap
+  final VoidCallback? onImageTap; // New callback for image tap
 
-  const _ImpactCardWidget({required this.data});
+  const _ImpactCardWidget({
+    required this.data,
+    this.cardWidth,
+    this.onCardTap,
+    this.onImageTap, // Added to constructor
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            height: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
+    return InkWell(
+      onTap: onCardTap, // Use the renamed callback for the whole card
+      borderRadius: BorderRadius.circular(15.0), // Optional: for ripple effect to match card shape
+      child: SizedBox(
+        width: cardWidth ?? 300.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // Wrap the Image with GestureDetector or InkWell for tap detection
+            GestureDetector( 
+              onTap: onImageTap, // Use the onImageTap callback passed to the widget
+              child: Container(
+                height: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: Image.asset(data.imagePath, fit: BoxFit.cover),
+              ),
             ),
-            clipBehavior: Clip.antiAlias,
-            child: Image.asset(data.imagePath, fit: BoxFit.cover),
-          ),
-          const SizedBox(height: 8),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: Text(
-              data.title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Colors.blue,
-                decoration: TextDecoration.underline,
-                decorationColor: Colors.blue,
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Text(
+                data.title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.blue,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
             ),
-          ),
-          const SizedBox(height: 4),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: Text(
-              data.description,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'Arial',
-                fontStyle: FontStyle.italic,
-                color: Colors.black,
+            const SizedBox(height: 4),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Text(
+                data.description,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Arial',
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.start,
+                maxLines: 5,
+                overflow: TextOverflow.ellipsis,
+                ),
               ),
-              textAlign: TextAlign.start,
-              maxLines: 5,
-              overflow: TextOverflow.ellipsis,
-              ),
-          ),
-        ],
+        
+            
+          ],
+        ),
       ),
+
     );
   }
 }
@@ -80,7 +101,9 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   static final List<_ImpactCardData> _impactCardItems = [
+    
     const _ImpactCardData(
+      
       imagePath: 'images/t.png',
       title: 'Y-PREP',
       description:
@@ -166,9 +189,31 @@ class _HomePageState extends State<HomePage> {
                   children: HomePage._impactCardItems.asMap().entries.map((entry) {
                     int idx = entry.key;
                     _ImpactCardData data = entry.value;
+                    double? customWidth;
+                    VoidCallback? imageSpecificOnTap; // This will be for the image tap
+                    // VoidCallback? wholeCardTap; // If you need a separate tap for the whole card
+
+                    if (data.title == 'Mats Dialogue') {
+                      customWidth = 360.0; 
+                    }
+
+                    // Define the action for when the Y-PREP image is tapped
+                    if (data.title == 'Y-PREP') {
+                      imageSpecificOnTap = () {
+                        Navigator.pushNamed(context, '/yprep');
+                      };
+                    }
+                    // You can add more `else if` blocks here for other cards
+                    // if their images should also be tappable with different actions.
+
                     return Padding(
                       padding: EdgeInsets.only(right: idx == HomePage._impactCardItems.length - 1 ? 0 : 16.0),
-                      child: _ImpactCardWidget(data: data),
+                      child: _ImpactCardWidget(
+                        data: data, 
+                        cardWidth: customWidth, 
+                        onImageTap: imageSpecificOnTap, // Pass the image-specific tap action here
+                        // onCardTap: wholeCardTap, // Use this if the whole card should also be tappable
+                      ),
                     );
                   }).toList(),
                 ),
