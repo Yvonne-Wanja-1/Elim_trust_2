@@ -11,9 +11,9 @@ class ProjectsPage extends StatefulWidget {
 
 class _MyWidgetState extends State<ProjectsPage> with SingleTickerProviderStateMixin {
   bool isOngoingSelected = true;
-  int _selectedIndex = 0; // Define _selectedIndex with an initial value
-   late AnimationController _animationController;
-  late Animation<double> _scaleAnimation;
+  int _selectedIndex = 0;
+  late AnimationController _animationController;
+  late Animation<Offset> _slideAnimation;
 
   @override
   void initState() {
@@ -21,108 +21,107 @@ class _MyWidgetState extends State<ProjectsPage> with SingleTickerProviderStateM
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
-    )..repeat(reverse: true); // Makes the animation loop back and forth
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.29).animate(
-        CurvedAnimation(parent: _animationController, curve: Curves.easeInOut));}
+    )..forward();
+
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0, 0.3),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
+    ));
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(70),
-            child: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
-              ),
-              child: AppBar(
-                backgroundColor: const Color.fromARGB(255, 4, 135, 242), // Optional: Added a background color
-                centerTitle: true,
-                title: ScaleTransition(
-                  scale: _scaleAnimation,
-                  child: const Text(
-                      'Projects 📋',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                ),
-
-                  //donation icon and label below it
-                  leading: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Container(
-                      //margin: const EdgeInsets.only(left: 8.0), // Reduced margin to fit AppBar's leading area
-                       height: 30, // Adjusted for a more standard icon button size
-                       width: 30,  // Adjusted for a more standard icon button size
-                      decoration: BoxDecoration(
-                        color: Colors.white, // Optional: Added a background color
-                        
-                        borderRadius: BorderRadius.circular(30), // Make it circular (half of height/width)
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.red,
-                            blurRadius: 5.0,
-                            offset: Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: IconButton(
-                        padding: EdgeInsets.zero, // Remove default IconButton padding for better control
-                        icon: const Icon(Icons.volunteer_activism, color: Colors.blue, size: 24), // Standard icon size
-                        onPressed: () {
-                          //take to the donation page
-                          Navigator.pushNamed(context, '/donations'); // Corrected route
-                        },
-                      ),
-                    ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
+          ),
+          child: AppBar(
+            backgroundColor: const Color.fromARGB(255, 4, 135, 242),
+            centerTitle: true,
+            title: FadeTransition(
+              opacity: _animationController,
+              child: SlideTransition(
+                position: _slideAnimation,
+                child: const Text(
+                  'Projects 📋',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                  //menu icon
-
-actions: [
-
- Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Container(
-                      //margin: const EdgeInsets.only(left: 8.0), // Reduced margin to fit AppBar's leading area
-                       height: 30, // Adjusted for a more standard icon button size
-                       width: 30,  // Adjusted for a more standard icon button size
-                      decoration: BoxDecoration(
-                        color: Colors.white, // Optional: Added a background color
-                        
-                        borderRadius: BorderRadius.circular(30), // Make it circular (half of height/width)
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.red,
-                            blurRadius: 5.0,
-                            offset: Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: IconButton(
-                        padding: EdgeInsets.zero, // Remove default IconButton padding for better control
-                        icon: const Icon(Icons.menu, color: Colors.blue, ) ,// Standard icon size
-                        onPressed: () {
-                          //take to the donation page
-                          //Navigator.pushNamed(context, '/donations'); // Corrected route
-                        },
-                      ),
-                    ),
-                  ),
-
-
-
-],
-                  
                 ),
               ),
-            
+            ),
+            leading: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.red,
+                      blurRadius: 5.0,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  icon: const Icon(Icons.volunteer_activism, color: Colors.blue, size: 24),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/donations');
+                  },
+                ),
+              ),
+            ),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.red,
+                        blurRadius: 5.0,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: const Icon(Icons.menu, color: Colors.blue),
+                    onPressed: () {
+                      // Add menu logic here
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       body: Column(
         children: [
-          // Toggle Buttons
           Container(
             margin: EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -135,8 +134,6 @@ actions: [
               ],
             ),
           ),
-
-          // Projects List
           Expanded(
             child: ListView(
               padding: EdgeInsets.symmetric(horizontal: 16),
@@ -147,80 +144,72 @@ actions: [
           ),
         ],
       ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.transparent,
+        color: const Color.fromARGB(255, 4, 135, 242),
+        height: 60,
+        index: _selectedIndex,
+        items: <Widget>[
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Icon(Icons.folder_open, size: 30, color: Colors.white),
+              Text('Projects', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Icon(Icons.attach_money_rounded, size: 30, color: Colors.white),
+              Text('Donations', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Icon(Icons.home, size: 30, color: Colors.white),
+              Text('Home', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Icon(FontAwesomeIcons.peopleGroup, size: 30, color: Colors.white),
+              Text('Community', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Icon(Icons.person, size: 30, color: Colors.white),
+              Text('Profile', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+            ],
+          ),
+        ],
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
 
-
-
-
-
-
-
-
-       bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Colors.transparent,
-          color: const Color.fromARGB(255, 4, 135, 242),
-          height: 60,
-          index: _selectedIndex,
-          items: <Widget>[
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(Icons.folder_open, size: 30, color: Colors.white),
-                Text('Projects', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
-              ],
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(Icons.attach_money_rounded, size: 30, color: Colors.white),
-                Text('Donations', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
-              ],
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(Icons.home, size: 30, color: Colors.white),
-                Text('Home', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
-              ],
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(FontAwesomeIcons.peopleGroup, size: 30, color: Colors.white),
-                Text('Community', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
-              ],
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(Icons.person, size: 30, color: Colors.white),
-                Text('Profile', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
-              ],
-            ),
-          ],
-          onTap: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-
-            switch (index) {
-              case 0:
-                Navigator.pushNamed(context, '/projects');
-                break;
-              case 1:
-                Navigator.pushNamed(context, '/donations');
-                break;
-              case 2:
-                Navigator.pushNamed(context, '/home');
-                break;
-              case 3:
-                Navigator.pushNamed(context, '/community');
-                break;
-              case 4:
-                Navigator.pushNamed(context, '/profile');
-                break;
-            }
-          },
-        ),
+          switch (index) {
+            case 0:
+              Navigator.pushNamed(context, '/projects');
+              break;
+            case 1:
+              Navigator.pushNamed(context, '/donations');
+              break;
+            case 2:
+              Navigator.pushNamed(context, '/home');
+              break;
+            case 3:
+              Navigator.pushNamed(context, '/community');
+              break;
+            case 4:
+              Navigator.pushNamed(context, '/profile');
+              break;
+          }
+        },
+      ),
     );
   }
 
