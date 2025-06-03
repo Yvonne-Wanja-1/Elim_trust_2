@@ -81,13 +81,14 @@ class HomePage extends StatefulWidget {
 
   static final List<_ImpactCardData> _impactCardItems = [
     const _ImpactCardData(
-      imagePath: 'images/trauma.jpg',
+      imagePath: 'images/t.png',
       title: 'Y-PREP',
       description:
           'Bridging trauma healing with entrepreneurship and climate action for youth in informal settlements',
     ),
     const _ImpactCardData(
-      imagePath: 'images/mats dialog.jpg',
+      
+      imagePath: 'images/dialogue.jpg',
       title: 'Mats Dialogue',
       description:
           'Trauma healing-centred circles for teen mothers and women, rooted in African tradition and storytelling.',
@@ -148,7 +149,7 @@ class _HomePageState extends State<HomePage> {
               const Padding(
                 padding: EdgeInsets.only(left: 16.0, top: 8.0),
                 child: Text(
-                  'Our Impact:',
+                  'Our Impact Programs:',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
