@@ -2,6 +2,7 @@ import 'package:elim_trust_2/pages/capacity.dart';
 import 'package:elim_trust_2/pages/communitypage.dart';
 import 'package:elim_trust_2/pages/donations.dart';
 import 'package:elim_trust_2/pages/homepage.dart';
+import 'package:elim_trust_2/pages/latestnews.dart';
 import 'package:elim_trust_2/pages/mats.dart';
 import 'package:elim_trust_2/pages/profilepage.dart';
 import 'package:elim_trust_2/pages/projects.dart';
@@ -40,6 +41,9 @@ routes: {
     '/matsdialogue': (context) => const MatsDialoguePage(),
     '/vunja': (context) => const VunjaPage(),
    '/capacity': (context) => const CapacityPage(),
+
+
+   '/latestnews': (context) => const LatestnewsPage(), // This is the home page route
 
 
 

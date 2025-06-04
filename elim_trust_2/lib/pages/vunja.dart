@@ -5,10 +5,10 @@ class VunjaPage extends StatefulWidget {
   const VunjaPage({super.key});
 
   @override
-  State<VunjaPage> createState() => _MatsDialoguePageState();
+  State<VunjaPage> createState() => _VunjaPageState();
 }
 
-class _MatsDialoguePageState extends State<VunjaPage>
+class _VunjaPageState extends State<VunjaPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Offset> _slideAnimation;

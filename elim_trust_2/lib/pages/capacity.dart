@@ -5,10 +5,10 @@ class CapacityPage extends StatefulWidget {
   const CapacityPage({super.key});
 
   @override
-  State<CapacityPage> createState() => _MatsDialoguePageState();
+  State<CapacityPage> createState() => _CapacityPageState();
 }
 
-class _MatsDialoguePageState extends State<CapacityPage>
+class _CapacityPageState extends State<CapacityPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Offset> _slideAnimation;
@@ -19,7 +19,7 @@ class _MatsDialoguePageState extends State<CapacityPage>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 800), // Consider making animation durations constants
     );
 
     _slideAnimation = Tween<Offset>(
