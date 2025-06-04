@@ -142,7 +142,7 @@ class HomePage extends StatefulWidget {
       imagePath: 'images/capacity.jpg',
       title: 'Capacity Building of Spiritual & Community Leaders',
       description:
-          'Equipping leaders to create grassroots healing movements and support trauma-informed community transformation',
+          'Equipping leaders to create grassroots healing movements.',
     ),
   ];
 
