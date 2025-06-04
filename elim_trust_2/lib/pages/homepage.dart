@@ -31,68 +31,73 @@ class _ImpactCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // The InkWell provides the ripple effect. The GestureDetector handles the tap.
-    // If tapping the image and text does the same thing, one GestureDetector around the Column is sufficient.
-    // If they do different things, keep separate GestureDetectors or use onCardTap for the whole card.
-    // Assuming tapping the image or text navigates, we'll keep the GestureDetector around the Column.
-    return SizedBox(
-      width: cardWidth ?? 300.0, // Defaults to 300.0
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container( // Image container is fixed size
-            height: 300,
-            width: 300.0,
-            decoration: BoxDecoration(
+    return InkWell( // Added InkWell for tap effect on the whole card
+      onTap: onCardTap, // Use the onCardTap for the whole card
+      splashColor: Colors.transparent, // Removes the splash effect
+      highlightColor: Colors.transparent, // Removes the highlight effect
+      hoverColor: Colors.transparent, // Removes the hover effect
+      child: SizedBox(
+        width: cardWidth ?? 300.0, // Defaults to 300.0
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container( // Image container is fixed size
+              height: 300,
+              width: 300.0,
+              decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
-                      color: Colors.blue.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: const Offset(0, 3),
+
+                      color: Colors.blue,
+                      blurRadius: 5.0,
+                      offset: Offset(0, 2), // Shadow position
+
+                      spreadRadius: 2.0, // Shadow spread
+                      
                     ),
-                  ],
-                ),
+                  ]),
+              
                 clipBehavior: Clip.antiAlias,
-            child: Image.asset(data.imagePath, fit: BoxFit.cover), // Image fills the 300x300 container
-          ),
-          const SizedBox(height: 8), // Space between image and text
-          // Text content below the image
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: Text(
-              data.title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Colors.blue,
-                decoration: TextDecoration.underline,
-                decorationColor: Colors.blue,
-              ),
-              textAlign: TextAlign.center, // Consider if center is desired here
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+              child: Image.asset(data.imagePath, fit: BoxFit.cover), // Image fills the 300x300 container
             ),
-          ),
-          const SizedBox(height: 4), // Space between title and description
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: Text(
-              data.description,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'Arial',
-                fontStyle: FontStyle.italic,
-                color: Colors.black,
+            const SizedBox(height: 8), // Space between image and text
+            // Text content below the image
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Text(
+                data.title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.blue,
+                ),
+                textAlign: TextAlign.center, // Consider if center is desired here
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-              textAlign: TextAlign.start,
-              maxLines: 5,
-              overflow: TextOverflow.ellipsis,
             ),
-          ),
-        ],
+            const SizedBox(height: 4), // Space between title and description
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal: 4.0),
+              child: Text(
+                data.description,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w100,
+                  fontFamily: 'Arial',
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.start,
+                maxLines: 5,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -218,14 +223,22 @@ class _HomePageState extends State<HomePage> {
                       padding: EdgeInsets.only(right: idx == HomePage._impactCardItems.length - 1 ? 0 : 16.0),
                       child: _ImpactCardWidget(
                         data: data,
-                        onImageTap: imageSpecificOnTap,
+                        onCardTap: imageSpecificOnTap, // Changed from onImageTap to onCardTap
                       ),
                     );
                   }).toList(),
                 ),
               ),
               // Latest News section header and button
-              const SizedBox(height: 8),
+              const SizedBox(height: 16),
+
+
+
+
+
+
+
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3.0),
                 child: Row(
@@ -493,4 +506,4 @@ Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices
       // The rest of the Scaffold properties like floatingActionButton can go here
     );
   }
-}
+} 
