@@ -1,3 +1,4 @@
+import 'package:elim_trust_2/pages/capacity.dart';
 import 'package:elim_trust_2/pages/communitypage.dart';
 import 'package:elim_trust_2/pages/donations.dart';
 import 'package:elim_trust_2/pages/homepage.dart';
@@ -38,6 +39,8 @@ routes: {
   '/yprep': (context) => const YprepPage(),
     '/matsdialogue': (context) => const MatsDialoguePage(),
     '/vunja': (context) => const VunjaPage(),
+   '/capacity': (context) => const CapacityPage(),
+
 
 
 },

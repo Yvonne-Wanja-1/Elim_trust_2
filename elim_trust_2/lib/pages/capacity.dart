@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:elim_trust_2/widgets/appbar.dart'; // Make sure this file defines 'CustomAppBar'
 
-class VunjaPage extends StatefulWidget {
-  const VunjaPage({super.key});
+class CapacityPage extends StatefulWidget {
+  const CapacityPage({super.key});
 
   @override
-  State<VunjaPage> createState() => _MatsDialoguePageState();
+  State<CapacityPage> createState() => _MatsDialoguePageState();
 }
 
-class _MatsDialoguePageState extends State<VunjaPage>
+class _MatsDialoguePageState extends State<CapacityPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Offset> _slideAnimation;
@@ -57,7 +57,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
             child: SlideTransition(
               position: _slideAnimation,
               child: const Text(
-                "VUNJA KALABASH PROGRAM",
+                "Capacity Building ",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -89,7 +89,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/donations');
+                  Navigator.pushNamed(context, '/capacity');
                 },
               ),
             ),
@@ -106,7 +106,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
                 margin: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: const Color(0xFFA19694),
+                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.blue.withOpacity(0.5),
@@ -119,7 +119,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
-                    'images/equity.jpg',
+                    'images/capacity.jpg',
                     fit: BoxFit.cover,
                     width: double.infinity,
                     height: 250,
@@ -129,7 +129,7 @@ class _MatsDialoguePageState extends State<VunjaPage>
               const SizedBox(height: 20),
               const Center(
                 child: Text(
-                  'Vunja Kalabash”',
+                  'Healing at the Grassroots”',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,
@@ -145,9 +145,11 @@ class _MatsDialoguePageState extends State<VunjaPage>
               const Padding(
                 padding: EdgeInsets.all(12.0),
                 child: Text(
-                  '''Breaking the Cycle of SGBV, Substance Abuse & Mental Health Stigma in Learning Institutions and Communities
+                  '''Equipping Spiritual and Community Leaders for Better Health
 
-A flagship initiative by Elim Trust, Vunja Kalabash tackles interconnected challenges of Sexual and Gender-Based Violence (SGBV), substance abuse, and mental health stigma among youth in higher learning institutions and grassroots communities.''',
+Elim Trust empowers Spiritual  leaders, and community champions to address the deep challenges of sexual abuse, mental health, and trauma—particularly among children and families. Through a powerful blend of education, advocacy, and psychosocial support, we champion holistic well-being in Kenya’s most underserved communities.
+
+Having worked extensively in the Rift Valley— communities continue to grapple with generational land conflict trauma— in Northern Kenya among pastoralist populations affected by displacement, violence, and climate-induced stress. Elim Trust equips Spiritual leaders, community elders, and grassroots champions with tools for psychosocial support, advocacy, and trauma-informed care.''',
                   style: TextStyle(
                     fontSize: 16,
                     fontStyle: FontStyle.italic,
@@ -161,7 +163,7 @@ A flagship initiative by Elim Trust, Vunja Kalabash tackles interconnected chall
               const SizedBox(height: 20),
               const Center(
                 child: Text(
-                  'What it Offers:',
+                  'Focus Areas:',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,
@@ -180,16 +182,14 @@ A flagship initiative by Elim Trust, Vunja Kalabash tackles interconnected chall
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildOfferPoint(
-                        'Breaking silence and stigma through open dialogue'),
+                        'Child protection and mental health in faith spaces'),
                     const SizedBox(height: 8),
                     _buildOfferPoint(
-                        'Training students, peer leaders, and faculty in trauma-informed care'),
+                        'SGBV awareness and trauma-informed response'),
+
                     const SizedBox(height: 8),
                     _buildOfferPoint(
-                        'Promoting healing, accountability, and positive masculinity'),
-                    const SizedBox(height: 8),
-                    _buildOfferPoint(
-                        'Fostering inclusive, safe educational environments'),
+                        'Interventions in communities affected by land conflict, displacement, and climate crises'),
                   ],
                 ),
               ),
@@ -222,7 +222,7 @@ A flagship initiative by Elim Trust, Vunja Kalabash tackles interconnected chall
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [ // Removed const because children are no longer all const
                     Text(
-                      '''Change begins when conversations start!''',
+                      '''When trauma is left unspoken, it grows. ''',
                       style: const TextStyle( // Added const
                         fontStyle: FontStyle.italic,
                         //fontWeight: FontWeight.bold,
@@ -232,7 +232,7 @@ A flagship initiative by Elim Trust, Vunja Kalabash tackles interconnected chall
                     ),
                    // const SizedBox(height: 16), // Added some space between the texts
                     Text(
-                      '''Vunja Kalabash is not just about awareness—it’s about action. 😊''',
+                      '''When trauma is left unspoken, it grows. 😊''',
                       style: const TextStyle( // Added const
                         //fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,

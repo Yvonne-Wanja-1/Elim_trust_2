@@ -208,13 +208,9 @@ class _HomePageState extends State<HomePage> {
                     _ImpactCardData data = entry.value;
                     double? customWidth;
                     VoidCallback? imageSpecificOnTap; // This will be for the image tap
+
+
                     // VoidCallback? wholeCardTap; // If you need a separate tap for the whole card
-
-                    if (data.title == 'Mats Dialogue') {
-                      customWidth = 360.0; 
-                    }
-
-
                     // Define the action for when the Y-PREP image is tapped
                   
                   
@@ -255,7 +251,7 @@ class _HomePageState extends State<HomePage> {
                     } else if (data.title == 'Capacity Building of Spiritual & Community Leaders') {
                       imageSpecificOnTap = () {
                         // Navigate to the Capacity Building page
-                        Navigator.pushNamed(context, '/capacityBuilding');
+                        Navigator.pushNamed(context, '/capacity');
                       };
                     } 
                     
