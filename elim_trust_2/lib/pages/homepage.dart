@@ -234,7 +234,9 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/latestnews');
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 4, 135, 242),
                         shape: RoundedRectangleBorder(
