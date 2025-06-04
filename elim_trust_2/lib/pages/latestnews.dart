@@ -127,6 +127,29 @@ class LatestnewsPage extends StatelessWidget {
                           ),
                         ),
                       ),
+
+
+
+                       Padding(
+                         padding: const EdgeInsets.all(13.0),
+                         child: ElevatedButton(onPressed: (){},
+                                              style: ElevatedButton.styleFrom(
+                                               backgroundColor: Colors.blue,
+                                               shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                                               ),
+                                              ),
+                                         
+                         child: Text(
+                          'Read More 👇',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Arial',
+                            color: Colors.white,
+                          ),
+                         ),
+                                              ),
+                       ),
                     ],
                   ),
                 ),
@@ -155,21 +178,7 @@ class LatestnewsPage extends StatelessWidget {
                       ),
                     ),
 
-                    ElevatedButton(onPressed: (){},
-                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                     ),
-                     child: Text(
-                      'Read More',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Arial',
-                        color: Colors.white,
-                      ),
-                     ))
+                   
                   ],
                 ),
               ],
