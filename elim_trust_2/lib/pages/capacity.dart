@@ -19,7 +19,7 @@ class _MatsDialoguePageState extends State<CapacityPage>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 800), // Consider making animation durations constants
     );
 
     _slideAnimation = Tween<Offset>(

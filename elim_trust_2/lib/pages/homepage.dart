@@ -46,7 +46,7 @@ class _ImpactCardWidget extends StatelessWidget {
               onTap: onImageTap, // Use the onImageTap callback passed to the widget
               child: Container(
                 height: 300,
-                // width: cardWidth ?? 300.0,
+                width: 300.0, // Explicitly set width to match height
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   boxShadow: [
