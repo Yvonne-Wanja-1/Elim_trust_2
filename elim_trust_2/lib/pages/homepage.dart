@@ -315,7 +315,7 @@ In Mandera, we worked with adolescents and young mothers to advance reproductive
               ),
               const SizedBox(height: 21),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                padding: const EdgeInsets.symmetric(horizontal: 3.0),
                 child: Row(
                   children: [
                     ElevatedButton(
@@ -342,7 +342,7 @@ In Mandera, we worked with adolescents and young mothers to advance reproductive
                   ],
                 ),
               ),
-              const SizedBox(height: 3),
+              const SizedBox(height: 0),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 5),
                 padding: const EdgeInsets.only(top: 8, bottom: 2),
@@ -350,53 +350,66 @@ In Mandera, we worked with adolescents and young mothers to advance reproductive
                   color: const Color.fromARGB(255, 175, 211, 240),
                   borderRadius: BorderRadius.circular(30),
                 ),
-                child: Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Text(
-                              '''👤By: Elim Insights\n              Harmful Traditional Practices (HTPs)''',
-                              style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                decorationColor: Colors.blue,
-                                decorationThickness: 2,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25),
-                            child: Text(
-                              '''
-Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices (HTP). Harmful traditional practices like Female Genital Mutilation (FGM), early and forced marriage are still being practiced by several communities in Africa and across the world. These backward and barbaric...''',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Arial',
-                                fontStyle: FontStyle.italic,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                     Container(
                       height: 250,
-                      width: 250,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 16, right: 8),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Image.asset('images/blogs.jpg', fit: BoxFit.cover),
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.asset('images/blogs.jpg', fit: BoxFit.cover),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        "✍️ By: Elim Insights",
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.blue,
+                          decorationThickness: 2,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
                         ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                      child: Text(
+                        '''
+Harmful Traditional Practices (HTPs)''',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Arial',
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+
+
+                        const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25,),
+                      child: Text(
+                        '''
+Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices''',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Arial',
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],
