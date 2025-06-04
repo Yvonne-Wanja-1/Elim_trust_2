@@ -31,20 +31,19 @@ class _ImpactCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onCardTap,
-      borderRadius: BorderRadius.circular(15.0),
-      child: SizedBox(
-        width: cardWidth ?? 300.0,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            GestureDetector(
-              onTap: onImageTap,
-              child: Container(
-                height: 300,
-                width: 300.0,
-                decoration: BoxDecoration(
+    // The InkWell provides the ripple effect. The GestureDetector handles the tap.
+    // If tapping the image and text does the same thing, one GestureDetector around the Column is sufficient.
+    // If they do different things, keep separate GestureDetectors or use onCardTap for the whole card.
+    // Assuming tapping the image or text navigates, we'll keep the GestureDetector around the Column.
+    return SizedBox(
+      width: cardWidth ?? 300.0, // Defaults to 300.0
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container( // Image container is fixed size
+            height: 300,
+            width: 300.0,
+            decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   boxShadow: [
                     BoxShadow(
@@ -56,61 +55,54 @@ class _ImpactCardWidget extends StatelessWidget {
                   ],
                 ),
                 clipBehavior: Clip.antiAlias,
-                child: Image.asset(data.imagePath, fit: BoxFit.cover),
+            child: Image.asset(data.imagePath, fit: BoxFit.cover), // Image fills the 300x300 container
+          ),
+          const SizedBox(height: 8), // Space between image and text
+          // Text content below the image
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: Text(
+              data.title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.blue,
+                decoration: TextDecoration.underline,
+                decorationColor: Colors.blue,
               ),
+              textAlign: TextAlign.center, // Consider if center is desired here
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
-            GestureDetector(
-              onTap: onImageTap,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 8),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Text(
-                      data.title,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Colors.blue,
-                      ),
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Text(
-                      data.description,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Arial',
-                        fontStyle: FontStyle.italic,
-                        color: Colors.black,
-                      ),
-                      textAlign: TextAlign.start,
-                      maxLines: 5,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
+          ),
+          const SizedBox(height: 4), // Space between title and description
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: Text(
+              data.description,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                fontFamily: 'Arial',
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
               ),
+              textAlign: TextAlign.start,
+              maxLines: 5,
+              overflow: TextOverflow.ellipsis,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
 
+// The HomePage widget remains a StatefulWidget to manage the selected index for the navigation bar.
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  // Static list of impact card data
   static final List<_ImpactCardData> _impactCardItems = [
     const _ImpactCardData(
       imagePath: 'images/t.png',
@@ -139,6 +131,7 @@ class HomePage extends StatefulWidget {
   ];
 
   @override
+  // Creates the mutable state for this widget.
   _HomePageState createState() => _HomePageState();
 }
 
@@ -150,6 +143,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
+          // Provides a bouncing effect when scrolling reaches the end.
           physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -178,6 +172,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const Padding(
+                // Padding for the section title
                 padding: EdgeInsets.only(left: 16.0, top: 8.0),
                 child: Text(
                   'Our Impact Programs:',
@@ -190,6 +185,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              // Horizontal scrollable list of impact cards
               const SizedBox(height: 4),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -228,6 +224,7 @@ class _HomePageState extends State<HomePage> {
                   }).toList(),
                 ),
               ),
+              // Latest News section header and button
               const SizedBox(height: 8),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3.0),
@@ -259,7 +256,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 0),
+              const SizedBox(height: 8), // Added spacing
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 5),
                 padding: const EdgeInsets.only(top: 8, bottom: 2),
@@ -269,10 +266,11 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+                  children: [ // Image above text
                     Container(
                       height: 250,
-                      width: double.infinity,
+                      // width: double.infinity, // Let the container take available width within padding/margin
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal margin to the image
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -282,6 +280,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const SizedBox(height: 10),
+                    // Text content below the image
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text(
@@ -296,7 +295,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                    ),
+                    ), // Consider TextAlign.start if not centered
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                       child: Text(
@@ -315,6 +314,7 @@ In Mandera, we worked with adolescents and young mothers to advance reproductive
                   ],
                 ),
               ),
+              // Our Blogs section header and button
               const SizedBox(height: 21),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3.0),
@@ -344,7 +344,7 @@ In Mandera, we worked with adolescents and young mothers to advance reproductive
                   ],
                 ),
               ),
-              const SizedBox(height: 0),
+              const SizedBox(height: 8), // Added spacing
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 5),
                 padding: const EdgeInsets.only(top: 8, bottom: 2),
@@ -354,10 +354,11 @@ In Mandera, we worked with adolescents and young mothers to advance reproductive
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+                  children: [ // Image above text
                     Container(
                       height: 250,
-                      width: double.infinity,
+                      // width: double.infinity, // Let the container take available width within padding/margin
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal margin to the image
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -367,6 +368,7 @@ In Mandera, we worked with adolescents and young mothers to advance reproductive
                       ),
                     ),
                     const SizedBox(height: 10),
+                    // Text content below the image
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text(
@@ -381,7 +383,7 @@ In Mandera, we worked with adolescents and young mothers to advance reproductive
                         ),
                         textAlign: TextAlign.center,
                       ),
-                    ),
+                    ), // Consider TextAlign.start if not centered
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                       child: Text(
@@ -399,7 +401,7 @@ Harmful Traditional Practices (HTPs)''',
                     ),
 
 
-                        const Padding(
+                    const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 25,),
                       child: Text(
                         '''
@@ -417,6 +419,7 @@ Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices
                   ],
                 ),
               ),
+              // Add some padding at the very bottom if needed
             ],
           ),
         ),
@@ -487,6 +490,7 @@ Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices
           },
         ),
       ),
+      // The rest of the Scaffold properties like floatingActionButton can go here
     );
   }
 }

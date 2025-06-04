@@ -14,10 +14,10 @@ class LatestnewsPage extends StatelessWidget {
             bottomRight: Radius.circular(30),
           ),
           child: AppBar(
-            backgroundColor: const Color.fromARGB(255, 4, 135, 242), // Background color
+            backgroundColor: const Color.fromARGB(255, 4, 135, 242),
             centerTitle: true,
             title: const Text(
-              'Community',
+              'Latest News 📢',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -27,11 +27,11 @@ class LatestnewsPage extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Container(
-                height: 30, // Standard icon button size
-                width: 30,  // Standard icon button size
+                height: 30,
+                width: 30,
                 decoration: BoxDecoration(
-                  color: Colors.white, // Background color
-                  borderRadius: BorderRadius.circular(30), // Circular shape
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
                   boxShadow: const [
                     BoxShadow(
                       color: Colors.red,
@@ -41,10 +41,9 @@ class LatestnewsPage extends StatelessWidget {
                   ],
                 ),
                 child: IconButton(
-                  padding: EdgeInsets.zero, // Remove default padding
-                  icon: const Icon(Icons.volunteer_activism, color: Colors.blue, size: 24), // Icon size
+                  padding: EdgeInsets.zero,
+                  icon: const Icon(Icons.volunteer_activism, color: Colors.blue, size: 24),
                   onPressed: () {
-                    // Navigate to the donations page
                     Navigator.pushNamed(context, '/donations');
                   },
                 ),
@@ -54,11 +53,11 @@ class LatestnewsPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Container(
-                  height: 30, // Standard icon button size
-                  width: 30,  // Standard icon button size
+                  height: 30,
+                  width: 30,
                   decoration: BoxDecoration(
-                    color: Colors.white, // Background color
-                    borderRadius: BorderRadius.circular(30), // Circular shape
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
                     boxShadow: const [
                       BoxShadow(
                         color: Colors.red,
@@ -68,8 +67,8 @@ class LatestnewsPage extends StatelessWidget {
                     ],
                   ),
                   child: IconButton(
-                    padding: EdgeInsets.zero, // Remove default padding
-                    icon: const Icon(Icons.menu, color: Colors.blue), // Icon size
+                    padding: EdgeInsets.zero,
+                    icon: const Icon(Icons.menu, color: Colors.blue),
                     onPressed: () {
                       // Add functionality for the menu button here
                     },
@@ -80,10 +79,77 @@ class LatestnewsPage extends StatelessWidget {
           ),
         ),
       ),
-      body: const Center(
-        child: Text(
-          'Latest News Content Goes Here',
-          style: TextStyle(fontSize: 18, color: Colors.black),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.blue,
+                blurRadius: 5.0,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 2, // Allocate 2/3 of the space for the text
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        '23rd September 2020',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Arial',
+                          fontStyle: FontStyle.italic,
+                          color: Color.fromARGB(255, 144, 180, 210),
+                        ),
+                      ),
+                    ),
+                    const Text(
+                      '''The Mental Health Awareness Toolkit for Community Leaders by Elim Trust is a resource designed to empower spiritual leaders, community elders, and grassroots champions with tools for psychosocial support, advocacy, and trauma-informed care. 
+elim-trust.org
+''',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Arial',
+                        fontStyle: FontStyle.italic,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8), // Space between the text and the image
+              Container(
+                width: 150, // Set the width of the image
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20), // Rounded corners for the image
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.blue,
+                      blurRadius: 5.0,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    'images/mentalhealth.png', // Path to your image asset
+                    fit: BoxFit.cover, // Adjust the image to cover the container
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
