@@ -454,6 +454,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               // Add some padding at the very bottom if needed
+              const SizedBox(height: 10),
             ],
           ),
         ),
