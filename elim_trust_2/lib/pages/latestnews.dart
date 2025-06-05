@@ -261,6 +261,13 @@ class LatestnewsPage extends StatelessWidget {
           ],
         ),
       ),
+
+
+
+
+      bottomNavigationBar: Card(
+        
+      ),
     );
   }
 }
