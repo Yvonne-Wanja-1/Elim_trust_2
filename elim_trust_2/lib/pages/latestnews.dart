@@ -175,23 +175,59 @@ class LatestnewsPage extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(13.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
+                            child: Row(
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    // Reduced padding to make the button smaller
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                    backgroundColor: Colors.blue,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'Read More 👇',
+                                    // Reduced font size
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: 'Arial',
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              child: const Text(
-                                'Read More 👇',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'Arial',
-                                  color: Colors.white,
+
+                                // Added SizedBox for spacing between buttons
+                                Spacer(),
+
+
+
+
+                                 ElevatedButton(
+                                  
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.blue,
+                                    
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'Download PDF📥',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontFamily: 'Arial',
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
-                              ),
+
+
+                                
+                              ],
                             ),
                           ),
                         ],
