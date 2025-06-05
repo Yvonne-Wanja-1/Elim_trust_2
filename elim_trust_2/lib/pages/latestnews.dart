@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 
 class LatestnewsPage extends StatelessWidget {
   const LatestnewsPage({super.key});
@@ -265,9 +267,29 @@ class LatestnewsPage extends StatelessWidget {
 
 
 
-      bottomNavigationBar: Card(
-         
-      ),
+      bottomNavigationBar:Card(
+        elevation: 5,
+        margin: const EdgeInsets.all(8.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(2.0), // Added required padding argument
+          child: Text(
+            'Live. Love. Live.',
+            style: GoogleFonts.dancingScript(
+              textStyle: const TextStyle(
+                fontSize: 12,
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            textAlign: TextAlign.center,
+          ),
+          ),
+        ),
+    
+      
     );
   }
 }
