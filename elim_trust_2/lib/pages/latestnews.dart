@@ -27,8 +27,8 @@ class LatestnewsPage extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Container(
-                height: 30,
-                width: 30,
+                height: 40,
+                width: 40,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
@@ -40,9 +40,11 @@ class LatestnewsPage extends StatelessWidget {
                     ),
                   ],
                 ),
+                alignment: Alignment.center, // Center the icon within the container
                 child: IconButton(
-                  padding: EdgeInsets.zero,
                   icon: const Icon(Icons.volunteer_activism, color: Colors.blue, size: 24),
+                  padding: EdgeInsets.zero, // Remove default padding
+                  constraints: const BoxConstraints(), // Remove default constraints
                   onPressed: () {
                     Navigator.pushNamed(context, '/donations');
                   },
@@ -53,8 +55,8 @@ class LatestnewsPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Container(
-                  height: 30,
-                  width: 30,
+                  height: 40,
+                  width: 40,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(30),
@@ -66,9 +68,11 @@ class LatestnewsPage extends StatelessWidget {
                       ),
                     ],
                   ),
+                  alignment: Alignment.center, // Center the icon within the container
                   child: IconButton(
-                    padding: EdgeInsets.zero,
                     icon: const Icon(Icons.menu, color: Colors.blue),
+                    padding: EdgeInsets.zero, // Remove default padding
+                    constraints: const BoxConstraints(), // Remove default constraints
                     onPressed: () {
                       // Add functionality for the menu button here
                     },
@@ -80,110 +84,150 @@ class LatestnewsPage extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.blue,
-                  blurRadius: 5.0,
-                  offset: Offset(0, 2),
-                ),
-              ],
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 2, // Allocate 2/3 of the space for the text
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          '23rd September 2020',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Arial',
-                            fontStyle: FontStyle.italic,
-                            color: Color.fromARGB(255, 144, 180, 210),
-                          ),
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 12.0, right: 8.0, bottom: 12),
-                        child: Text(
-                          '''The Mental Health Awareness Toolkit for Communi...
-''',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Arial',
-                            fontStyle: FontStyle.italic,
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
-
-
-
-                       Padding(
-                         padding: const EdgeInsets.all(13.0),
-                         child: ElevatedButton(onPressed: (){},
-                                              style: ElevatedButton.styleFrom(
-                                               backgroundColor: Colors.blue,
-                                               shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                                               ),
-                                              ),
-                                         
-                         child: Text(
-                          'Read More 👇',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Arial',
-                            color: Colors.white,
-                          ),
-                         ),
-                                              ),
-                       ),
+        child: Column(
+          children: [
+            // Search Bar Section
+            GestureDetector(
+              onTap: () {
+                // Add functionality for the search bar tap here
+              },
+              child: Container(
+                margin: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30),
+                  ),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Colors.purpleAccent,
+                      Colors.red,
                     ],
                   ),
                 ),
-                const SizedBox(width: 8), // Space between the text and the image
-                Column(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
-                      width: 200, // Set the width of the image
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20), // Rounded corners for the image
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.blue,
-                            blurRadius: 5.0,
-                            offset: Offset(0, 2),
+                    const Icon(Icons.search_rounded, color: Colors.white, size: 30),
+                    const SizedBox(width: 8.0),
+                    const Text(
+                      'Search for News...',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Arial',
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // News Content Section
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.blue,
+                      blurRadius: 5.0,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              '23rd September 2020',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Arial',
+                                fontStyle: FontStyle.italic,
+                                color: Color.fromARGB(255, 139, 193, 238),
+                              ),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 12.0, right: 8.0),
+                            child: Text(
+                              '''The Mental Health Awareness Toolkit for Community Le...
+''',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Arial',
+                                fontStyle: FontStyle.italic,
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(13.0),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              child: const Text(
+                                'Read More 👇',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Arial',
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          'images/mentalhealth.png', // Path to your image asset
-                          fit: BoxFit.cover, // Adjust the image to cover the container
-                        ),
-                      ),
                     ),
-
-                   
+                    const SizedBox(width: 8),
+                    Column(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
+                          width: 200,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.blue,
+                                blurRadius: 5.0,
+                                offset: Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              'images/mentalhealth.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
