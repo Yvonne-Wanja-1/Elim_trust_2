@@ -274,61 +274,64 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.pushNamed(context, '/latestnews');
                 },
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  padding: const EdgeInsets.only(top: 8, bottom: 2),
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 175, 211, 240),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [ // Image above text
-                      Container(
-                        height: 250,
-                        // width: double.infinity, // Let the container take available width within padding/margin
-                        margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal margin to the image
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
-                          child: Image.asset('images/UN.jpg', fit: BoxFit.cover),
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      // Text content below the image
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(
-                          "🌍 UN H6 Joint Programme on RMNCAH (2015–2020):",
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            decorationColor: Colors.blue,
-                            decorationThickness: 2,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue,
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.only(top: 8, bottom: 2),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 175, 211, 240),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [ // Image above text
+                        Container(
+                          height: 250,
+                          // width: double.infinity, // Let the container take available width within padding/margin
+                          margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal margin to the image
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ), // Consider TextAlign.start if not centered
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                        child: Text(
-                          '''
-                In Mandera, we worked with adolescents and young mothers to advance reproductive and maternal health under this multi-agency initiative.''',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Arial',
-                            fontStyle: FontStyle.italic,
-                            color: Colors.black,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: Image.asset('images/UN.jpg', fit: BoxFit.cover),
                           ),
-                          textAlign: TextAlign.center,
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 10),
+                        // Text content below the image
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "🌍 UN H6 Joint Programme on RMNCAH (2015–2020):",
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.blue,
+                              decorationThickness: 2,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ), // Consider TextAlign.start if not centered
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                          child: Text(
+                            '''
+                  In Mandera, we worked with adolescents and young mothers to advance reproductive and maternal health under this multi-agency initiative.''',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Arial',
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -336,105 +339,118 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 21),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3.0),
-                child: Row(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 4, 135, 242),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/blogs');
+                  },
+                  child: Row(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 4, 135, 242),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: const Text(
+                          'Our Blogs',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Arial',
+                            fontStyle: FontStyle.italic,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                      child: const Text(
-                        'Our Blogs',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Arial',
-                          fontStyle: FontStyle.italic,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text('😊', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
-                  ],
+                      const SizedBox(width: 8),
+                      const Text('😊', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 8), // Added spacing
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 5),
-                padding: const EdgeInsets.only(top: 8, bottom: 2),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 175, 211, 240),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [ // Image above text
-                    Container(
-                      height: 250,
-                      // width: double.infinity, // Let the container take available width within padding/margin
-                      margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal margin to the image
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30),
-                        child: Image.asset('images/blogs.jpg', fit: BoxFit.cover),
-                      ),
+              MouseRegion (
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/blogs');
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.only(top: 8, bottom: 2),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 175, 211, 240),
+                      borderRadius: BorderRadius.circular(30),
                     ),
-                    const SizedBox(height: 10),
-                    // Text content below the image
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        "✍️ By: Elim Insights",
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.blue,
-                          decorationThickness: 2,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [ // Image above text
+                        Container(
+                          height: 250,
+                          // width: double.infinity, // Let the container take available width within padding/margin
+                          margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal margin to the image
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: Image.asset('images/blogs.jpg', fit: BoxFit.cover),
+                          ),
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ), // Consider TextAlign.start if not centered
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                      child: Text(
-                        '''
-Harmful Traditional Practices (HTPs)''',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'Arial',
-                          fontStyle: FontStyle.italic,
-                          color: Colors.black,
+                        const SizedBox(height: 10),
+                        // Text content below the image
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "✍️ By: Elim Insights",
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.blue,
+                              decorationThickness: 2,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ), // Consider TextAlign.start if not centered
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                          child: Text(
+                            '''
+                  Harmful Traditional Practices (HTPs)''',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Arial',
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                        textAlign: TextAlign.center,
-                      ),
+                  
+                  
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 25,),
+                          child: Text(
+                            '''
+                  Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices''',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Arial',
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
                     ),
-
-
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25,),
-                      child: Text(
-                        '''
-Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices''',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'Arial',
-                          fontStyle: FontStyle.italic,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
               // Add some padding at the very bottom if needed
