@@ -270,61 +270,66 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 8), // Added spacing
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 5),
-                padding: const EdgeInsets.only(top: 8, bottom: 2),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 175, 211, 240),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [ // Image above text
-                    Container(
-                      height: 250,
-                      // width: double.infinity, // Let the container take available width within padding/margin
-                      margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal margin to the image
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30),
-                        child: Image.asset('images/UN.jpg', fit: BoxFit.cover),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    // Text content below the image
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        "🌍 UN H6 Joint Programme on RMNCAH (2015–2020):",
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.blue,
-                          decorationThickness: 2,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/latestnews');
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.only(top: 8, bottom: 2),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 175, 211, 240),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [ // Image above text
+                      Container(
+                        height: 250,
+                        // width: double.infinity, // Let the container take available width within padding/margin
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal margin to the image
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ), // Consider TextAlign.start if not centered
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                      child: Text(
-                        '''
-In Mandera, we worked with adolescents and young mothers to advance reproductive and maternal health under this multi-agency initiative.''',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'Arial',
-                          fontStyle: FontStyle.italic,
-                          color: Colors.black,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: Image.asset('images/UN.jpg', fit: BoxFit.cover),
                         ),
-                        textAlign: TextAlign.center,
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 10),
+                      // Text content below the image
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          "🌍 UN H6 Joint Programme on RMNCAH (2015–2020):",
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.blue,
+                            decorationThickness: 2,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ), // Consider TextAlign.start if not centered
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                        child: Text(
+                          '''
+                In Mandera, we worked with adolescents and young mothers to advance reproductive and maternal health under this multi-agency initiative.''',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Arial',
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               // Our Blogs section header and button

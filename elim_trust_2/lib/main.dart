@@ -1,3 +1,4 @@
+import 'package:elim_trust_2/pages/blogs.dart';
 import 'package:elim_trust_2/pages/capacity.dart';
 import 'package:elim_trust_2/pages/communitypage.dart';
 import 'package:elim_trust_2/pages/donations.dart';
@@ -43,7 +44,8 @@ routes: {
    '/capacity': (context) => const CapacityPage(),
 
 
-   '/latestnews': (context) => const LatestnewsPage(), // This is the home page route
+   '/latestnews': (context) => const LatestnewsPage(), 
+  '/blogs': (context) => const BlogsPage(), // Assuming you have a BlogsPage
 
 
 
