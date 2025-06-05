@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LatestnewsPage extends StatelessWidget {
@@ -290,9 +291,137 @@ class LatestnewsPage extends StatelessWidget {
               indent: 16, // Padding on the left
               endIndent: 16,
             ),
+
+
+            Row(
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 4),
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.red,
+                          blurRadius: 5.0,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    
+                    child: Icon(Icons.phone, color: Colors.white)),
+                ),
+                const SizedBox(width: 1), // Spacing between icon and text
+Text('+254 705 558 885',
+style: TextStyle(
+  fontWeight: FontWeight.bold,
+  color: Colors.blue,
+
+),),
+               Spacer(), // Spacing between phone and email
+              Padding(
+                  padding: const EdgeInsets.only( right: 4),
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.red,
+                          blurRadius: 5.0,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    
+                    child: Icon(Icons.email_rounded, color: Colors.white)),
+                ),
+                const SizedBox(width: 1), // Spacing between icon and text
+
+Padding(
+  padding: const EdgeInsets.only(right: 12),
+  child: Text('info@elim-trust.org',
+  style: TextStyle(
+    //fontWeight: FontWeight.bold,
+    color: Colors.blue,
+  ),
+  ),
+),
+
+
+              ],
+              
+            ),
+
+// FloatingActionButton(
+
+//               onPressed: () {
+//                 // Add functionality for the WhatsApp button here
+//               },
+//              // backgroundColor: Colors.white,
+//               child: const Icon(
+//                 FontAwesomeIcons.whatsapp,
+//                 color: Colors.green,
+//               ),
+//             ),
+  //  Container(
+  //   height: 30,
+  //   width: 30,
+  //   decoration: BoxDecoration(
+  //     color: Colors.white,
+  //     borderRadius: BorderRadius.circular(50),
+  //     boxShadow: const [
+  //       BoxShadow(
+  //         color: Colors.red,
+  //         blurRadius: 5.0,
+  //         offset: Offset(0, 2),
+  //       ),
+  //     ],
+  //   ),
+    
+  // child:  Icon(FontAwesomeIcons.whatsapp, 
+  // color: Colors.green)
+    
+    
+  //   ),
+
+
+
+  Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Icon(FontAwesomeIcons.linkedin, 
+color: Colors.blue),
+SizedBox(width: 10), // Spacing between icons
+
+  Icon(FontAwesomeIcons.instagram, 
+color: Colors.blue
+),
+SizedBox(width: 10),
+  Icon(FontAwesomeIcons.x,
+ color: Colors.blue),
+SizedBox(width: 10),
+
+  Icon(FontAwesomeIcons.whatsapp, 
+color: Colors.blue),
+SizedBox(width: 10), 
+
+  Icon(FontAwesomeIcons.facebook, 
+color: Colors.blue),
+  ],
+
+)
           ],
         ),
       ),
     );
   }
 }
+
+
