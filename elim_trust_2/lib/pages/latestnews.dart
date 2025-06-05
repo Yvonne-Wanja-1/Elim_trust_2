@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import 'package:google_fonts/google_fonts.dart';
 
 class LatestnewsPage extends StatelessWidget {
   const LatestnewsPage({super.key});
@@ -182,30 +181,26 @@ class LatestnewsPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 8),
-                        Column(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
-                              width: 200,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Colors.blue,
-                                    blurRadius: 5.0,
-                                    offset: Offset(0, 2),
-                                  ),
-                                ],
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
+                          width: 200,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.blue,
+                                blurRadius: 5.0,
+                                offset: Offset(0, 2),
                               ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.asset(
-                                  'images/mentalhealth.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              'images/mentalhealth.png',
+                              fit: BoxFit.cover,
                             ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
@@ -266,30 +261,38 @@ class LatestnewsPage extends StatelessWidget {
 
 
 
-
-      bottomNavigationBar:Card(
+      bottomNavigationBar: Card(
         elevation: 5,
         margin: const EdgeInsets.all(8.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Padding(
-          padding: EdgeInsets.all(2.0), // Added required padding argument
-          child: Text(
-            'Live. Love. Live.',
-            style: GoogleFonts.dancingScript(
-              textStyle: const TextStyle(
-                fontSize: 12,
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 3.0), // Adjusted padding
+              child: Text(
+                'Live. Love. Live.',
+                style: GoogleFonts.dancingScript(
+                  textStyle: const TextStyle(
+                    fontSize: 16, // Slightly increased font size
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
-            textAlign: TextAlign.center,
-          ),
-          ),
+            const Divider(
+              color: Colors.blue,
+              thickness: 1,
+              indent: 16, // Padding on the left
+              endIndent: 16,
+            ),
+          ],
         ),
-    
-      
+      ),
     );
   }
 }
