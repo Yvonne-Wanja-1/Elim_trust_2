@@ -104,8 +104,11 @@ class LatestnewsPage extends StatelessWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.purpleAccent,
-                      Colors.red,
+                      Colors.blue,
+                       Colors.blue,
+                      Color.fromARGB(255, 10, 21, 228),
+                      Colors.blue,
+                       Colors.blue,
                     ],
                   ),
                 ),
@@ -115,15 +118,15 @@ class LatestnewsPage extends StatelessWidget {
                   children: [
                     const Icon(Icons.search_rounded, color: Colors.white, size: 30),
                     const SizedBox(width: 8.0),
-                    const Text(
-                      'Search for News...',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Arial',
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
+                    Text( // Removed 'const' as GoogleFonts style is not constant
+                'Search for news articles...',
+                style: GoogleFonts.dancingScript(
+                  fontSize: 19,
+                  color: Colors.white, // Note: Consider changing for better contrast
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
                   ],
                 ),
               ),
@@ -181,9 +184,9 @@ class LatestnewsPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const SizedBox(width: 8),
+                        const SizedBox(width: 5),
                         Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
+                          margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
                           width: 200,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -364,7 +367,49 @@ Padding(
 //               onPressed: () {
 //                 // Add functionality for the WhatsApp button here
 //               },
-//              // backgroundColor: Colors.white,
+  Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Icon(FontAwesomeIcons.linkedin, 
+color: Colors.blue),
+SizedBox(width: 10), // Spacing between icons
+
+  Icon(FontAwesomeIcons.instagram, 
+color: Colors.blue
+),
+SizedBox(width: 10),
+  Icon(FontAwesomeIcons.xTwitter,
+ color: Colors.blue),
+SizedBox(width: 10),
+
+  Icon(FontAwesomeIcons.whatsapp, 
+color: Colors.blue),
+SizedBox(width: 10), 
+
+  Icon(FontAwesomeIcons.facebook, 
+color: Colors.blue),
+
+
+SizedBox(width: 10), // Spacing between icons
+  Icon(FontAwesomeIcons.locationDot, 
+color: Colors.red),
+SizedBox(width: 10),
+
+  ],
+
+),
+
+
+
+
+          // Add more icons or text as needed:
+          
+          ],
+        ),
+      ),
+      
+      
+      //              // backgroundColor: Colors.white,
 //               child: const Icon(
 //                 FontAwesomeIcons.whatsapp,
 //                 color: Colors.green,
@@ -393,33 +438,7 @@ Padding(
 
 
 
-  Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    Icon(FontAwesomeIcons.linkedin, 
-color: Colors.blue),
-SizedBox(width: 10), // Spacing between icons
 
-  Icon(FontAwesomeIcons.instagram, 
-color: Colors.blue
-),
-SizedBox(width: 10),
-  Icon(FontAwesomeIcons.x,
- color: Colors.blue),
-SizedBox(width: 10),
-
-  Icon(FontAwesomeIcons.whatsapp, 
-color: Colors.blue),
-SizedBox(width: 10), 
-
-  Icon(FontAwesomeIcons.facebook, 
-color: Colors.blue),
-  ],
-
-)
-          ],
-        ),
-      ),
     );
   }
 }
