@@ -1,12 +1,17 @@
 import 'package:elim_trust_2/pages/blogs.dart';
 import 'package:elim_trust_2/pages/capacity.dart';
 import 'package:elim_trust_2/pages/communitypage.dart';
+import 'package:elim_trust_2/pages/contact.dart';
 import 'package:elim_trust_2/pages/donations.dart';
+import 'package:elim_trust_2/pages/gallery.dart';
 import 'package:elim_trust_2/pages/homepage.dart';
 import 'package:elim_trust_2/pages/latestnews.dart';
 import 'package:elim_trust_2/pages/mats.dart';
 import 'package:elim_trust_2/pages/profilepage.dart';
 import 'package:elim_trust_2/pages/projects.dart';
+import 'package:elim_trust_2/pages/signin.dart';
+import 'package:elim_trust_2/pages/signout.dart';
+import 'package:elim_trust_2/pages/signup.dart';
 import 'package:elim_trust_2/pages/vunja.dart';
 
 import 'package:elim_trust_2/pages/yprep.dart';
