@@ -122,19 +122,19 @@ actions: [
                       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                         const PopupMenuItem<String>(
                           value: 'signup_signin',
-                          child: Text('Sign Up/Sign In'),
+                          child: Text('Sign Up/Sign In', style: TextStyle(color: Colors.blue)),
                         ),
                         const PopupMenuItem<String>(
                           value: 'gallery_media',
-                          child: Text('Gallery/Media'),
+                          child: Text('Gallery/Media', style: TextStyle(color: Colors.blue)),
                         ),
                         const PopupMenuItem<String>(
                           value: 'donate',
-                          child: Text('Donate/Support Us'),
+                          child: Text('Donate/Support Us', style: TextStyle(color: Colors.blue)),
                         ),
                         const PopupMenuItem<String>(
                           value: 'contact_us',
-                          child: Text('Contact Us'),
+                          child: Text('Contact Us', style: TextStyle(color: Colors.blue)),
                         ),
                       ],
                       tooltip: 'Open menu',
