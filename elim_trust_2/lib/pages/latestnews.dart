@@ -110,10 +110,10 @@ class LatestnewsPage extends StatelessWidget {
                     end: Alignment.bottomRight,
                     colors: [
                       Colors.blue,
-                       Colors.blue,
+                      // Colors.blue, // Redundant
                       Color.fromARGB(255, 10, 21, 228),
                       Colors.blue,
-                       Colors.blue,
+                      // Colors.blue, // Redundant
                     ],
                   ),
                 ),
@@ -162,12 +162,11 @@ class LatestnewsPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0), // Consider using GoogleFonts or default system font
                                 child: Text(
                                   '23rd September 2020',
                                   style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'Arial',
                                     fontStyle: FontStyle.italic,
                                     color: Color.fromARGB(255, 139, 193, 238),
                                   ),
@@ -175,12 +174,11 @@ class LatestnewsPage extends StatelessWidget {
                               ),
                               const Padding(
                                 padding: EdgeInsets.only(left: 12.0, right: 8.0),
-                                child: Text(
+                                child: Text( // Consider using GoogleFonts or default system font
                                   '''The Mental Health Awareness Toolk...
 ''',
                                   style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'Arial',
                                     fontStyle: FontStyle.italic,
                                     color: Colors.blue,
                                   ),
@@ -228,12 +226,11 @@ class LatestnewsPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
-                            child: const Text(
+                            child: const Text( // Consider default system font or GoogleFonts
                               'Read More 👇',
-                              // Reduced font size
                               style: TextStyle(
                                 fontSize: 16,
-                                fontFamily: 'Arial',
+                                // fontFamily: 'Arial', // Consider removing or using a bundled/Google font
                                 color: Colors.white,
                               ),
                             ),
@@ -243,23 +240,27 @@ class LatestnewsPage extends StatelessWidget {
                           ElevatedButton(
                             onPressed: () async {
                               // --- PDF Download/Open Logic ---
-                              const String assetPath = 'assets/pdfs/your_document_name.pdf'; // IMPORTANT: Change to your PDF file name
+                              // IMPORTANT: Ensure 'your_actual_document_name.pdf' is the correct name of your PDF
+                              // file (case-sensitive!) located in the 'assets/pdfs/' directory, and that 'assets/pdfs/'
+                              // is declared in your pubspec.yaml. The path below should match your
+                              // 'pubspec.yaml' declaration and actual file location.
+                              // User specified: folder 'pdf', file 'mental.pdf'
+                              const String assetPath = 'pdf/mental.pdf'; 
                               
                               try {
                                 // 1. Get the directory for temporary files
                                 final Directory tempDir = await getTemporaryDirectory();
                                 final String tempPath = tempDir.path;
                                 final String filePath = '$tempPath/${assetPath.split('/').last}'; // e.g., /data/user/0/.../your_document_name.pdf
-                                final File file = File('pdf/mental.pdf');
+                                final File file = File(filePath); // Use the dynamically created filePath
 
                                 // 2. Load the asset
                                 final ByteData byteData = await rootBundle.load(assetPath);
                                 
                                 // 3. Write the asset to the temporary file
                                 await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
-
                                 // 4. Open the file
-                                final OpenResult result = await OpenFile.open('pdf/mental.pdf'); // Use the file path directly
+                                final OpenResult result = await OpenFile.open(filePath); // Use the same filePath to open
 
                                 if (result.type != ResultType.done) {
                                   print('Error opening file: ${result.message}');
@@ -285,11 +286,11 @@ class LatestnewsPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                             ),
-                            child: const Text(
+                            child: const Text( // Consider default system font or GoogleFonts
                               'Download PDF📥',
                               style: TextStyle(
                                 fontSize: 15,
-                                fontFamily: 'Arial',
+                                // fontFamily: 'Arial', // Consider removing or using a bundled/Google font
                                 color: Colors.white,
                               ),
                             ),
@@ -362,46 +363,39 @@ class LatestnewsPage extends StatelessWidget {
                       
                       child: Icon(Icons.phone, color: Colors.white)),
                   ),
-                  const SizedBox(width: 1), // Spacing between icon and text
-Text('+254 705 558 885',
-style: TextStyle(
-  fontWeight: FontWeight.bold,
-  color: Colors.blue,
-
-),),
-               Spacer(), // Spacing between phone and email
-              Padding(
-                    padding: const EdgeInsets.only( right: 4),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(50),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.red,
-                            blurRadius: 5.0,
-                            offset: Offset(0, 2),
+                  const SizedBox(width: 4), // Spacing between icon and text
+                  const Text('+254 705 558 885', // Made const
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    )),
+                  const Spacer(), // Spacing between phone and email
+                  Padding(
+                        padding: const EdgeInsets.only( right: 4),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(50),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.red,
+                                blurRadius: 5.0,
+                                offset: Offset(0, 2),
+                              ),
+                            ],
                           ),
-                        ],
+                          child: const Icon(Icons.email_rounded, color: Colors.white))),
+                  const SizedBox(width: 4), // Spacing between icon and text
+                  const Padding( // Made const
+                      padding: EdgeInsets.only(right: 20),
+                      child: Text('info@elim-trust.org',
+                        style: TextStyle(
+                          color: Colors.blue,
+                        ),
                       ),
-                      
-                      child: Icon(Icons.email_rounded, color: Colors.white)),
-                  ),
-                  const SizedBox(width: 1), // Spacing between icon and text
-
-Padding(
-    padding: const EdgeInsets.only(right: 20),
-    child: Text('info@elim-trust.org',
-    style: TextStyle(
-      //fontWeight: FontWeight.bold,
-      color: Colors.blue,
-    ),
-    ),
-  ),
-
-
+                    ),
                 ],
                 
               ),
@@ -413,35 +407,22 @@ Padding(
 //               },
 SizedBox(height: 10), // Spacing between rows
     Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Icon(FontAwesomeIcons.linkedin, 
-color: Colors.blue),
-SizedBox(width: 10), // Spacing between icons
-
-    Icon(FontAwesomeIcons.instagram, 
-color: Colors.blue
-),
-SizedBox(width: 10),
-    Icon(FontAwesomeIcons.xTwitter,
- color: Colors.blue),
-SizedBox(width: 10),
-
-    Icon(FontAwesomeIcons.whatsapp, 
-color: Colors.blue),
-SizedBox(width: 10), 
-
-    Icon(FontAwesomeIcons.facebook, 
-color: Colors.blue),
-
-
-SizedBox(width: 10), // Spacing between icons
-    Icon(FontAwesomeIcons.locationDot, 
-color: Colors.red),
-SizedBox(width: 10),
-
-    ],
-
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [ // Made this list const
+        Icon(FontAwesomeIcons.linkedin, color: Colors.blue),
+        SizedBox(width: 10), // Spacing between icons
+        Icon(FontAwesomeIcons.instagram, color: Colors.blue),
+        SizedBox(width: 10),
+        Icon(FontAwesomeIcons.xTwitter, color: Colors.blue),
+        SizedBox(width: 10),
+        Icon(FontAwesomeIcons.whatsapp, color: Colors.blue),
+        SizedBox(width: 10), 
+        Icon(FontAwesomeIcons.facebook, color: Colors.blue),
+        SizedBox(width: 10), // Spacing between icons
+        Icon(FontAwesomeIcons.locationDot, color: Colors.red),
+        SizedBox(width: 10), // This last SizedBox doesn't have much visual effect here
+      ],
+    
   ),
 
 
