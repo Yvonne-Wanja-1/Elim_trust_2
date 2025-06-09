@@ -1,12 +1,17 @@
 import 'package:elim_trust_2/pages/blogs.dart';
 import 'package:elim_trust_2/pages/capacity.dart';
 import 'package:elim_trust_2/pages/communitypage.dart';
+import 'package:elim_trust_2/pages/contact.dart';
 import 'package:elim_trust_2/pages/donations.dart';
+import 'package:elim_trust_2/pages/gallery.dart';
 import 'package:elim_trust_2/pages/homepage.dart';
 import 'package:elim_trust_2/pages/latestnews.dart';
 import 'package:elim_trust_2/pages/mats.dart';
 import 'package:elim_trust_2/pages/profilepage.dart';
 import 'package:elim_trust_2/pages/projects.dart';
+import 'package:elim_trust_2/pages/signin.dart';
+import 'package:elim_trust_2/pages/signout.dart';
+import 'package:elim_trust_2/pages/signup.dart';
 import 'package:elim_trust_2/pages/vunja.dart';
 
 import 'package:elim_trust_2/pages/yprep.dart';
@@ -45,9 +50,12 @@ routes: {
 
 
    '/latestnews': (context) => const LatestnewsPage(), 
-  '/blogs': (context) => const BlogsPage(), // Assuming you have a BlogsPage
-
-
+  '/blogs': (context) => const BlogsPage(), 
+  '/gallery': (context) => const GalleryPage(), // Add an about page route
+  '/contact': (context) => const ContactPage(), // Add a contact page route
+  '/signin': (context) => const SigninPage(), // Add an about page route
+  '/signout': (context) => const SignoutPage(), // Add a settings page route
+  '/signup': (context) => const SignupPage(), // Add a contact page route
 
 },
 
