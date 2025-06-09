@@ -373,21 +373,46 @@ class LatestnewsPage extends StatelessWidget {
                   const Spacer(), // Spacing between phone and email
                   Padding(
                         padding: const EdgeInsets.only( right: 4),
-                        child: Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(50),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.red,
-                                blurRadius: 5.0,
-                                offset: Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: const Icon(Icons.email_rounded, color: Colors.white))),
+                        child: GestureDetector(
+                                 onTap: () async {
+                            const String emailAddress = 'info@elim-trust.org';
+                            final Uri emailLaunchUri = Uri(
+                              scheme: 'mailto',
+                              path: emailAddress,
+                              // You can also pre-fill subject and body if needed:
+                              // queryParameters: {
+                              //   'subject': 'Inquiry from App User',
+                              //   'body': 'Hello Elim Trust,\n\nI have a question...'
+                              // }
+                            );
+
+                            if (!await launchUrl(emailLaunchUri)) {
+                              print('Could not launch $emailLaunchUri');
+                              if (context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Could not open email app for $emailAddress. Please ensure an email app is configured.'),
+                                  ),
+                                );
+                              }
+                            }
+                          },
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.red,
+                                  blurRadius: 5.0,
+                                  offset: Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: const Icon(Icons.email_rounded, color: Colors.white)),
+                        )),
                   const SizedBox(width: 4), // Spacing between icon and text
                   const Padding( // Made const
                       padding: EdgeInsets.only(right: 20),
