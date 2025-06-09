@@ -451,12 +451,13 @@ SizedBox(height: 10), // Spacing between rows
             // Example: Launch WhatsApp (replace with your specific link or number)
             // For a specific number: 'https://wa.me/1XXXXXXXXXX' (international format)
             // Or a general link: 'https://whatsapp.com/'
-            final Uri url = Uri.parse('https://wa.me/254705558885'); // Example with your phone number
+            const String whatsappNumber = '254705558885'; // Elim Trust WhatsApp number
+            final Uri url = Uri.parse('https://wa.me/$whatsappNumber');
             if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
               print('Could not launch $url');
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Could not open WhatsApp: $url')),
+                  SnackBar(content: Text('Could not open WhatsApp for $whatsappNumber. Please ensure WhatsApp is installed.')),
                 );
               }
             }
