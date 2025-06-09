@@ -28,6 +28,35 @@ class _CommunityPageState extends State<CommunityPage>
         CurvedAnimation(parent: _animationController, curve: Curves.easeInOut));
   }
 
+  void _handleMenuSelection(String value) {
+    switch (value) {
+      case 'signup_signin':
+        // TODO: Implement navigation or action for Sign Up/Sign In
+        // For example: Navigator.pushNamed(context, '/auth');
+        print('Selected: Sign Up/Sign In');
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Sign Up/Sign In selected (Not Implemented)')));
+        break;
+      case 'gallery_media':
+        // TODO: Implement navigation or action for Gallery/Media
+        // For example: Navigator.pushNamed(context, '/gallery');
+        print('Selected: Gallery/Media');
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Gallery/Media selected (Not Implemented)')));
+        break;
+      case 'donate':
+        Navigator.pushNamed(context, '/donations');
+        break;
+      case 'contact_us':
+        // TODO: Implement navigation or action for Contact Us
+        // For example: Navigator.pushNamed(context, '/contact');
+        print('Selected: Contact Us');
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Contact Us selected (Not Implemented)')));
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,30 +117,43 @@ actions: [
 
  Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Container(
-                      //margin: const EdgeInsets.only(left: 8.0), // Reduced margin to fit AppBar's leading area
-                       height: 30, // Adjusted for a more standard icon button size
-                       width: 30,  // Adjusted for a more standard icon button size
-                      decoration: BoxDecoration(
-                        color: Colors.white, // Optional: Added a background color
-                        
-                        borderRadius: BorderRadius.circular(30), // Make it circular (half of height/width)
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.red,
-                            blurRadius: 5.0,
-                            offset: Offset(0, 2),
+                    child: PopupMenuButton<String>(
+                      onSelected: _handleMenuSelection,
+                      itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                        const PopupMenuItem<String>(
+                          value: 'signup_signin',
+                          child: Text('Sign Up/Sign In'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'gallery_media',
+                          child: Text('Gallery/Media'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'donate',
+                          child: Text('Donate/Support Us'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'contact_us',
+                          child: Text('Contact Us'),
+                        ),
+                      ],
+                      tooltip: 'Open menu',
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.red,
+                              blurRadius: 5.0,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: const Icon(Icons.menu, color: Colors.blue),
                           ),
-                        ],
-                      ),
-                      child: IconButton(
-                        padding: EdgeInsets.zero, // Remove default IconButton padding for better control
-                        icon: const Icon(Icons.menu, color: Colors.blue, ) ,// Standard icon size
-                        onPressed: () {
-                          //take to the donation page
-                          //Navigator.pushNamed(context, '/donations'); // Corrected route
-                        },
-                      ),
                     ),
                   ),
 
