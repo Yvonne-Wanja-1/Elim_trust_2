@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:open_file_plus/open_file_plus.dart'; // Required for OpenFile
 import 'package:path_provider/path_provider.dart'; // Required for getTemporaryDirectory
+import 'package:url_launcher/url_launcher.dart'; // Required for launching URLs
 
 class LatestnewsPage extends StatelessWidget {
   const LatestnewsPage({super.key});
@@ -407,26 +408,89 @@ class LatestnewsPage extends StatelessWidget {
 //               },
 SizedBox(height: 10), // Spacing between rows
     Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [ // Made this list const
-        Icon(FontAwesomeIcons.linkedin, color: Colors.blue),
-        SizedBox(width: 10), // Spacing between icons
-        Icon(FontAwesomeIcons.instagram, color: Colors.blue),
-        SizedBox(width: 10),
-        Icon(FontAwesomeIcons.xTwitter, color: Colors.blue),
-        SizedBox(width: 10),
-        Icon(FontAwesomeIcons.whatsapp, color: Colors.blue),
-        SizedBox(width: 10), 
-        Icon(FontAwesomeIcons.facebook, color: Colors.blue),
-        SizedBox(width: 10), // Spacing between icons
-        Icon(FontAwesomeIcons.locationDot, color: Colors.red),
-        SizedBox(width: 10), // This last SizedBox doesn't have much visual effect here
+      mainAxisAlignment: MainAxisAlignment.center, // Changed to spaceEvenly for better distribution
+      children: [ 
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.linkedin, color: Colors.blue),
+          onPressed: () async {
+            // Replace with your LinkedIn URL
+            final Uri url = Uri.parse('https://www.linkedin.com/in/elim-trust-org/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'); 
+            if (!await launchUrl(url)) {
+              print('Could not launch $url');
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.instagram, color: Colors.blue),
+          onPressed: () async {
+            // Replace with your Instagram URL
+            final Uri url = Uri.parse('https://www.instagram.com/elimtrustorg?igsh=d2Q5djF1OGdmODJz&utm_source=qr');
+            if (!await launchUrl(url)) {
+              print('Could not launch $url');
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.xTwitter, color: Colors.blue),
+          onPressed: () async {
+            final Uri url = Uri.parse('https://x.com/elim_trust_org?s=21');
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+              // Optionally show a snackbar or dialog to the user
+              print('Could not launch $url');
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Could not open link: $url')),
+                );
+              }
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.whatsapp, color: Colors.blue),
+          onPressed: () async {
+            // Example: Launch WhatsApp (replace with your specific link or number)
+            // For a specific number: 'https://wa.me/1XXXXXXXXXX' (international format)
+            // Or a general link: 'https://whatsapp.com/'
+            final Uri url = Uri.parse('https://wa.me/254705558885'); // Example with your phone number
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+              print('Could not launch $url');
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Could not open WhatsApp: $url')),
+                );
+              }
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.facebook, color: Colors.blue),
+          onPressed: () async {
+            // Replace with your Facebook page URL
+            final Uri url = Uri.parse('https://www.facebook.com/ElimTrustOrg/'); 
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+              print('Could not launch $url');
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Could not open Facebook: $url')),
+                );
+              }
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.locationDot, color: Colors.red),
+          onPressed: () async {
+            // Example: Open Google Maps with a specific location
+            // You can use a query string for a place name or coordinates
+            final Uri url = Uri.parse('https://maps.google.com/?q=Elim+Trust+Nairobi'); // Example query
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+              print('Could not launch $url');
+              // Add SnackBar for error if needed
+            }
+          },
+        ),
       ],
-    
   ),
-
-
-
 
             
             ],
