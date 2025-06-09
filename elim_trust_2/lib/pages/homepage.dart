@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // Data model for our impact cards
 class _ImpactCardData {
@@ -524,6 +525,29 @@ class _HomePageState extends State<HomePage> {
             }
           },
         ),
+
+
+
+
+        floatingActionButton: FloatingActionButton(
+  onPressed: () async {
+    // Direct WhatsApp link to Elim Trust
+    const String whatsappNumber = '254705558885'; // Elim Trust WhatsApp number
+    final Uri url = Uri.parse('https://wa.me/$whatsappNumber');
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content: Text(
+                'Could not open WhatsApp for $whatsappNumber. Please ensure WhatsApp is installed.')),
+      );
+      print('Could not launch $url');
+    }
+  },
+  backgroundColor: Colors.green, // WhatsApp-like color
+  child: const Icon(FontAwesomeIcons.whatsapp, color: Colors.white),
+  tooltip: 'Chat on WhatsApp',
+),
+
       ),
       // The rest of the Scaffold properties like floatingActionButton can go here
     );

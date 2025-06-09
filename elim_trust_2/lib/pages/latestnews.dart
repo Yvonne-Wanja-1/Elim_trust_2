@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:open_file_plus/open_file_plus.dart'; // Required for OpenFile
 import 'package:path_provider/path_provider.dart'; // Required for getTemporaryDirectory
+import 'package:url_launcher/url_launcher.dart'; // Required for launching URLs
 
 class LatestnewsPage extends StatelessWidget {
   const LatestnewsPage({super.key});
@@ -110,10 +111,10 @@ class LatestnewsPage extends StatelessWidget {
                     end: Alignment.bottomRight,
                     colors: [
                       Colors.blue,
-                       Colors.blue,
+                      // Colors.blue, // Redundant
                       Color.fromARGB(255, 10, 21, 228),
                       Colors.blue,
-                       Colors.blue,
+                      // Colors.blue, // Redundant
                     ],
                   ),
                 ),
@@ -162,12 +163,11 @@ class LatestnewsPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0), // Consider using GoogleFonts or default system font
                                 child: Text(
                                   '23rd September 2020',
                                   style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'Arial',
                                     fontStyle: FontStyle.italic,
                                     color: Color.fromARGB(255, 139, 193, 238),
                                   ),
@@ -175,12 +175,11 @@ class LatestnewsPage extends StatelessWidget {
                               ),
                               const Padding(
                                 padding: EdgeInsets.only(left: 12.0, right: 8.0),
-                                child: Text(
+                                child: Text( // Consider using GoogleFonts or default system font
                                   '''The Mental Health Awareness Toolk...
 ''',
                                   style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'Arial',
                                     fontStyle: FontStyle.italic,
                                     color: Colors.blue,
                                   ),
@@ -228,12 +227,11 @@ class LatestnewsPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
-                            child: const Text(
+                            child: const Text( // Consider default system font or GoogleFonts
                               'Read More 👇',
-                              // Reduced font size
                               style: TextStyle(
                                 fontSize: 16,
-                                fontFamily: 'Arial',
+                                // fontFamily: 'Arial', // Consider removing or using a bundled/Google font
                                 color: Colors.white,
                               ),
                             ),
@@ -243,23 +241,27 @@ class LatestnewsPage extends StatelessWidget {
                           ElevatedButton(
                             onPressed: () async {
                               // --- PDF Download/Open Logic ---
-                              const String assetPath = 'assets/pdfs/your_document_name.pdf'; // IMPORTANT: Change to your PDF file name
+                              // IMPORTANT: Ensure 'your_actual_document_name.pdf' is the correct name of your PDF
+                              // file (case-sensitive!) located in the 'assets/pdfs/' directory, and that 'assets/pdfs/'
+                              // is declared in your pubspec.yaml. The path below should match your
+                              // 'pubspec.yaml' declaration and actual file location.
+                              // User specified: folder 'pdf', file 'mental.pdf'
+                              const String assetPath = 'pdf/mental.pdf'; 
                               
                               try {
                                 // 1. Get the directory for temporary files
                                 final Directory tempDir = await getTemporaryDirectory();
                                 final String tempPath = tempDir.path;
                                 final String filePath = '$tempPath/${assetPath.split('/').last}'; // e.g., /data/user/0/.../your_document_name.pdf
-                                final File file = File('pdf/mental.pdf');
+                                final File file = File(filePath); // Use the dynamically created filePath
 
                                 // 2. Load the asset
                                 final ByteData byteData = await rootBundle.load(assetPath);
                                 
                                 // 3. Write the asset to the temporary file
                                 await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
-
                                 // 4. Open the file
-                                final OpenResult result = await OpenFile.open('pdf/mental.pdf'); // Use the file path directly
+                                final OpenResult result = await OpenFile.open(filePath); // Use the same filePath to open
 
                                 if (result.type != ResultType.done) {
                                   print('Error opening file: ${result.message}');
@@ -285,11 +287,11 @@ class LatestnewsPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                             ),
-                            child: const Text(
+                            child: const Text( // Consider default system font or GoogleFonts
                               'Download PDF📥',
                               style: TextStyle(
                                 fontSize: 15,
-                                fontFamily: 'Arial',
+                                // fontFamily: 'Arial', // Consider removing or using a bundled/Google font
                                 color: Colors.white,
                               ),
                             ),
@@ -362,46 +364,68 @@ class LatestnewsPage extends StatelessWidget {
                       
                       child: Icon(Icons.phone, color: Colors.white)),
                   ),
-                  const SizedBox(width: 1), // Spacing between icon and text
-Text('+254 705 558 885',
-style: TextStyle(
-  fontWeight: FontWeight.bold,
-  color: Colors.blue,
+                  const SizedBox(width: 4), // Spacing between icon and text
+                  const Text('+254 705 558 885', // Made const
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    )),
+                  const Spacer(), // Spacing between phone and email
+                  Padding(
+                        padding: const EdgeInsets.only( right: 4),
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                                   onTap: () async {
+                              const String emailAddress = 'info@elim-trust.org';
+                              final Uri emailLaunchUri = Uri(
+                                scheme: 'mailto',
+                                path: emailAddress,
+                                // You can also pre-fill subject and body if needed:
+                                // queryParameters: {
+                                //   'subject': 'Inquiry from App User',
+                                //   'body': 'Hello Elim Trust,\n\nI have a question...'
+                                // }
+                              );
 
-),),
-               Spacer(), // Spacing between phone and email
-              Padding(
-                    padding: const EdgeInsets.only( right: 4),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(50),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.red,
-                            blurRadius: 5.0,
-                            offset: Offset(0, 2),
+                              if (!await launchUrl(emailLaunchUri)) {
+                                print('Could not launch $emailLaunchUri');
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Could not open email app for $emailAddress. Please ensure an email app is configured.'),
+                                    ),
+                                  );
+                                }
+                              }
+                            },
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(50),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: Colors.red,
+                                    blurRadius: 5.0,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: const Icon(Icons.email_rounded, color: Colors.white)),
                           ),
-                        ],
-                      ),
-                      
-                      child: Icon(Icons.email_rounded, color: Colors.white)),
+                        ),
                   ),
-                  const SizedBox(width: 1), // Spacing between icon and text
-
-Padding(
-    padding: const EdgeInsets.only(right: 20),
-    child: Text('info@elim-trust.org',
-    style: TextStyle(
-      //fontWeight: FontWeight.bold,
-      color: Colors.blue,
-    ),
-    ),
-  ),
-
-
+                  const SizedBox(width: 4), // Spacing between icon and text
+                  const Padding( // Made const
+                      padding: EdgeInsets.only(right: 20),
+                      child: Text('info@elim-trust.org',
+                        style: TextStyle(
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
                 ],
                 
               ),
@@ -413,39 +437,90 @@ Padding(
 //               },
 SizedBox(height: 10), // Spacing between rows
     Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Icon(FontAwesomeIcons.linkedin, 
-color: Colors.blue),
-SizedBox(width: 10), // Spacing between icons
-
-    Icon(FontAwesomeIcons.instagram, 
-color: Colors.blue
-),
-SizedBox(width: 10),
-    Icon(FontAwesomeIcons.xTwitter,
- color: Colors.blue),
-SizedBox(width: 10),
-
-    Icon(FontAwesomeIcons.whatsapp, 
-color: Colors.blue),
-SizedBox(width: 10), 
-
-    Icon(FontAwesomeIcons.facebook, 
-color: Colors.blue),
-
-
-SizedBox(width: 10), // Spacing between icons
-    Icon(FontAwesomeIcons.locationDot, 
-color: Colors.red),
-SizedBox(width: 10),
-
-    ],
-
+      mainAxisAlignment: MainAxisAlignment.center, // Changed to spaceEvenly for better distribution
+      children: [ 
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.linkedin, color: Colors.blue),
+          onPressed: () async {
+            // Replace with your LinkedIn URL
+            final Uri url = Uri.parse('https://www.linkedin.com/in/elim-trust-org/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'); 
+            if (!await launchUrl(url)) {
+              print('Could not launch $url');
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.instagram, color: Colors.blue),
+          onPressed: () async {
+            // Replace with your Instagram URL
+            final Uri url = Uri.parse('https://www.instagram.com/elimtrustorg?igsh=d2Q5djF1OGdmODJz&utm_source=qr');
+            if (!await launchUrl(url)) {
+              print('Could not launch $url');
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.xTwitter, color: Colors.blue),
+          onPressed: () async {
+            final Uri url = Uri.parse('https://x.com/elim_trust_org?s=21');
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+              // Optionally show a snackbar or dialog to the user
+              print('Could not launch $url');
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Could not open link: $url')),
+                );
+              }
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.whatsapp, color: Colors.blue),
+          onPressed: () async {
+            // Example: Launch WhatsApp (replace with your specific link or number)
+            // For a specific number: 'https://wa.me/1XXXXXXXXXX' (international format)
+            // Or a general link: 'https://whatsapp.com/'
+            const String whatsappNumber = '254705558885'; // Elim Trust WhatsApp number
+            final Uri url = Uri.parse('https://wa.me/$whatsappNumber');
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+              print('Could not launch $url');
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Could not open WhatsApp for $whatsappNumber. Please ensure WhatsApp is installed.')),
+                );
+              }
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.facebook, color: Colors.blue),
+          onPressed: () async {
+            // Replace with your Facebook page URL
+            final Uri url = Uri.parse('https://www.facebook.com/ElimTrustOrg/'); 
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+              print('Could not launch $url');
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Could not open Facebook: $url')),
+                );
+              }
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.locationDot, color: Colors.red),
+          onPressed: () async {
+            // Example: Open Google Maps with a specific location
+            // You can use a query string for a place name or coordinates
+            final Uri url = Uri.parse('https://maps.google.com/?q=Elim+Trust+Nairobi'); // Example query
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+              print('Could not launch $url');
+              // Add SnackBar for error if needed
+            }
+          },
+        ),
+      ],
   ),
-
-
-
 
             
             ],
