@@ -31,28 +31,22 @@ class _CommunityPageState extends State<CommunityPage>
   void _handleMenuSelection(String value) {
     switch (value) {
       case 'signup_signin':
-        // TODO: Implement navigation or action for Sign Up/Sign In
-        // For example: Navigator.pushNamed(context, '/auth');
-        print('Selected: Sign Up/Sign In');
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Sign Up/Sign In selected (Not Implemented)')));
+        // Navigate to the authentication page (Sign Up/Sign In)
+        Navigator.pushNamed(context, '/auth');
+        // print('Selected: Sign Up/Sign In'); // Optional: keep for debugging
         break;
       case 'gallery_media':
-        // TODO: Implement navigation or action for Gallery/Media
-        // For example: Navigator.pushNamed(context, '/gallery');
-        print('Selected: Gallery/Media');
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Gallery/Media selected (Not Implemented)')));
+        // Navigate to the gallery/media page
+        Navigator.pushNamed(context, '/gallery');
+        // print('Selected: Gallery/Media'); // Optional: keep for debugging
         break;
       case 'donate':
         Navigator.pushNamed(context, '/donations');
         break;
       case 'contact_us':
-        // TODO: Implement navigation or action for Contact Us
-        // For example: Navigator.pushNamed(context, '/contact');
-        print('Selected: Contact Us');
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Contact Us selected (Not Implemented)')));
+        // Navigate to the contact us page
+        Navigator.pushNamed(context, '/contact');
+        // print('Selected: Contact Us'); // Optional: keep for debugging
         break;
     }
   }
