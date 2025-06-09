@@ -1,6 +1,11 @@
+import 'dart:io'; // Required for File operations
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show ByteData, rootBundle; // Required for rootBundle
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:open_file_plus/open_file_plus.dart'; // Required for OpenFile
+import 'package:path_provider/path_provider.dart'; // Required for getTemporaryDirectory
 
 class LatestnewsPage extends StatelessWidget {
   const LatestnewsPage({super.key});
@@ -236,7 +241,44 @@ class LatestnewsPage extends StatelessWidget {
                           // Added SizedBox for spacing between buttons
                           const Spacer(), // Made Spacer const for minor optimization
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              // --- PDF Download/Open Logic ---
+                              const String assetPath = 'assets/pdfs/your_document_name.pdf'; // IMPORTANT: Change to your PDF file name
+                              
+                              try {
+                                // 1. Get the directory for temporary files
+                                final Directory tempDir = await getTemporaryDirectory();
+                                final String tempPath = tempDir.path;
+                                final String filePath = '$tempPath/${assetPath.split('/').last}'; // e.g., /data/user/0/.../your_document_name.pdf
+                                final File file = File('pdf/mental.pdf');
+
+                                // 2. Load the asset
+                                final ByteData byteData = await rootBundle.load(assetPath);
+                                
+                                // 3. Write the asset to the temporary file
+                                await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+
+                                // 4. Open the file
+                                final OpenResult result = await OpenFile.open('pdf/mental.pdf'); // Use the file path directly
+
+                                if (result.type != ResultType.done) {
+                                  print('Error opening file: ${result.message}');
+                                  if (context.mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text('Could not open PDF: ${result.message}')),
+                                    );
+                                  }
+                                }
+                              } catch (e) {
+                                print('Error processing PDF: $e');
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('Error: Could not load PDF. $e')),
+                                  );
+                                }
+                              }
+                              // --- End PDF Logic ---
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue,
                               shape: RoundedRectangleBorder(
