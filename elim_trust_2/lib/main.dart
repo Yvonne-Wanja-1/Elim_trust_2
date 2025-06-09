@@ -45,9 +45,12 @@ routes: {
 
 
    '/latestnews': (context) => const LatestnewsPage(), 
-  '/blogs': (context) => const BlogsPage(), // Assuming you have a BlogsPage
-
-
+  '/blogs': (context) => const BlogsPage(), 
+  '/gallery': (context) => const GalleryPage(), // Add an about page route
+  '/contact': (context) => const ContactPage(), // Add a contact page route
+  '/signin': (context) => const SigninPage(), // Add an about page route
+  '/signout': (context) => const SignoutPage(), // Add a settings page route
+  '/signup': (context) => const SignupPage(), // Add a contact page route
 
 },
 
