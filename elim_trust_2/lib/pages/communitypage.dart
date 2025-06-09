@@ -378,11 +378,11 @@ actions: [
                         children: [ // Removed const
                            const CircleAvatar(
                             radius: 30,
-                            backgroundImage: AssetImage('images/persona.png'),
+                            backgroundImage: AssetImage('images/man1.png'),
                           ),
                           SizedBox(height: 8),
                           Text(
-                            'Jane Achieng', 
+                            'Albert Ruabe', 
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -448,7 +448,7 @@ actions: [
                         children: [ // Changed to non-const to allow for variable image
                           const CircleAvatar(
                             radius: 30,
-                            backgroundImage: AssetImage('images/persona2.png'), // Placeholder for different image
+                            backgroundImage: AssetImage('images/pastor.png'), // Placeholder for different image
                           ),
                           SizedBox(height: 8),
                           Text(
@@ -517,7 +517,7 @@ actions: [
                         children: [ // Changed to non-const to allow for variable image
                           const CircleAvatar(
                             radius: 30,
-                            backgroundImage: AssetImage('images/persona3.png'), // Placeholder for different image
+                            backgroundImage: AssetImage('images/girl.png'), // Placeholder for different image
                           ),
                           SizedBox(height: 8),
                           Text(
