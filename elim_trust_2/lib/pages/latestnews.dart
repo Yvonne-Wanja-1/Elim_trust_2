@@ -265,60 +265,62 @@ class LatestnewsPage extends StatelessWidget {
 
 
 
-      bottomNavigationBar: Card(
-        elevation: 5,
-        margin: const EdgeInsets.all(8.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 3.0), // Adjusted padding
-              child: Text(
-                'Live. Love. Live.',
-                style: GoogleFonts.dancingScript(
-                  textStyle: const TextStyle(
-                    fontSize: 16, // Slightly increased font size
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const Divider(
-              color: Colors.blue,
-              thickness: 1,
-              indent: 16, // Padding on the left
-              endIndent: 16,
-            ),
-
-
-            Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 4),
-                  child: Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
+      bottomNavigationBar: SizedBox(
+        height: 150, // You can adjust this value to your desired height
+        child: Card(
+          elevation: 5,
+          margin: const EdgeInsets.all(8.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min, // This is fine, SizedBox will control the outer height
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3.0), // Adjusted padding
+                child: Text(
+                  'Live. Love. Live.',
+                  style: GoogleFonts.dancingScript(
+                    textStyle: const TextStyle(
+                      fontSize: 16, // Slightly increased font size
                       color: Colors.blue,
-                      borderRadius: BorderRadius.circular(50),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.red,
-                          blurRadius: 5.0,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
+                      fontWeight: FontWeight.bold,
                     ),
-                    
-                    child: Icon(Icons.phone, color: Colors.white)),
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                const SizedBox(width: 1), // Spacing between icon and text
+              ),
+              const Divider(
+                color: Colors.blue,
+                thickness: 1,
+                indent: 16, // Padding on the left
+                endIndent: 16,
+              ),
+
+
+              Row(
+                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 4),
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(50),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.red,
+                            blurRadius: 5.0,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      
+                      child: Icon(Icons.phone, color: Colors.white)),
+                  ),
+                  const SizedBox(width: 1), // Spacing between icon and text
 Text('+254 705 558 885',
 style: TextStyle(
   fontWeight: FontWeight.bold,
@@ -327,114 +329,89 @@ style: TextStyle(
 ),),
                Spacer(), // Spacing between phone and email
               Padding(
-                  padding: const EdgeInsets.only( right: 4),
-                  child: Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(50),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.red,
-                          blurRadius: 5.0,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    
-                    child: Icon(Icons.email_rounded, color: Colors.white)),
-                ),
-                const SizedBox(width: 1), // Spacing between icon and text
+                    padding: const EdgeInsets.only( right: 4),
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(50),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.red,
+                            blurRadius: 5.0,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      
+                      child: Icon(Icons.email_rounded, color: Colors.white)),
+                  ),
+                  const SizedBox(width: 1), // Spacing between icon and text
 
 Padding(
-  padding: const EdgeInsets.only(right: 12),
-  child: Text('info@elim-trust.org',
-  style: TextStyle(
-    //fontWeight: FontWeight.bold,
-    color: Colors.blue,
+    padding: const EdgeInsets.only(right: 20),
+    child: Text('info@elim-trust.org',
+    style: TextStyle(
+      //fontWeight: FontWeight.bold,
+      color: Colors.blue,
+    ),
+    ),
   ),
-  ),
-),
 
 
-              ],
-              
-            ),
+                ],
+                
+              ),
 
 // FloatingActionButton(
 
 //               onPressed: () {
 //                 // Add functionality for the WhatsApp button here
 //               },
-  Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    Icon(FontAwesomeIcons.linkedin, 
+SizedBox(height: 10), // Spacing between rows
+    Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Icon(FontAwesomeIcons.linkedin, 
 color: Colors.blue),
 SizedBox(width: 10), // Spacing between icons
 
-  Icon(FontAwesomeIcons.instagram, 
+    Icon(FontAwesomeIcons.instagram, 
 color: Colors.blue
 ),
 SizedBox(width: 10),
-  Icon(FontAwesomeIcons.xTwitter,
+    Icon(FontAwesomeIcons.xTwitter,
  color: Colors.blue),
 SizedBox(width: 10),
 
-  Icon(FontAwesomeIcons.whatsapp, 
+    Icon(FontAwesomeIcons.whatsapp, 
 color: Colors.blue),
 SizedBox(width: 10), 
 
-  Icon(FontAwesomeIcons.facebook, 
+    Icon(FontAwesomeIcons.facebook, 
 color: Colors.blue),
 
 
 SizedBox(width: 10), // Spacing between icons
-  Icon(FontAwesomeIcons.locationDot, 
+    Icon(FontAwesomeIcons.locationDot, 
 color: Colors.red),
 SizedBox(width: 10),
 
-  ],
+    ],
 
-),
-
-
+  ),
 
 
-          // Add more icons or text as needed:
-          
-          ],
+
+
+            
+            ],
+          ),
         ),
       ),
       
-      
-      //              // backgroundColor: Colors.white,
-//               child: const Icon(
-//                 FontAwesomeIcons.whatsapp,
-//                 color: Colors.green,
-//               ),
-//             ),
-  //  Container(
-  //   height: 30,
-  //   width: 30,
-  //   decoration: BoxDecoration(
-  //     color: Colors.white,
-  //     borderRadius: BorderRadius.circular(50),
-  //     boxShadow: const [
-  //       BoxShadow(
-  //         color: Colors.red,
-  //         blurRadius: 5.0,
-  //         offset: Offset(0, 2),
-  //       ),
-  //     ],
-  //   ),
-    
-  // child:  Icon(FontAwesomeIcons.whatsapp, 
-  // color: Colors.green)
-    
-    
-  //   ),
+
 
 
 
