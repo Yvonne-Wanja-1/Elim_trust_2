@@ -307,7 +307,7 @@ class LatestnewsPage extends StatelessWidget {
         ),
       ),
 
-
+ 
 
       bottomNavigationBar: SizedBox(
         height: 150, // You can adjust this value to your desired height
