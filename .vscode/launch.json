@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "elim_trust_2",
+            "cwd": "elim_trust_2",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "elim_trust_2 (profile mode)",
+            "cwd": "elim_trust_2",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "elim_trust_2 (release mode)",
+            "cwd": "elim_trust_2",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

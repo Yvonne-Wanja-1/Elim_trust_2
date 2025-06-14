@@ -364,7 +364,7 @@ class LatestnewsPage extends StatelessWidget {
                       
                       child: Icon(Icons.phone, color: Colors.white)),
                   ),
-                  const SizedBox(width: 4), // Spacing between icon a  nd text
+                  const SizedBox(width: 4), // Spacing between icon a nd text
                   const Text('+254 705 558 885', // Made const
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -397,7 +397,7 @@ class LatestnewsPage extends StatelessWidget {
                                     ),
                                   );
                                 }
-                              }
+                               }
                             },
                             child: Container(
                               height: 30,
