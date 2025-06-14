@@ -91,7 +91,8 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
                         fontSize: 12,
                       ),
                       child: IconButton(
-                        icon: const Icon(Icons.notifications, color: Colors.blue),
+                        icon:
+                            const Icon(Icons.notifications, color: Colors.blue),
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
                         onPressed: () {

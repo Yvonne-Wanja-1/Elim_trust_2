@@ -17,6 +17,13 @@ import 'package:elim_trust_2/pages/vunja.dart';
 import 'package:elim_trust_2/pages/yprep.dart';
 import 'package:flutter/material.dart';
 
+import 'pages/contact.dart';
+import 'pages/homepage.dart';
+import 'pages/projects.dart';
+import 'pages/signin.dart';
+import 'pages/signout.dart';
+import 'pages/signup.dart';
+
 void main(){
   // This is the main entry point of the application.
   // It runs the app and sets up the necessary configurations.

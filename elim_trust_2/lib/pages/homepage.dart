@@ -19,48 +19,45 @@ class _ImpactCardData {
 // Reusable widget for displaying an impact card
 class _ImpactCardWidget extends StatelessWidget {
   final _ImpactCardData data;
-  final double? cardWidth;
   final VoidCallback? onCardTap;
-  final VoidCallback? onImageTap;
 
   const _ImpactCardWidget({
     required this.data,
-    this.cardWidth,
     this.onCardTap,
-    this.onImageTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return InkWell( // Added InkWell for tap effect on the whole card
+    return InkWell(
+      // Added InkWell for tap effect on the whole card
       onTap: onCardTap, // Use the onCardTap for the whole card
       splashColor: Colors.transparent, // Removes the splash effect
       highlightColor: Colors.transparent, // Removes the highlight effect
       hoverColor: Colors.transparent, // Removes the hover effect
       child: SizedBox(
-        width: cardWidth ?? 300.0, // Defaults to 300.0
+        width: 300.0, // Set to fixed width matching the image container
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container( // Image container is fixed size
+            Container(
+              // Image container is fixed size
               height: 300,
               width: 300.0,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   boxShadow: const [
                     BoxShadow(
-
                       color: Colors.blue,
                       blurRadius: 5.0,
                       offset: Offset(0, 2), // Shadow position
 
                       spreadRadius: 2.0, // Shadow spread
-                      
                     ),
                   ]),
-              
-                clipBehavior: Clip.antiAlias,
-              child: Image.asset(data.imagePath, fit: BoxFit.cover), // Image fills the 300x300 container
+
+              clipBehavior: Clip.antiAlias,
+              child: Image.asset(data.imagePath,
+                  fit: BoxFit.cover), // Image fills the 300x300 container
             ),
             const SizedBox(height: 8), // Space between image and text
             // Text content below the image
@@ -75,14 +72,15 @@ class _ImpactCardWidget extends StatelessWidget {
                   decoration: TextDecoration.underline,
                   decorationColor: Colors.blue,
                 ),
-                textAlign: TextAlign.center, // Consider if center is desired here
+                textAlign:
+                    TextAlign.center, // Consider if center is desired here
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
             const SizedBox(height: 4), // Space between title and description
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 4.0),
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
               child: Text(
                 data.description,
                 style: const TextStyle(
@@ -131,8 +129,7 @@ class HomePage extends StatefulWidget {
     const _ImpactCardData(
       imagePath: 'images/capacity.jpg',
       title: 'Capacity Building of Spiritual & Community Leaders',
-      description:
-          'Equipping leaders to create grassroots healing movements.',
+      description: 'Equipping leaders to create grassroots healing movements.',
     ),
   ];
 
@@ -195,9 +192,11 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 4),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Row(
-                  children: HomePage._impactCardItems.asMap().entries.map((entry) {
+                  children:
+                      HomePage._impactCardItems.asMap().entries.map((entry) {
                     int idx = entry.key;
                     _ImpactCardData data = entry.value;
                     VoidCallback? imageSpecificOnTap;
@@ -214,17 +213,22 @@ class _HomePageState extends State<HomePage> {
                       imageSpecificOnTap = () {
                         Navigator.pushNamed(context, '/vunja');
                       };
-                    } else if (data.title == 'Capacity Building of Spiritual & Community Leaders') {
+                    } else if (data.title ==
+                        'Capacity Building of Spiritual & Community Leaders') {
                       imageSpecificOnTap = () {
                         Navigator.pushNamed(context, '/capacity');
                       };
                     }
 
                     return Padding(
-                      padding: EdgeInsets.only(right: idx == HomePage._impactCardItems.length - 1 ? 0 : 16.0),
+                      padding: EdgeInsets.only(
+                          right: idx == HomePage._impactCardItems.length - 1
+                              ? 0
+                              : 16.0),
                       child: _ImpactCardWidget(
                         data: data,
-                        onCardTap: imageSpecificOnTap, // Changed from onImageTap to onCardTap
+                        onCardTap:
+                            imageSpecificOnTap, // Changed from onImageTap to onCardTap
                       ),
                     );
                   }).toList(),
@@ -232,13 +236,6 @@ class _HomePageState extends State<HomePage> {
               ),
               // Latest News section header and button
               const SizedBox(height: 16),
-
-
-
-
-
-
-
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3.0),
@@ -266,7 +263,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Text('😊', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                    const Text('😊',
+                        style: TextStyle(
+                            fontSize: 28, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -286,17 +285,21 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [ // Image above text
+                      children: [
+                        // Image above text
                         Container(
                           height: 250,
                           // width: double.infinity, // Let the container take available width within padding/margin
-                          margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal margin to the image
+                          margin: const EdgeInsets.symmetric(
+                              horizontal:
+                                  8.0), // Add horizontal margin to the image
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
-                            child: Image.asset('images/UN.jpg', fit: BoxFit.cover),
+                            child:
+                                Image.asset('images/UN.jpg', fit: BoxFit.cover),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -317,7 +320,8 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ), // Consider TextAlign.start if not centered
                         const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                           child: Text(
                             '''
                   In Mandera, we worked with adolescents and young mothers to advance reproductive and maternal health under this multi-agency initiative.''',
@@ -347,9 +351,13 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // Also handle navigation here for clarity and direct button functionality
+                          Navigator.pushNamed(context, '/blogs');
+                        },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 4, 135, 242),
+                          backgroundColor:
+                              const Color.fromARGB(255, 4, 135, 242),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -366,13 +374,15 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       const SizedBox(width: 8),
-                      const Text('😊', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                      const Text('😊',
+                          style: TextStyle(
+                              fontSize: 28, fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ),
               ),
               const SizedBox(height: 8), // Added spacing
-              MouseRegion (
+              MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
                   onTap: () {
@@ -387,17 +397,21 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [ // Image above text
+                      children: [
+                        // Image above text
                         Container(
                           height: 250,
                           // width: double.infinity, // Let the container take available width within padding/margin
-                          margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal margin to the image
+                          margin: const EdgeInsets.symmetric(
+                              horizontal:
+                                  8.0), // Add horizontal margin to the image
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
-                            child: Image.asset('images/blogs.jpg', fit: BoxFit.cover),
+                            child: Image.asset('images/blogs.jpg',
+                                fit: BoxFit.cover),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -418,7 +432,8 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ), // Consider TextAlign.start if not centered
                         const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                           child: Text(
                             '''
                   Harmful Traditional Practices (HTPs)''',
@@ -432,10 +447,11 @@ class _HomePageState extends State<HomePage> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                  
-                  
+
                         const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 25,),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 25,
+                          ),
                           child: Text(
                             '''
                   Some Gender Based Violence acts are perpetuated by Harmful Traditional Practices''',
@@ -469,35 +485,56 @@ class _HomePageState extends State<HomePage> {
               mainAxisSize: MainAxisSize.min,
               children: const [
                 Icon(Icons.folder_open, size: 30, color: Colors.white),
-                Text('Projects', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+                Text('Projects',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontStyle: FontStyle.italic)),
               ],
             ),
             Column(
               mainAxisSize: MainAxisSize.min,
               children: const [
                 Icon(Icons.attach_money_rounded, size: 30, color: Colors.white),
-                Text('Donations', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+                Text('Donations',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontStyle: FontStyle.italic)),
               ],
             ),
             Column(
               mainAxisSize: MainAxisSize.min,
               children: const [
                 Icon(Icons.home, size: 30, color: Colors.white),
-                Text('Home', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+                Text('Home',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontStyle: FontStyle.italic)),
               ],
             ),
             Column(
               mainAxisSize: MainAxisSize.min,
               children: const [
-                Icon(FontAwesomeIcons.peopleGroup, size: 30, color: Colors.white),
-                Text('Community', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+                Icon(FontAwesomeIcons.peopleGroup,
+                    size: 30, color: Colors.white),
+                Text('Community',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontStyle: FontStyle.italic)),
               ],
             ),
             Column(
               mainAxisSize: MainAxisSize.min,
               children: const [
                 Icon(Icons.person, size: 30, color: Colors.white),
-                Text('Profile', style: TextStyle(color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic)),
+                Text('Profile',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontStyle: FontStyle.italic)),
               ],
             ),
           ],
@@ -525,31 +562,27 @@ class _HomePageState extends State<HomePage> {
             }
           },
         ),
-
-
-
-
         floatingActionButton: FloatingActionButton(
-  onPressed: () async {
-    // Direct WhatsApp link to Elim Trust
-    const String whatsappNumber = '254705558885'; // Elim Trust WhatsApp number
-    final Uri url = Uri.parse('https://wa.me/$whatsappNumber');
-    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text(
-                'Could not open WhatsApp for $whatsappNumber. Please ensure WhatsApp is installed.')),
-      );
-      print('Could not launch $url');
-    }
-  },
-  backgroundColor: Colors.green, // WhatsApp-like color
-  child: const Icon(FontAwesomeIcons.whatsapp, color: Colors.white),
-  tooltip: 'Chat on WhatsApp',
-),
-
+          onPressed: () async {
+            // Direct WhatsApp link to Elim Trust
+            const String whatsappNumber =
+                '254705558885'; // Elim Trust WhatsApp number
+            final Uri url = Uri.parse('https://wa.me/$whatsappNumber');
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                    content: Text(
+                        'Could not open WhatsApp for $whatsappNumber. Please ensure WhatsApp is installed.')),
+              );
+              print('Could not launch $url');
+            }
+          },
+          backgroundColor: Colors.green, // WhatsApp-like color
+          child: const Icon(FontAwesomeIcons.whatsapp, color: Colors.white),
+          tooltip: 'Chat on WhatsApp',
+        ),
       ),
       // The rest of the Scaffold properties like floatingActionButton can go here
     );
   }
-} 
+}
