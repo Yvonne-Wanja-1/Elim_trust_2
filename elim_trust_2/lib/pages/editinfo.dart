@@ -16,12 +16,34 @@ class EditInfo extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Edit Your Personal Info 😊',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Edit Your Personal Info ',
+                      style: TextStyle(fontSize: 24,
+                    
+                       fontWeight: FontWeight.bold,
+                        color: Colors.blueAccent,
+                       // fontFamily: 'Arial',
+                        // fontStyle: FontStyle.italic,
+                        //underline:
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.blue,
+                        decorationThickness: 2,
+                      ),
+                    
+                      
+                    
+                    ),
+                    Text('😊'),
+                  ],
+                ),
               ),
                 const SizedBox(height: 20),
-                ElevatedButton(
+                TextButton(
                   onPressed: () {
                     // Add your edit functionality here
                   },
