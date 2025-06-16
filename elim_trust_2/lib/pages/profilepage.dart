@@ -288,7 +288,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                 child: IconButton(
                                   icon: const Icon(Icons.edit, color: Colors.white),
                                   onPressed: () {
-                                    // Action for edit button
+                                    Navigator.pushNamed(context, '/editinfo', arguments: {
+                                      'email': _emailController.text,
+                                      'password': _passwordController.text,
+                                      'name': _nameController.text,
+                                      'phone': _phoneController.text,
+                                      'address': _addressController.text,
+                                    });
                                   },
                                 ),
                               ),
