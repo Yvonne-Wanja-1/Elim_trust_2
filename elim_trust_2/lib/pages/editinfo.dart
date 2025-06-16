@@ -190,6 +190,8 @@ class _EditInfoState extends State<EditInfo> {
                     keyboardType: TextInputType.phone,
                     textInputAction: TextInputAction.done,
                   ),
+
+                  
                 ],
               ),
             ],
