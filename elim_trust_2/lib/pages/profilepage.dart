@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
+
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -16,6 +21,8 @@ class _ProfilePageState extends State<ProfilePage> {
   late final TextEditingController _nameController;
   late final TextEditingController _phoneController;
   late final TextEditingController _addressController;
+
+  File? _profileImage;
 
   @override
   void initState() {
@@ -35,6 +42,71 @@ class _ProfilePageState extends State<ProfilePage> {
     _phoneController.dispose();
     _addressController.dispose();
     super.dispose();
+  }
+
+  Future<void> _showImageSourceActionSheet(BuildContext context) async {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Wrap(
+            children: <Widget>[
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text('Gallery'),
+                onTap: () {
+                  _pickImage(ImageSource.gallery);
+                  Navigator.of(context).pop();
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_camera),
+                title: const Text('Camera'),
+                onTap: () {
+                  _pickImage(ImageSource.camera);
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _pickImage(ImageSource source) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      _cropImage(File(pickedFile.path));
+    }
+  }
+
+  Future<void> _cropImage(File imageFile) async {
+    CroppedFile? croppedFile = await ImageCropper().cropImage(
+      sourcePath: imageFile.path,
+      aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
+      uiSettings: [
+        AndroidUiSettings(
+            toolbarTitle: 'Crop Image',
+            toolbarColor: Colors.blue,
+            toolbarWidgetColor: Colors.white,
+            lockAspectRatio: true,
+            cropFrameColor: Colors.blue,
+            cropGridColor: Colors.white.withOpacity(0.7)),
+        IOSUiSettings(
+          title: 'Crop Image',
+          aspectRatioLockEnabled: true,
+          resetAspectRatioEnabled: false,
+        ),
+      ],
+    );
+    if (croppedFile != null) {
+      setState(() {
+        _profileImage = File(croppedFile.path);
+      });
+    }
   }
 
   @override
@@ -127,9 +199,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Stack(
                     children: [
                       CircleAvatar(
-                      radius: 50,
-                      backgroundImage: const AssetImage('images/profile.png'), // Replace with your image
-                    ),
+                        radius: 50,
+                        backgroundImage: _profileImage != null
+                        ? FileImage(_profileImage!) // Use FileImage if _profileImage is not null
+                        : const AssetImage('images/girl.png') as ImageProvider, // Otherwise, use AssetImage
+                      ),
                      Positioned(
         bottom: -1 , // Position at the bottom of the CircleAvatar
         right: 1, // Position at the right of the CircleAvatar
@@ -153,7 +227,7 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: EdgeInsets.zero, // Remove default padding
             constraints: const BoxConstraints(), // Allow button to shrink to icon size
             onPressed: () {
-              // Action for editing profile picture
+              _showImageSourceActionSheet(context);
             },
           ),
         ),
@@ -162,7 +236,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 const SizedBox(height: 3),
-                 //const SizedBox(height: 10),
                     const Text(
                       'John Doe',
                       style: TextStyle(
