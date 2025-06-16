@@ -202,7 +202,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         radius: 50,
                         backgroundImage: _profileImage != null
                         ? FileImage(_profileImage!) // Use FileImage if _profileImage is not null
-                        : const AssetImage('images/girl.png') as ImageProvider, // Otherwise, use AssetImage
+                        : const AssetImage('images/profile.png') as ImageProvider, // Otherwise, use AssetImage
                       ),
                      Positioned(
         bottom: -1 , // Position at the bottom of the CircleAvatar
