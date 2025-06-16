@@ -220,7 +220,7 @@ class _EditInfoState extends State<EditInfo> {
                     textInputAction: TextInputAction.done,
                   ),
 
-                  
+                  SizedBox(height: 30),
                 ],
               ),
             ],
