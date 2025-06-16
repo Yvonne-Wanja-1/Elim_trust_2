@@ -108,28 +108,28 @@ class _EditInfoState extends State<EditInfo> {
   Widget build(BuildContext context) {
     // Determine error texts using if statements
     String? currentFirstNameError;
-    if (_firstNameError != null || _firstNameError!.isNotEmpty || _firstNameError!.trim().isNotEmpty || _firstNameError!.length > 0 || _firstNameError!.length < 2 || _firstNameError!.length > 20 || _firstNameError!.contains(RegExp(r'[^a-zA-Z\s]')) || _firstNameError!.contains(RegExp(r'\s{2,}'))) {
+    if (_firstNameError != null) {
       currentFirstNameError = _firstNameError;
     } else {
       currentFirstNameError = null;
     }
 
     String? currentLastNameError;
-    if (_lastNameError != null || _lastNameError!.isNotEmpty || _lastNameError!.trim().isNotEmpty || _lastNameError!.length > 0 || _lastNameError!.length < 2 || _lastNameError!.length > 20 || _lastNameError!.contains(RegExp(r'[^a-zA-Z\s]')) ) {
+    if (_lastNameError != null) {
       currentLastNameError = _lastNameError;
     } else {
       currentLastNameError = null;
     }
 
     String? currentEmailError;
-    if (_emailError != null || _emailError!.isNotEmpty || _emailError!.trim().isNotEmpty || _emailError!.length > 0 || !RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(_emailController.text)) {
+    if (_emailError != null) {
       currentEmailError = _emailError;
     } else {
       currentEmailError = null;
     }
 
     String? currentPhoneError;
-    if (_phoneError != null || _phoneError!.isNotEmpty || _phoneError!.trim().isNotEmpty || _phoneError!.length > 0 || !RegExp(r'^\+?[0-9]{10,}$').hasMatch(_phoneController.text)) {
+    if (_phoneError != null) {
       currentPhoneError = _phoneError;
     } else {
       currentPhoneError = null;
