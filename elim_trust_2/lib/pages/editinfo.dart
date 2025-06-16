@@ -41,7 +41,7 @@ class _EditInfoState extends State<EditInfo> {
 
   void _validateFirstName() {
     setState(() {
-      if (_firstNameController.text.isEmpty) {
+      if (_firstNameController.text.isEmpty || _firstNameController.text.length < 2 || _firstNameController.text.length > 20 || _firstNameController.text.contains(RegExp(r'[^a-zA-Z\s]')) || _firstNameController.text.contains(RegExp(r'\d')) || _firstNameController.text.contains(RegExp(r'\s{2,}'))) {
         _firstNameError = 'Please enter your first name';
       } else {
         _firstNameError = null;
@@ -51,7 +51,7 @@ class _EditInfoState extends State<EditInfo> {
 
   void _validateLastName() {
     setState(() {
-      if (_lastNameController.text.isEmpty) {
+      if (_lastNameController.text.isEmpty || _lastNameController.text.length < 2 || _lastNameController.text.length > 20 || _lastNameController.text.contains(RegExp(r'[^a-zA-Z\s]')) || _lastNameController.text.contains(RegExp(r'\d')) || _lastNameController.text.contains(RegExp(r'\s{2,}'))) {
         _lastNameError = 'Please enter your last name';
       } else {
         _lastNameError = null;
