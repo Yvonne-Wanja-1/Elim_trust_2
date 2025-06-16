@@ -154,12 +154,8 @@ class _EditInfoState extends State<EditInfo> {
                       'Edit Your Personal Info ',
                       style: TextStyle(
                         fontSize: 24,
-
                         fontWeight: FontWeight.bold,
                         color: Colors.blueAccent,
-                        // fontFamily: 'Arial',
-                        // fontStyle: FontStyle.italic,
-                        //underline:
                         decoration: TextDecoration.underline,
                         decorationColor: Colors.blue,
                         decorationThickness: 2,
@@ -219,7 +215,6 @@ class _EditInfoState extends State<EditInfo> {
                     keyboardType: TextInputType.phone,
                     textInputAction: TextInputAction.done,
                   ),
-
                   SizedBox(height: 30),
                 ],
               ),
@@ -259,9 +254,7 @@ class _EditInfoState extends State<EditInfo> {
                   indent: 16, // Padding on the left
                   endIndent: 16,
                 ),
-
                 Row(
-                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 4),
@@ -298,13 +291,7 @@ class _EditInfoState extends State<EditInfo> {
                             final Uri emailLaunchUri = Uri(
                               scheme: 'mailto',
                               path: emailAddress,
-                              // You can also pre-fill subject and body if needed:
-                              // queryParameters: {
-                              //   'subject': 'Inquiry from App User',
-                              //   'body': 'Hello Elim Trust,\n\nI have a question...'
-                              // }
                             );
-
                             if (!await launchUrl(emailLaunchUri)) {
                               print('Could not launch $emailLaunchUri');
                               if (context.mounted) {
@@ -338,7 +325,6 @@ class _EditInfoState extends State<EditInfo> {
                     ),
                     const SizedBox(width: 4), // Spacing between icon and text
                     const Padding(
-                      // Made const
                       padding: EdgeInsets.only(right: 20),
                       child: Text(
                         'info@elim-trust.org',
@@ -349,22 +335,15 @@ class _EditInfoState extends State<EditInfo> {
                     ),
                   ],
                 ),
-
-// FloatingActionButton(
-
-//               onPressed: () {
-//                 // Add functionality for the WhatsApp button here
-//               },
                 SizedBox(height: 10), // Spacing between rows
                 Row(
                   mainAxisAlignment: MainAxisAlignment
-                      .center, // Changed to spaceEvenly for better distribution
+                      .center, 
                   children: [
                     IconButton(
                       icon: const Icon(FontAwesomeIcons.linkedin,
                           color: Colors.blue),
                       onPressed: () async {
-                        // Replace with your LinkedIn URL
                         final Uri url = Uri.parse(
                             'https://www.linkedin.com/in/elim-trust-org/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app');
                         if (!await launchUrl(url)) {
@@ -376,7 +355,6 @@ class _EditInfoState extends State<EditInfo> {
                       icon: const Icon(FontAwesomeIcons.instagram,
                           color: Colors.blue),
                       onPressed: () async {
-                        // Replace with your Instagram URL
                         final Uri url = Uri.parse(
                             'https://www.instagram.com/elimtrustorg?igsh=d2Q5djF1OGdmODJz&utm_source=qr');
                         if (!await launchUrl(url)) {
@@ -392,7 +370,6 @@ class _EditInfoState extends State<EditInfo> {
                             Uri.parse('https://x.com/elim_trust_org?s=21');
                         if (!await launchUrl(url,
                             mode: LaunchMode.externalApplication)) {
-                          // Optionally show a snackbar or dialog to the user
                           print('Could not launch $url');
                           if (context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -407,11 +384,8 @@ class _EditInfoState extends State<EditInfo> {
                       icon: const Icon(FontAwesomeIcons.whatsapp,
                           color: Colors.blue),
                       onPressed: () async {
-                        // Example: Launch WhatsApp (replace with your specific link or number)
-                        // For a specific number: 'https://wa.me/1XXXXXXXXXX' (international format)
-                        // Or a general link: 'https://whatsapp.com/'
                         const String whatsappNumber =
-                            '254705558885'; // Elim Trust WhatsApp number
+                            '254705558885'; 
                         final Uri url =
                             Uri.parse('https://wa.me/$whatsappNumber');
                         if (!await launchUrl(url,
@@ -431,7 +405,6 @@ class _EditInfoState extends State<EditInfo> {
                       icon: const Icon(FontAwesomeIcons.facebook,
                           color: Colors.blue),
                       onPressed: () async {
-                        // Replace with your Facebook page URL
                         final Uri url =
                             Uri.parse('https://www.facebook.com/ElimTrustOrg/');
                         if (!await launchUrl(url,
@@ -451,14 +424,11 @@ class _EditInfoState extends State<EditInfo> {
                       icon: const Icon(FontAwesomeIcons.locationDot,
                           color: Colors.red),
                       onPressed: () async {
-                        // Example: Open Google Maps with a specific location
-                        // You can use a query string for a place name or coordinates
                         final Uri url = Uri.parse(
-                            'https://maps.google.com/?q=Elim+Trust+Nairobi'); // Example query
+                            'https://maps.google.com/?q=Elim+Trust+Nairobi'); 
                         if (!await launchUrl(url,
                             mode: LaunchMode.externalApplication)) {
                           print('Could not launch $url');
-                          // Add SnackBar for error if needed
                         }
                       },
                     ),
@@ -468,29 +438,24 @@ class _EditInfoState extends State<EditInfo> {
             ),
           ),
         ),
-
-
-
-         floatingActionButton:
-    FloatingActionButton(
-      onPressed: () async {
-        // Direct WhatsApp link to Elim Trust
-        const String whatsappNumber =
-            '254705558885'; // Elim Trust WhatsApp number
-        final Uri url = Uri.parse('https://wa.me/$whatsappNumber');
-        if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-                content: Text(
-                    'Could not open WhatsApp for $whatsappNumber. Please ensure WhatsApp is installed.')),
-          );
-          print('Could not launch $url');
-        }
-      },
-      backgroundColor: Colors.green, // WhatsApp-like color
-      child: const Icon(FontAwesomeIcons.whatsapp, color: Colors.white),
-      tooltip: 'Chat on WhatsApp',
-    ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            const String whatsappNumber =
+                '254705558885'; 
+            final Uri url = Uri.parse('https://wa.me/$whatsappNumber');
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                    content: Text(
+                        'Could not open WhatsApp for $whatsappNumber. Please ensure WhatsApp is installed.')),
+              );
+              print('Could not launch $url');
+            }
+          },
+          backgroundColor: Colors.green, 
+          child: const Icon(FontAwesomeIcons.whatsapp, color: Colors.white),
+          tooltip: 'Chat on WhatsApp',
+        ),
       ),
     );
   }
