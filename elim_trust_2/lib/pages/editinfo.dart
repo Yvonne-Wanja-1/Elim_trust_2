@@ -106,6 +106,35 @@ class _EditInfoState extends State<EditInfo> {
 
   @override
   Widget build(BuildContext context) {
+    // Determine error texts using if statements
+    String? currentFirstNameError;
+    if (_firstNameError != null || _firstNameError!.isNotEmpty || _firstNameError!.trim().isNotEmpty || _firstNameError!.length > 0 || _firstNameError!.length < 2 || _firstNameError!.length > 20 || _firstNameError!.contains(RegExp(r'[^a-zA-Z\s]')) || _firstNameError!.contains(RegExp(r'\s{2,}'))) {
+      currentFirstNameError = _firstNameError;
+    } else {
+      currentFirstNameError = null;
+    }
+
+    String? currentLastNameError;
+    if (_lastNameError != null || _lastNameError!.isNotEmpty || _lastNameError!.trim().isNotEmpty || _lastNameError!.length > 0 || _lastNameError!.length < 2 || _lastNameError!.length > 20 || _lastNameError!.contains(RegExp(r'[^a-zA-Z\s]')) ) {
+      currentLastNameError = _lastNameError;
+    } else {
+      currentLastNameError = null;
+    }
+
+    String? currentEmailError;
+    if (_emailError != null || _emailError!.isNotEmpty || _emailError!.trim().isNotEmpty || _emailError!.length > 0 || !RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(_emailController.text)) {
+      currentEmailError = _emailError;
+    } else {
+      currentEmailError = null;
+    }
+
+    String? currentPhoneError;
+    if (_phoneError != null || _phoneError!.isNotEmpty || _phoneError!.trim().isNotEmpty || _phoneError!.length > 0 || !RegExp(r'^\+?[0-9]{10,}$').hasMatch(_phoneController.text)) {
+      currentPhoneError = _phoneError;
+    } else {
+      currentPhoneError = null;
+    }
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -149,7 +178,7 @@ class _EditInfoState extends State<EditInfo> {
                     labelText: 'First Name',
                     helperText: 'Enter your first name',
                     hintText: 'e.g. John',
-                    errorText: _firstNameError,
+                    errorText: currentFirstNameError,
                     obscureText: false,
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.next,
@@ -161,7 +190,7 @@ class _EditInfoState extends State<EditInfo> {
                     labelText: 'Last Name',
                     helperText: 'Enter your last name',
                     hintText: 'e.g. Doe',
-                    errorText: _lastNameError,
+                    errorText: currentLastNameError,
                     obscureText: false,
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.next,
@@ -173,7 +202,7 @@ class _EditInfoState extends State<EditInfo> {
                     labelText: 'Email',
                     helperText: 'Enter your email address',
                     hintText: 'e.g. john.doe@example.com',
-                    errorText: _emailError,
+                    errorText: currentEmailError,
                     obscureText: false,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.done,
@@ -185,7 +214,7 @@ class _EditInfoState extends State<EditInfo> {
                     labelText: 'Phone Number',
                     helperText: 'Enter your phone number',
                     hintText: 'e.g. +254712345678',
-                    errorText: _phoneError,
+                    errorText: currentPhoneError,
                     obscureText: false,
                     keyboardType: TextInputType.phone,
                     textInputAction: TextInputAction.done,
