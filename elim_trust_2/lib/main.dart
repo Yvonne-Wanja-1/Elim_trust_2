@@ -3,6 +3,7 @@ import 'package:elim_trust_2/pages/capacity.dart';
 import 'package:elim_trust_2/pages/communitypage.dart';
 import 'package:elim_trust_2/pages/contact.dart';
 import 'package:elim_trust_2/pages/donations.dart';
+import 'package:elim_trust_2/pages/editinfo.dart';
 import 'package:elim_trust_2/pages/gallery.dart';
 import 'package:elim_trust_2/pages/homepage.dart';
 import 'package:elim_trust_2/pages/latestnews.dart';
@@ -63,6 +64,7 @@ routes: {
   '/signin': (context) => const SigninPage(), // Add an about page route
   '/signout': (context) => const SignoutPage(), // Add a settings page route
   '/signup': (context) => const SignupPage(), // Add a contact page route
+   '/editinfo': (context) => const EditInfo(), // Add an edit info page route
 
 },
 
